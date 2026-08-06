@@ -18,7 +18,8 @@ export default function Navbar() {
         <div style={{ display: 'flex', gap: 32, alignItems: 'center' }} className="desktop-nav">
           {[
             { href: '/marketplace', label: 'Marketplace' },
-            { href: '/#ventures', label: 'Ventures' },
+            { href: '/leads', label: '🔴 Live Leads' },
+            { href: '/for-sale', label: 'For Sale' },
             { href: '/get-listed', label: 'Get Listed' },
           ].map(link => (
             <Link key={link.href} href={link.href} style={{ color: '#94a3b8', fontSize: 14, fontWeight: 500, transition: 'color 0.15s' }}
@@ -43,7 +44,8 @@ export default function Navbar() {
         <div style={{ background: '#1e293b', padding: '1rem 1.5rem', display: 'flex', flexDirection: 'column', gap: 16 }}>
           {[
             { href: '/marketplace', label: 'Marketplace' },
-            { href: '/#ventures', label: 'Ventures' },
+            { href: '/leads', label: '🔴 Live Leads' },
+            { href: '/for-sale', label: 'For Sale' },
             { href: '/get-listed', label: 'Get Listed' },
           ].map(link => (
             <Link key={link.href} href={link.href} style={{ color: '#e2e8f0', fontSize: 15, fontWeight: 500 }} onClick={() => setOpen(false)}>

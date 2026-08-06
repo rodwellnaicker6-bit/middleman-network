@@ -1,146 +1,207 @@
-import type { Metadata } from 'next';
+'use client';
+import { useState } from 'react';
 
-export const metadata: Metadata = {
-  title: 'Bundle Sale — 20ft Sail Yacht + VW VR6 Project — R60,000 | Middleman Network',
-  description: 'Selling as bundle: 20ft Vassisty sail yacht (sails, dinghy, 5HP Yamaha, mooring) + 2000 VW VR6 turbo project. R60,000. Durban. WhatsApp 062 713 5401.',
-};
+const LISTINGS = [
+  {
+    id: 'bass-boat',
+    emoji: '⛵',
+    badge: 'BOAT FOR SALE',
+    badgeColor: '#0ea5e9',
+    title: '4.5m Bass Boat — Fully Rigged',
+    price: 'R95,000',
+    tag: 'Negotiable',
+    location: 'Durban, KZN',
+    condition: 'Excellent',
+    specs: [
+      '4.5m fibreglass bass boat',
+      '75HP Suzuki 4-stroke outboard',
+      'Live bait well + rod holders',
+      'Depth finder / fish finder fitted',
+      'Road-registered trailer included',
+      'Full set of safety equipment',
+      'Recently serviced — runs perfectly',
+      'Selling to fund next project',
+    ],
+    whatsapp: `Hi, I'm interested in the 4.5m Bass Boat (R95,000) listed on TMN. Can we chat?`,
+  },
+  {
+    id: 'vr6-project',
+    emoji: '🏎️',
+    badge: 'VR6 PROJECT FOR SALE',
+    badgeColor: '#ef4444',
+    title: 'VW Golf 3 — 2.8L VR6 Completed Build',
+    price: 'R75,000',
+    tag: 'Negotiable',
+    location: 'Durban, KZN',
+    condition: 'Excellent — completed build',
+    specs: [
+      '2.8L VR6 naturally aspirated',
+      'Full VR6 swap — professionally built',
+      'Stage 1 software tune',
+      'Upgraded exhaust manifold',
+      'Solid suspension refresh',
+      'Fresh timing chains & tensioners',
+      'Strong healthy engine — no issues',
+      'Serious buyers only — can demo',
+    ],
+    whatsapp: `Hi, I'm interested in the VW Golf 3 VR6 project (R75,000) listed on TMN. Can we chat?`,
+  },
+];
 
 export default function ForSalePage() {
-  const whatsappMsg = encodeURIComponent(
-    "Hi Rodwell, I saw your bundle listing on Middleman Network — the sail yacht + VR6. I'm interested. Can we talk?"
-  );
-  const whatsappUrl = `https://wa.me/27627135401?text=${whatsappMsg}`;
+  const [enquiry, setEnquiry] = useState<{ id: string; name: string; phone: string; message: string } | null>(null);
+  const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  async function sendEnquiry() {
+    if (!enquiry) return;
+    setSending(true);
+    const listing = LISTINGS.find(l => l.id === enquiry.id);
+    try {
+      await fetch('https://formsubmit.co/ajax/rodwellnaicker6@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: `💰 TMN For Sale Enquiry — ${listing?.title}`,
+          Item: listing?.title,
+          Price: listing?.price,
+          'Buyer Name': enquiry.name,
+          'Buyer Phone': enquiry.phone,
+          Message: enquiry.message || '—',
+        }),
+      });
+      setSent(true);
+    } finally {
+      setSending(false);
+    }
+  }
 
   return (
     <div style={{ minHeight: '100vh', background: '#f8fafc' }}>
       {/* Hero */}
-      <div style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)', color: '#fff', padding: '3rem 0' }}>
+      <section style={{ background: '#0f172a', color: '#fff', padding: '3.5rem 0' }}>
         <div className="container">
-          <div style={{ display: 'inline-block', background: '#ef4444', color: '#fff', fontSize: 11, fontWeight: 800, padding: '4px 12px', borderRadius: 4, letterSpacing: 1, marginBottom: '1rem' }}>
-            URGENT SALE — BUNDLE ONLY
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(245,158,11,0.15)', border: '1px solid rgba(245,158,11,0.3)', borderRadius: 20, padding: '4px 12px', marginBottom: 16 }}>
+            <span style={{ color: '#f59e0b', fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>Private Listings</span>
           </div>
-          <h1 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 900, margin: '0 0 0.75rem', lineHeight: 1.2 }}>
-            20ft Sail Yacht + VW VR6 Project
-          </h1>
-          <div style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 900, color: '#34d399', margin: '0.5rem 0' }}>
-            R60,000
-          </div>
-          <p style={{ color: '#94a3b8', margin: '0.5rem 0 0', fontSize: 16 }}>
-            Durban · Cash or EFT · Not splitting · Serious buyers only
+          <h1 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 900, margin: '0 0 1rem' }}>Items For Sale</h1>
+          <p style={{ color: '#94a3b8', fontSize: 16, maxWidth: 520, lineHeight: 1.7, margin: 0 }}>
+            Two quality items available now. Both priced to move — serious buyers only. Located in Durban, KZN.
           </p>
         </div>
-      </div>
+      </section>
 
-      <div className="container" style={{ padding: '2rem 1.5rem', maxWidth: 900 }}>
-        {/* CTA top */}
-        <div style={{ background: '#fff', borderRadius: 16, padding: '1.5rem', border: '2px solid #34d399', marginBottom: '2rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
-          <div>
-            <div style={{ fontWeight: 800, fontSize: 18, color: '#0f172a' }}>Ready to buy? Contact Rodwell now</div>
-            <div style={{ color: '#64748b', fontSize: 14, marginTop: 4 }}>WhatsApp or call · 062 713 5401 · Durban</div>
-          </div>
-          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"
-            style={{ background: '#25d366', color: '#fff', fontWeight: 800, fontSize: 15, padding: '14px 28px', borderRadius: 10, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 8, whiteSpace: 'nowrap' }}>
-            💬 WhatsApp Now
-          </a>
-        </div>
-
-        {/* Two items */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
-
-          {/* Yacht */}
-          <div style={{ background: '#fff', borderRadius: 16, padding: '1.75rem', border: '1px solid #e2e8f0' }}>
-            <div style={{ fontSize: 48, marginBottom: 12 }}>⛵</div>
-            <div style={{ background: '#eff6ff', color: '#1d4ed8', fontSize: 11, fontWeight: 700, padding: '3px 8px', borderRadius: 4, display: 'inline-block', marginBottom: 12 }}>PACKAGE 1</div>
-            <h2 style={{ fontWeight: 900, fontSize: 20, margin: '0 0 1rem', color: '#0f172a' }}>20ft Vassisty Sail Yacht</h2>
-            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {[
-                '20ft fibreglass sailing yacht — Vassisty hull',
-                'Full sail set included',
-                'Inflatable dinghy included',
-                '5HP Yamaha outboard motor included',
-                'Mooring chain + mooring included',
-                'Currently moored — buyer arranges transport',
-              ].map((item, i) => (
-                <li key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', color: '#374151', fontSize: 14 }}>
-                  <span style={{ color: '#34d399', fontWeight: 900, flexShrink: 0, marginTop: 1 }}>✓</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div style={{ marginTop: '1.25rem', paddingTop: '1.25rem', borderTop: '1px solid #f1f5f9' }}>
-              <div style={{ fontSize: 12, color: '#94a3b8' }}>Replacement value</div>
-              <div style={{ fontWeight: 800, fontSize: 18, color: '#0f172a' }}>R100,000+</div>
-            </div>
-          </div>
-
-          {/* VR6 */}
-          <div style={{ background: '#fff', borderRadius: 16, padding: '1.75rem', border: '1px solid #e2e8f0' }}>
-            <div style={{ fontSize: 48, marginBottom: 12 }}>🚗</div>
-            <div style={{ background: '#fef3c7', color: '#d97706', fontSize: 11, fontWeight: 700, padding: '3px 8px', borderRadius: 4, display: 'inline-block', marginBottom: 12 }}>PACKAGE 2</div>
-            <h2 style={{ fontWeight: 900, fontSize: 20, margin: '0 0 1rem', color: '#0f172a' }}>2000 VW Golf VR6 Project</h2>
-            <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {[
-                '2.8L VR6 — classic South African performance engine',
-                'Turbo build in progress',
-                'All parts included in sale',
-                'Solid project car with massive potential',
-                'Ideal for fast driver or show car build',
-                'Priced to sell — not to profit',
-              ].map((item, i) => (
-                <li key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start', color: '#374151', fontSize: 14 }}>
-                  <span style={{ color: '#f59e0b', fontWeight: 900, flexShrink: 0, marginTop: 1 }}>✓</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div style={{ marginTop: '1.25rem', paddingTop: '1.25rem', borderTop: '1px solid #f1f5f9' }}>
-              <div style={{ fontSize: 12, color: '#94a3b8' }}>Project value</div>
-              <div style={{ fontWeight: 800, fontSize: 18, color: '#0f172a' }}>R45,000+</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Deal summary */}
-        <div style={{ background: '#0f172a', borderRadius: 16, padding: '2rem', marginBottom: '2rem', color: '#fff' }}>
-          <h3 style={{ fontWeight: 900, fontSize: 20, margin: '0 0 1.25rem' }}>The Deal</h3>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1.25rem' }}>
-            {[
-              { label: 'Bundle price', value: 'R60,000', highlight: true },
-              { label: 'Combined value', value: 'R145,000+', highlight: false },
-              { label: 'Your saving', value: 'R85,000+', highlight: false },
-              { label: 'Location', value: 'Durban, KZN', highlight: false },
-              { label: 'Payment', value: 'Cash / EFT', highlight: false },
-              { label: 'Splitting', value: 'No — bundle only', highlight: false },
-            ].map((item, i) => (
-              <div key={i}>
-                <div style={{ fontSize: 11, color: '#64748b', marginBottom: 4, textTransform: 'uppercase', letterSpacing: 0.5 }}>{item.label}</div>
-                <div style={{ fontWeight: 800, fontSize: 16, color: item.highlight ? '#34d399' : '#f1f5f9' }}>{item.value}</div>
+      <div className="container" style={{ padding: '3rem 1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
+          {LISTINGS.map(listing => (
+            <div key={listing.id} style={{ background: '#fff', borderRadius: 20, border: '1px solid #e2e8f0', overflow: 'hidden', boxShadow: '0 4px 24px rgba(0,0,0,0.06)' }}>
+              {/* Banner */}
+              <div style={{ background: `linear-gradient(135deg, ${listing.badgeColor}22 0%, #0f172a 100%)`, height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+                <div style={{ fontSize: 80 }}>{listing.emoji}</div>
+                <div style={{ position: 'absolute', top: 16, left: 16, background: listing.badgeColor, color: '#fff', fontSize: 11, fontWeight: 800, padding: '4px 10px', borderRadius: 6 }}>
+                  {listing.badge}
+                </div>
+                <div style={{ position: 'absolute', top: 16, right: 16, background: '#f59e0b', color: '#0f172a', fontSize: 12, fontWeight: 800, padding: '4px 10px', borderRadius: 6 }}>
+                  {listing.tag}
+                </div>
               </div>
-            ))}
-          </div>
+
+              <div style={{ padding: '1.75rem' }}>
+                <h2 style={{ fontWeight: 900, fontSize: 20, color: '#0f172a', margin: '0 0 8px', lineHeight: 1.2 }}>{listing.title}</h2>
+                <div style={{ fontWeight: 900, fontSize: 28, color: '#0f172a', marginBottom: 16 }}>{listing.price}</div>
+
+                <div style={{ display: 'flex', gap: 8, marginBottom: 20, flexWrap: 'wrap' }}>
+                  <span style={{ background: '#f0fdf4', color: '#166534', fontSize: 12, fontWeight: 600, padding: '4px 10px', borderRadius: 6 }}>✓ {listing.condition}</span>
+                  <span style={{ background: '#f8fafc', color: '#64748b', fontSize: 12, padding: '4px 10px', borderRadius: 6 }}>📍 {listing.location}</span>
+                </div>
+
+                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.75rem' }}>
+                  {listing.specs.map(spec => (
+                    <li key={spec} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, padding: '6px 0', borderBottom: '1px solid #f8fafc', fontSize: 14, color: '#334155' }}>
+                      <span style={{ color: '#10b981', flexShrink: 0, marginTop: 1 }}>✓</span>{spec}
+                    </li>
+                  ))}
+                </ul>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  <button
+                    onClick={() => { setEnquiry({ id: listing.id, name: '', phone: '', message: '' }); setSent(false); }}
+                    style={{ width: '100%', background: '#0f172a', color: '#fff', fontWeight: 800, fontSize: 15, padding: '14px', borderRadius: 10, border: 'none', cursor: 'pointer' }}>
+                    📩 Enquire Now
+                  </button>
+                  <a
+                    href={`https://wa.me/27627135401?text=${encodeURIComponent(listing.whatsapp)}`}
+                    target="_blank" rel="noopener noreferrer"
+                    style={{ display: 'block', background: '#25d366', color: '#fff', fontWeight: 700, fontSize: 14, padding: '12px', borderRadius: 10, textAlign: 'center' }}>
+                    💬 WhatsApp Seller
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
 
-        {/* Contact section */}
-        <div style={{ background: '#fff', borderRadius: 16, padding: '2rem', border: '1px solid #e2e8f0', textAlign: 'center' }}>
-          <h3 style={{ fontWeight: 900, fontSize: 22, margin: '0 0 0.5rem', color: '#0f172a' }}>Interested? Let&apos;s talk.</h3>
-          <p style={{ color: '#64748b', margin: '0 0 1.5rem', fontSize: 15 }}>
-            WhatsApp or call Rodwell directly. Cash sale, quick handover, no agents.
-          </p>
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"
-              style={{ background: '#25d366', color: '#fff', fontWeight: 800, fontSize: 15, padding: '14px 28px', borderRadius: 10, textDecoration: 'none' }}>
-              💬 WhatsApp: 062 713 5401
-            </a>
-            <a href="tel:0627135401"
-              style={{ background: '#0f172a', color: '#fff', fontWeight: 800, fontSize: 15, padding: '14px 28px', borderRadius: 10, textDecoration: 'none' }}>
-              📞 Call Now
-            </a>
-          </div>
-          <p style={{ color: '#94a3b8', fontSize: 12, marginTop: '1.25rem' }}>
-            Listing via <strong>The Middleman Network</strong> — middleman-network.vercel.app
-          </p>
+        {/* Trust strip */}
+        <div style={{ background: '#fff', borderRadius: 16, padding: '1.5rem 2rem', border: '1px solid #e2e8f0', display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
+          {['📍 Durban, KZN', '✅ Available to view', '💬 WhatsApp preferred', '🕐 Responds within a few hours'].map(s => (
+            <span key={s} style={{ fontSize: 13, color: '#475569' }}>{s}</span>
+          ))}
         </div>
       </div>
+
+      {/* Enquiry modal */}
+      {enquiry && (
+        <div
+          onClick={e => { if (e.target === e.currentTarget) setEnquiry(null); }}
+          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
+          <div style={{ background: '#fff', borderRadius: 20, padding: '2rem', maxWidth: 440, width: '100%', boxShadow: '0 24px 80px rgba(0,0,0,0.25)' }}>
+            {sent ? (
+              <div style={{ textAlign: 'center', padding: '1rem 0' }}>
+                <div style={{ fontSize: 56, marginBottom: 16 }}>🎉</div>
+                <h3 style={{ fontWeight: 900, color: '#0f172a', margin: '0 0 8px' }}>Enquiry Sent!</h3>
+                <p style={{ color: '#64748b', marginBottom: 20 }}>The seller will contact you within 24 hours.</p>
+                <button onClick={() => setEnquiry(null)} style={{ background: '#0f172a', color: '#fff', fontWeight: 700, padding: '12px 28px', borderRadius: 8, border: 'none', cursor: 'pointer' }}>Done</button>
+              </div>
+            ) : (
+              <>
+                <h3 style={{ fontWeight: 900, fontSize: 18, color: '#0f172a', margin: '0 0 4px' }}>Make an Enquiry</h3>
+                <p style={{ color: '#64748b', fontSize: 13, margin: '0 0 1.5rem' }}>{LISTINGS.find(l => l.id === enquiry.id)?.title}</p>
+
+                <div style={{ marginBottom: 12 }}>
+                  <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#374151', marginBottom: 4 }}>Your Name *</label>
+                  <input value={enquiry.name} onChange={e => setEnquiry(q => q && ({ ...q, name: e.target.value }))}
+                    placeholder="Full name"
+                    style={{ width: '100%', border: '1px solid #e2e8f0', borderRadius: 8, padding: '10px 12px', fontSize: 14, boxSizing: 'border-box', outline: 'none', background: '#f8fafc' }} />
+                </div>
+                <div style={{ marginBottom: 12 }}>
+                  <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#374151', marginBottom: 4 }}>Phone Number *</label>
+                  <input value={enquiry.phone} onChange={e => setEnquiry(q => q && ({ ...q, phone: e.target.value }))}
+                    placeholder="+27 8X XXX XXXX"
+                    style={{ width: '100%', border: '1px solid #e2e8f0', borderRadius: 8, padding: '10px 12px', fontSize: 14, boxSizing: 'border-box', outline: 'none', background: '#f8fafc' }} />
+                </div>
+                <div style={{ marginBottom: 20 }}>
+                  <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#374151', marginBottom: 4 }}>Message (optional)</label>
+                  <textarea value={enquiry.message} onChange={e => setEnquiry(q => q && ({ ...q, message: e.target.value }))}
+                    placeholder="Any questions? Best time to call? Cash buyer?"
+                    rows={3}
+                    style={{ width: '100%', border: '1px solid #e2e8f0', borderRadius: 8, padding: '10px 12px', fontSize: 14, boxSizing: 'border-box', outline: 'none', resize: 'vertical', background: '#f8fafc' }} />
+                </div>
+
+                <div style={{ display: 'flex', gap: 10 }}>
+                  <button onClick={() => setEnquiry(null)}
+                    style={{ flex: 1, background: '#f8fafc', color: '#64748b', fontWeight: 700, padding: '12px', borderRadius: 8, border: '1px solid #e2e8f0', cursor: 'pointer', fontSize: 14 }}>
+                    Cancel
+                  </button>
+                  <button onClick={sendEnquiry} disabled={sending || !enquiry.name.trim() || !enquiry.phone.trim()}
+                    style={{ flex: 2, background: (!enquiry.name.trim() || !enquiry.phone.trim()) ? '#94a3b8' : '#0f172a', color: '#fff', fontWeight: 800, padding: '12px', borderRadius: 8, border: 'none', cursor: (!enquiry.name.trim() || !enquiry.phone.trim()) ? 'not-allowed' : 'pointer', fontSize: 14 }}>
+                    {sending ? 'Sending...' : 'Send Enquiry →'}
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
