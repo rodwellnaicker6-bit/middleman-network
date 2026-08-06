@@ -5,11 +5,36 @@ import { PLANS, INDUSTRIES, NICHES } from '@/lib/data';
 
 export default function GetListedPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [form, setForm] = useState({ name: '', business: '', email: '', phone: '', niche: '', plan: 'growth', message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitError('');
+    setLoading(true);
+    try {
+      const res = await fetch('/api/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          business_name: form.business,
+          email: form.email,
+          phone: form.phone,
+          niche_slug: form.niche,
+          plan_slug: form.plan,
+          message: form.message,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Submission failed');
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const providerPlans = PLANS.filter(p => p.party_type === 'provider');
@@ -155,9 +180,12 @@ export default function GetListedPage() {
                 style={{ width: '100%', border: '1px solid #e2e8f0', borderRadius: 8, padding: '10px 12px', fontSize: 14, boxSizing: 'border-box', background: '#f8fafc', outline: 'none', resize: 'vertical' }} />
             </div>
 
-            <button type="submit"
-              style={{ width: '100%', background: '#f59e0b', color: '#0f172a', fontWeight: 900, fontSize: 16, padding: '14px', borderRadius: 10, border: 'none', cursor: 'pointer' }}>
-              Submit Application →
+            {submitError && (
+              <div style={{ background: '#fef2f2', border: '1px solid #fca5a5', borderRadius: 8, padding: '10px 12px', color: '#dc2626', fontSize: 13, marginBottom: '1rem' }}>{submitError}</div>
+            )}
+            <button type="submit" disabled={loading}
+              style={{ width: '100%', background: loading ? '#94a3b8' : '#f59e0b', color: '#0f172a', fontWeight: 900, fontSize: 16, padding: '14px', borderRadius: 10, border: 'none', cursor: loading ? 'not-allowed' : 'pointer' }}>
+              {loading ? 'Submitting...' : 'Submit Application →'}
             </button>
             <p style={{ textAlign: 'center', fontSize: 12, color: '#94a3b8', margin: '10px 0 0' }}>We&apos;ll be in touch within 24 hours. No payment required to apply.</p>
           </form>

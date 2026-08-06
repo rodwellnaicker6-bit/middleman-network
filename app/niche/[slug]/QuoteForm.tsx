@@ -9,7 +9,7 @@ interface Props {
   txLabel: string;
 }
 
-export default function QuoteForm({ fields, nicheName, txLabel }: Props) {
+export default function QuoteForm({ fields, nicheName, nicheSlug, txLabel }: Props) {
   const [values, setValues] = useState<Record<string, unknown>>({});
   const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState('');
@@ -18,12 +18,28 @@ export default function QuoteForm({ fields, nicheName, txLabel }: Props) {
   const [consent, setConsent] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !phone.trim()) { setError('Name and phone are required.'); return; }
     if (!consent) { setError('Please confirm your consent to proceed.'); return; }
     setError('');
-    setSubmitted(true);
+    setLoading(true);
+    try {
+      const res = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ niche_slug: nicheSlug, name, phone, email, field_values: values, consent }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Submission failed');
+      setSubmitted(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -209,9 +225,9 @@ export default function QuoteForm({ fields, nicheName, txLabel }: Props) {
 
       {error && <div style={{ background: '#fef2f2', border: '1px solid #fca5a5', borderRadius: 8, padding: '10px 12px', color: '#dc2626', fontSize: 13, marginBottom: '1rem' }}>{error}</div>}
 
-      <button type="submit"
-        style={{ width: '100%', background: '#0f172a', color: '#fff', fontWeight: 800, fontSize: 15, padding: '14px', borderRadius: 10, border: 'none', cursor: 'pointer', letterSpacing: 0.3 }}>
-        {txLabel} 🚀
+      <button type="submit" disabled={loading}
+        style={{ width: '100%', background: loading ? '#64748b' : '#0f172a', color: '#fff', fontWeight: 800, fontSize: 15, padding: '14px', borderRadius: 10, border: 'none', cursor: loading ? 'not-allowed' : 'pointer', letterSpacing: 0.3 }}>
+        {loading ? 'Submitting...' : `${txLabel} 🚀`}
       </button>
       <p style={{ textAlign: 'center', color: '#94a3b8', fontSize: 11, margin: '8px 0 0' }}>Free · No obligation · 0% commission marketplace</p>
     </form>
