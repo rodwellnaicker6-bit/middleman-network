@@ -29,6 +29,17 @@ export default function GetListedPage() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Submission failed');
+      // Fire email notification from browser
+      fetch('https://formsubmit.co/ajax/rodwellnaicker6@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: `🏢 TMN Application: ${form.business} (${form.plan.toUpperCase()})`,
+          Business: form.business, Contact: form.name, Email: form.email,
+          Phone: form.phone, Niche: form.niche, Plan: form.plan.toUpperCase(),
+          Message: form.message || '—',
+        }),
+      }).catch(() => {});
       setSubmitted(true);
     } catch (err) {
       setSubmitError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');

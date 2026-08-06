@@ -34,6 +34,16 @@ export default function QuoteForm({ fields, nicheName, nicheSlug, txLabel }: Pro
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Submission failed');
+      // Fire email notification from browser (Formsubmit requires browser origin)
+      fetch('https://formsubmit.co/ajax/rodwellnaicker6@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: `🎯 TMN Quote: ${nicheSlug.replace(/-/g, ' ')} — ${name}`,
+          Name: name, Phone: phone, Email: email || '—', Niche: nicheSlug,
+          ...Object.fromEntries(Object.entries(values).map(([k, v]) => [k, Array.isArray(v) ? (v as string[]).join(', ') : String(v)])),
+        }),
+      }).catch(() => {});
       setSubmitted(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
