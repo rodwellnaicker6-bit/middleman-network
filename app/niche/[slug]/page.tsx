@@ -172,7 +172,7 @@ export default async function NichePage({ params }: { params: Promise<{ slug: st
                       ? 'This is a regulated niche. Browse verified provider listings or contact them directly via their profiles.'
                       : 'Contact us directly to discuss your requirements for this niche.'}
                   </p>
-                  <a href={`mailto:${venture?.support_email || 'info@middlemannetwork.co.za'}`}
+                  <a href={`mailto:${venture?.support_email || 'rodwellnaicker6@gmail.com'}`}
                     style={{ display: 'block', background: '#0f172a', color: '#fff', textAlign: 'center', padding: '12px', borderRadius: 8, fontWeight: 700, fontSize: 14 }}>
                     📧 Contact Directly
                   </a>

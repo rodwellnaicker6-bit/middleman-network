@@ -43,6 +43,19 @@ export default function Footer() {
             <div style={{ marginBottom: 8 }}><Link href="/get-listed#plans" style={{ fontSize: 13, color: '#94a3b8' }}>View Plans</Link></div>
             <div style={{ marginBottom: 8 }}><Link href="/marketplace" style={{ fontSize: 13, color: '#94a3b8' }}>Browse Niches</Link></div>
           </div>
+          {/* Contact */}
+          <div>
+            <h4 style={{ color: '#fff', fontSize: 13, fontWeight: 700, margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>Contact</h4>
+            <div style={{ marginBottom: 8 }}>
+              <a href="mailto:rodwellnaicker6@gmail.com" style={{ fontSize: 13, color: '#94a3b8' }}>📧 rodwellnaicker6@gmail.com</a>
+            </div>
+            <div style={{ marginBottom: 8 }}>
+              <a href="https://wa.me/27627135401" target="_blank" rel="noopener noreferrer" style={{ fontSize: 13, color: '#94a3b8' }}>💬 WhatsApp</a>
+            </div>
+            <div style={{ marginBottom: 8 }}>
+              <span style={{ fontSize: 13, color: '#94a3b8' }}>Mon–Fri · 8am–5pm SAST</span>
+            </div>
+          </div>
         </div>
 
         <div style={{ borderTop: '1px solid #1e293b', paddingTop: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>

@@ -213,11 +213,11 @@ export default function GetListedPage() {
             <div style={{ background: '#fff', borderRadius: 16, padding: '1.75rem', border: '1px solid #e2e8f0' }}>
               <h3 style={{ fontWeight: 800, fontSize: 16, margin: '0 0 1rem', color: '#0f172a' }}>Have questions?</h3>
               <p style={{ color: '#64748b', fontSize: 13, lineHeight: 1.6, margin: '0 0 1rem' }}>Our team is available Monday–Friday 8am–5pm SAST.</p>
-              <a href="mailto:info@middlemannetwork.co.za"
+              <a href="mailto:rodwellnaicker6@gmail.com"
                 style={{ display: 'block', background: '#f8fafc', border: '1px solid #e2e8f0', color: '#0f172a', padding: '10px 14px', borderRadius: 8, textAlign: 'center', fontWeight: 700, fontSize: 13, marginBottom: 8 }}>
-                📧 info@middlemannetwork.co.za
+                📧 rodwellnaicker6@gmail.com
               </a>
-              <a href="https://wa.me/27000000000" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/27627135401" target="_blank" rel="noopener noreferrer"
                 style={{ display: 'block', background: '#25d366', color: '#fff', padding: '10px 14px', borderRadius: 8, textAlign: 'center', fontWeight: 700, fontSize: 13 }}>
                 💬 WhatsApp Us
               </a>
