@@ -22,14 +22,19 @@ export default function Footer() {
               </div>
             ))}
           </div>
-          {/* Ventures */}
+          {/* The Group */}
           <div>
-            <h4 style={{ color: '#fff', fontSize: 13, fontWeight: 700, margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>Ventures</h4>
+            <h4 style={{ color: '#fff', fontSize: 13, fontWeight: 700, margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: 1 }}>The Group</h4>
+            <div style={{ marginBottom: 8 }}>
+              <Link href="/group" style={{ fontSize: 13, color: '#f59e0b', fontWeight: 700 }}>🏢 Group Overview</Link>
+            </div>
             {[
               { name: 'D.R. Autotronics', slug: 'dr-autotronics' },
+              { name: 'Scope Indices', slug: 'scope-indices' },
               { name: 'YieldCore AI', slug: 'yieldcore-ai' },
               { name: 'TipGuard SA', slug: 'tipguard-sa' },
-              { name: 'Scope Indices', slug: 'scope-indices' },
+              { name: 'Beryl Core AI', slug: 'beryl-core-ai' },
+              { name: 'Manufacturing Division', slug: 'manufacturing-division' },
             ].map(v => (
               <div key={v.slug} style={{ marginBottom: 8 }}>
                 <Link href={`/ventures/${v.slug}`} style={{ fontSize: 13, color: '#94a3b8' }}>{v.name}</Link>

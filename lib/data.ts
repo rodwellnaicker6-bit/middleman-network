@@ -58,6 +58,9 @@ export const NICHES: Niche[] = [
   { slug: 'trading-analytics', name: 'Trading Analytics', industry_slug: 'trading-technology', party_type: 'provider', transaction_type: 'professional', compliance_mode: 'open', lead_credit_cost: 3, avg_job_value_zar: 12000, description: 'Strategy backtesting, win-rate analysis, drawdown analysis, Monte Carlo testing and trading journal dashboards.' },
   // Tech Services
   { slug: 'technology-development', name: 'Technology & Digital Development', industry_slug: 'technology-services', party_type: 'provider', transaction_type: 'professional', compliance_mode: 'open', lead_credit_cost: 4, avg_job_value_zar: 28000, description: 'AI development, SaaS platforms, mobile & web apps, API development, NFC tech, IoT integration and WhatsApp automation.' },
+  // Manufacturing
+  { slug: 'drone-services', name: 'Commercial Drone Services', industry_slug: 'technology-services', party_type: 'provider', transaction_type: 'spec_quote', compliance_mode: 'open', lead_credit_cost: 4, avg_job_value_zar: 18000, description: 'Commercial drone inspection, aerial photography, agricultural monitoring, drone repair and custom 3D-printed drone components.' },
+  { slug: '3d-printing-manufacturing', name: '3D Printing & Custom Manufacturing', industry_slug: 'technology-services', party_type: 'provider', transaction_type: 'spec_quote', compliance_mode: 'open', lead_credit_cost: 3, avg_job_value_zar: 8500, description: 'Custom 3D printing, prototype manufacturing, NFC hardware production, enclosures and rapid prototyping services.' },
 ];
 
 // ─── VENTURES ────────────────────────────────────────────────
@@ -109,6 +112,30 @@ export const VENTURES: Venture[] = [
     services: ['MT5 EA Development', 'MT4 EA Development', 'NinjaTrader Strategies', 'TradingView Indicators', 'Prop Firm Rule Automation', 'Drawdown Protection', 'Trade Copier Development', 'Signal APIs', 'MT5 Bridge Development', 'Cloudflare Tunnel Setup', 'Strategy Backtesting', 'Risk Dashboards'],
     website_url: 'https://scopeindices.co.za',
     support_email: 'support@scopeindices.co.za',
+  },
+  {
+    slug: 'beryl-core-ai',
+    name: 'Beryl Core AI',
+    tagline: 'The Group\'s AI Operating System — Powering All Six Divisions',
+    description: 'Beryl Core AI is the unified intelligence layer of D.R. Autotronics Group. It powers SIENNA (the group\'s AI assistant), the Rodwell OS business management platform, cross-division data pipelines, automated reporting, and AI-driven operations across all six group divisions. Beryl Core also delivers AI development, SaaS platforms, business automation and WhatsApp integration for external clients.',
+    icon: '🧠',
+    color: '#4f46e5',
+    niches: ['technology-development'],
+    services: ['AI Assistant Development', 'Business Process Automation', 'WhatsApp Bot Development', 'SaaS Platform Development', 'CRM & Operations Platforms', 'Data Pipeline Engineering', 'API Development & Integration', 'IoT & NFC Integration', 'Group AI Infrastructure', 'Custom AI Deployments'],
+    website_url: 'https://middleman-network.vercel.app/group',
+    support_email: 'rodwellnaicker6@gmail.com',
+  },
+  {
+    slug: 'manufacturing-division',
+    name: 'Manufacturing Division',
+    tagline: '3D Printing, Drone Services & NFC Hardware — Durban, KZN',
+    description: 'The Manufacturing Division of D.R. Autotronics Group produces custom 3D-printed components, NFC merchant hardware, ECU enclosures and drone parts for the group and external clients. Commercial drone services include aerial inspection, agricultural monitoring and specialist drone repairs with a 48–72 hour turnaround using in-house printed components. SACAA licensing in progress.',
+    icon: '🏭',
+    color: '#c2410c',
+    niches: ['drone-services', '3d-printing-manufacturing'],
+    services: ['Custom 3D Printing', 'ECU Housing Production', 'NFC Card & Tag Manufacturing', 'Drone Components', 'Commercial Drone Inspection', 'Agricultural Drone Monitoring', 'Drone Repair (48–72h)', 'Rapid Prototyping', 'NFC Wristband Production', 'Custom Hardware Enclosures'],
+    website_url: 'https://middleman-network.vercel.app/group',
+    support_email: 'rodwellnaicker6@gmail.com',
   },
 ];
 

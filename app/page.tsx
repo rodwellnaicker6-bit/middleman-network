@@ -82,7 +82,7 @@ export default function HomePage() {
               <span style={{ color: '#f59e0b', fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>DR Autotronics Group Ventures</span>
             </div>
             <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 800, margin: '0 0 1rem', color: '#fff' }}>Brands on the Platform</h2>
-            <p style={{ color: '#64748b', maxWidth: 500, margin: '0 auto' }}>Four specialised ventures under one group, each with its own marketplace presence, branding and service offering.</p>
+            <p style={{ color: '#64748b', maxWidth: 520, margin: '0 auto' }}>Six active divisions under one holding company — D.R. Autotronics Group — each with its own marketplace presence, branding and service offering.</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.5rem' }}>
             {VENTURES.map(venture => (
