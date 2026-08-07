@@ -19,6 +19,7 @@ export default function Navbar() {
           {[
             { href: '/marketplace', label: 'Marketplace' },
             { href: '/leads', label: '🔴 Live Leads' },
+            { href: '/group', label: '🏢 The Group' },
             { href: '/for-sale', label: 'For Sale' },
             { href: '/get-listed', label: 'Get Listed' },
           ].map(link => (
@@ -45,6 +46,7 @@ export default function Navbar() {
           {[
             { href: '/marketplace', label: 'Marketplace' },
             { href: '/leads', label: '🔴 Live Leads' },
+            { href: '/group', label: '🏢 The Group' },
             { href: '/for-sale', label: 'For Sale' },
             { href: '/get-listed', label: 'Get Listed' },
           ].map(link => (
