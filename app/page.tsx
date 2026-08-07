@@ -56,7 +56,7 @@ export default function HomePage() {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 800, margin: '0 0 1rem', color: '#0f172a' }}>Browse by Industry</h2>
-            <p style={{ color: '#64748b', maxWidth: 500, margin: '0 auto' }}>11 industries, 36 niches, one platform. Whether you need a solar quote or a trading bot — we&apos;ve got you.</p>
+            <p style={{ color: '#64748b', maxWidth: 500, margin: '0 auto' }}>{INDUSTRIES.length} industries, {NICHES.length} niches, one platform. Whether you need a solar quote or a trading bot — we&apos;ve got you.</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1rem' }}>
             {INDUSTRIES.map(industry => {
@@ -115,7 +115,7 @@ export default function HomePage() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem' }}>
             {[
-              { step: '1', icon: '🔍', title: 'Find Your Niche', desc: 'Browse 36 niches across 11 industries. Filter by location, industry or service type.' },
+              { step: '1', icon: '🔍', title: 'Find Your Niche', desc: `Browse ${NICHES.length} niches across ${INDUSTRIES.length} industries. Filter by location, industry or service type.` },
               { step: '2', icon: '📋', title: 'Fill the Smart Form', desc: 'Answer a few questions. Our AI estimates the cost range before any provider sees your lead.' },
               { step: '3', icon: '🤝', title: 'Get Matched', desc: 'Verified providers in your area claim your lead using subscription credits — not per-lead commission.' },
               { step: '4', icon: '✅', title: 'Accept & Proceed', desc: 'Compare quotes, read reviews and accept the best offer. The marketplace earns via subscriptions only.' },
