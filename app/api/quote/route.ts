@@ -1,22 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
 
-const NOTIFY_EMAIL = 'rodwellnaicker6@gmail.com';
-
-function titleCase(s: string) {
-  return s.replace(/-/g, ' ').replace(/\b\w/g, (c: string): string => c.toUpperCase());
-}
-
-async function sendEmail(subject: string, body: Record<string, string>) {
-  try {
-    await fetch(`https://formsubmit.co/ajax/${NOTIFY_EMAIL}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ _subject: subject, ...body }),
-    });
-  } catch { /* non-blocking */ }
-}
-
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -39,16 +23,6 @@ export async function POST(req: NextRequest) {
     });
 
     if (error) throw error;
-
-    await sendEmail(`🎯 TMN — New Quote: ${titleCase(niche_slug)}`, {
-      Name: name,
-      Phone: phone,
-      Email: email || '—',
-      Niche: titleCase(niche_slug),
-      ...Object.fromEntries(
-        Object.entries(field_values || {}).map(([k, v]) => [k, Array.isArray(v) ? v.join(', ') : String(v)])
-      ),
-    });
 
     return NextResponse.json({ success: true });
   } catch (err) {
