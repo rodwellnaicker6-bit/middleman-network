@@ -111,16 +111,95 @@ const DIVISIONS = [
   },
 ];
 
-const ECOSYSTEM_FLOWS = [
-  { from: 'D.R. Autotronics', to: 'Manufacturing Division', flow: 'ECU housings & parts manufactured in-house — no external supplier' },
-  { from: 'D.R. Autotronics', to: 'TipGuard SA', flow: 'Workshop clients onboarded as cashless tipping merchants' },
-  { from: 'Manufacturing Division', to: 'TipGuard SA', flow: 'NFC merchant hardware stock produced in-house' },
-  { from: 'Manufacturing Division', to: 'YieldCore AI', flow: 'Drones deployed for precision crop monitoring' },
-  { from: 'YieldCore AI', to: 'TipGuard SA', flow: 'Farm workers tipped digitally via cashless platform' },
-  { from: 'Scope Indices', to: 'Beryl Core AI', flow: 'Live market data feeds Beryl Core analytics engine' },
-  { from: 'Beryl Core AI', to: 'All Divisions', flow: 'SIENNA AI — automation, CRM & intelligence across every division' },
-  { from: 'All Divisions', to: 'The Middleman Network', flow: 'All 6 divisions listed — TMN drives inbound leads for the group' },
-  { from: 'D.R. Autotronics', to: 'Scope Indices', flow: 'Core automotive revenue funds trading capital base' },
+const FLOW_TYPES = [
+  { type: 'revenue', label: 'Revenue Flows', icon: '💰', color: '#10b981', bg: 'rgba(16,185,129,0.12)', border: 'rgba(16,185,129,0.3)', desc: 'Money circulating between divisions — core income funding growth across the group' },
+  { type: 'hardware', label: 'Hardware Flows', icon: '🔩', color: '#f97316', bg: 'rgba(249,115,22,0.12)', border: 'rgba(249,115,22,0.3)', desc: 'Physical goods produced internally — zero external supplier dependency' },
+  { type: 'data', label: 'Data & AI Flows', icon: '🧠', color: '#8b5cf6', bg: 'rgba(139,92,246,0.12)', border: 'rgba(139,92,246,0.3)', desc: 'Intelligence, automation and insights shared across every division' },
+  { type: 'clients', label: 'Client Flows', icon: '🤝', color: '#0ea5e9', bg: 'rgba(14,165,233,0.12)', border: 'rgba(14,165,233,0.3)', desc: 'Customers discovered in one division become clients of another' },
+];
+
+const ALL_CONNECTIONS = [
+  { type: 'revenue', from: 'D.R. Autotronics', to: 'Scope Indices', what: 'Workshop income funds trading capital base', impact: 'R32,800/mo verified income supports prop firm margin and trading account top-ups' },
+  { type: 'revenue', from: 'TipGuard SA', to: 'Manufacturing Division', what: 'Merchant growth drives NFC hardware production orders', impact: 'Every new TipGuard merchant = a new hardware kit produced by Manufacturing Division' },
+  { type: 'revenue', from: 'YieldCore AI', to: 'Manufacturing Division', what: 'Farm contracts generate paid drone deployment missions', impact: 'Each farm monitoring contract = recurring drone flight revenue for Manufacturing' },
+  { type: 'revenue', from: 'Manufacturing Division', to: 'D.R. Autotronics', what: 'Drone repair income supplements workshop revenue', impact: '48–72h in-house repair turnaround — new income line using in-house printed parts' },
+  { type: 'revenue', from: 'All Divisions', to: 'The Middleman Network', what: 'Six live divisions anchor TMN credibility and subscriber value', impact: 'No competitor marketplace has 6 operating companies behind it — this is the moat' },
+  { type: 'revenue', from: 'The Middleman Network', to: 'All Divisions', what: 'TMN subscription income is pure group revenue on top of division earnings', impact: 'R399–R3,499/month per subscriber — every subscriber adds to the group bottom line' },
+  { type: 'hardware', from: 'Manufacturing Division', to: 'D.R. Autotronics', what: 'Custom ECU housings, electronic enclosures and diagnostic brackets', impact: 'Zero external parts sourcing — full cost control on every housing produced in-house' },
+  { type: 'hardware', from: 'Manufacturing Division', to: 'TipGuard SA', what: 'ALL NFC hardware stock: cards, wristbands, keyrings, QR stands', impact: 'TipGuard SA buys zero NFC stock from outside — margin stays entirely in the group' },
+  { type: 'hardware', from: 'Manufacturing Division', to: 'YieldCore AI', what: 'Drones, drone frames, components and 3D-printed replacement parts', impact: 'YieldCore AI deploys drones at internal cost — no external drone hire fees ever' },
+  { type: 'hardware', from: 'D.R. Autotronics', to: 'Manufacturing Division', what: '10 years of ECU expertise drives precision housing design specs', impact: 'Every enclosure design validated by a decade of real-world ECU handling' },
+  { type: 'hardware', from: 'Manufacturing Division', to: 'Scope Indices', what: 'Custom server enclosures and hardware for trading infrastructure builds', impact: 'In-house printing for any physical trading infrastructure components — no lead time' },
+  { type: 'data', from: 'Scope Indices', to: 'Beryl Core AI', what: 'Live MT5 signals, trade data and performance metrics fed to SIENNA', impact: 'SIENNA monitors every live position in real time — risk oversight across all funded accounts' },
+  { type: 'data', from: 'TipGuard SA', to: 'Beryl Core AI', what: 'Transaction data and fraud patterns processed by Beryl Core AI engine', impact: 'Every TipGuard transaction assessed by the fraud scoring engine before it processes' },
+  { type: 'data', from: 'YieldCore AI', to: 'Beryl Core AI', what: 'Farm sensor readings, carbon metrics and crop intelligence', impact: 'Group AI learns agricultural patterns — improving YieldCore predictions every season' },
+  { type: 'data', from: 'D.R. Autotronics', to: 'Beryl Core AI', what: 'Workshop CRM data, client records, job history and inventory levels', impact: 'Rodwell OS tracks every job — SIENNA flags opportunities and risk patterns' },
+  { type: 'data', from: 'Beryl Core AI', to: 'All Divisions', what: 'SIENNA AI automation, Rodwell OS CRM, live reporting and decision intelligence', impact: 'One AI brain eliminating manual admin and driving data-backed decisions across all 6' },
+  { type: 'data', from: 'All Divisions', to: 'The Middleman Network', what: 'Live niche content, pricing, availability and capability data feeds TMN listings', impact: 'TMN listings always current — powered directly by live division data in real time' },
+  { type: 'clients', from: 'D.R. Autotronics', to: 'TipGuard SA', what: 'Workshop staff and clients onboarded as TipGuard merchants', impact: 'Every mechanic, receptionist and valet becomes a potential TipGuard user instantly' },
+  { type: 'clients', from: 'D.R. Autotronics', to: 'The Middleman Network', what: '10 years of automotive clients feed TMN automotive technology niches', impact: 'Pre-qualified warm audience — the hardest part of a marketplace already solved' },
+  { type: 'clients', from: 'YieldCore AI', to: 'TipGuard SA', what: 'Farm workers and agricultural labourers receive digital tips via TipGuard', impact: 'Agriculture workforce becomes TipGuard\'s rural market — a completely untapped vertical' },
+  { type: 'clients', from: 'YieldCore AI', to: 'Manufacturing Division', what: 'Farm monitoring contracts activate drone deployments = drone repair pipeline', impact: 'Every YieldCore farm = recurring drone maintenance client for Manufacturing Division' },
+  { type: 'clients', from: 'The Middleman Network', to: 'All Divisions', what: '34 niches across 11 industries drive inbound discovery for all 6 divisions', impact: 'Zero marketing spend per lead — TMN is the group\'s permanent acquisition engine' },
+  { type: 'clients', from: 'TipGuard SA', to: 'Manufacturing Division', what: 'Merchant scale directly drives NFC hardware demand', impact: '100 merchants = 100 hardware kits = consistent ongoing Manufacturing orders' },
+];
+
+const CHAIN_REACTIONS = [
+  {
+    trigger: 'D.R. Autotronics wins a major fleet contract',
+    icon: '🔧', color: '#ef4444',
+    chain: [
+      { div: 'Manufacturing', result: 'Produces more ECU housings and electronic enclosures' },
+      { div: 'TipGuard SA', result: 'Fleet drivers and workshop staff onboarded as tipping merchants' },
+      { div: 'Scope Indices', result: 'Fleet revenue increases the trading capital base' },
+      { div: 'Beryl Core AI', result: 'New client data added to Rodwell OS — SIENNA tracks fleet patterns' },
+      { div: 'TMN', result: 'D.R. Autotronics brand strengthened — more automotive niche subscribers' },
+    ],
+  },
+  {
+    trigger: 'TipGuard SA onboards 50 hotel merchants',
+    icon: '💳', color: '#06b6d4',
+    chain: [
+      { div: 'Manufacturing', result: '50 NFC hardware kits produced — significant production run activated' },
+      { div: 'Beryl Core AI', result: '50 new fraud scoring clients — transaction data sharpens AI accuracy' },
+      { div: 'TMN', result: 'Hospitality fintech niche grows — new provider leads generated' },
+      { div: 'YieldCore AI', result: 'Hotel catering suppliers → potential precision agriculture clients' },
+      { div: 'D.R. Autotronics', result: 'Hotel vehicle fleets → potential ECU workshop clients' },
+    ],
+  },
+  {
+    trigger: 'YieldCore AI signs 5 new farm contracts (5,000+ ha)',
+    icon: '🌾', color: '#10b981',
+    chain: [
+      { div: 'Manufacturing', result: 'Drone deployments activated across 5 new farms — paid missions' },
+      { div: 'TipGuard SA', result: 'Farm workers receive digital tips — new rural merchant vertical opened' },
+      { div: 'Beryl Core AI', result: '5 new farm sensor data streams deepen AI crop prediction models' },
+      { div: 'TMN', result: 'Agriculture technology niche grows — attracts new supplier subscribers' },
+      { div: 'D.R. Autotronics', result: 'Farm vehicle and machinery fleet → new ECU workshop clients' },
+    ],
+  },
+  {
+    trigger: 'Manufacturing Division gets SACAA commercial drone licence',
+    icon: '🏭', color: '#f97316',
+    chain: [
+      { div: 'YieldCore AI', result: 'Professional drone monitoring tier added — premium contract pricing' },
+      { div: 'D.R. Autotronics', result: 'Drone inspections of vehicle fleets added as a premium service' },
+      { div: 'TipGuard SA', result: 'Drone delivery operators → new merchant vertical for digital tipping' },
+      { div: 'Scope Indices', result: 'Drone inspection industry → new EA and trading tech client vertical' },
+      { div: 'TMN', result: 'Commercial Drone Services niche fully live — new subscribers attracted' },
+    ],
+  },
+  {
+    trigger: 'TMN reaches 100 paying subscribers',
+    icon: '🌐', color: '#f59e0b',
+    chain: [
+      { div: 'D.R. Autotronics', result: 'Inbound automotive ECU lead volume increases materially' },
+      { div: 'TipGuard SA', result: 'Hospitality operators discovering TipGuard through TMN listings' },
+      { div: 'YieldCore AI', result: 'Agriculture businesses finding farm intelligence through TMN' },
+      { div: 'Scope Indices', result: 'Trading technology clients finding EA and charting services through TMN' },
+      { div: 'Manufacturing', result: 'Drone and 3D printing enquiries flowing in through TMN niches' },
+    ],
+  },
 ];
 
 export default function GroupPage() {
@@ -214,38 +293,138 @@ export default function GroupPage() {
           </div>
         </div>
 
-        {/* Ecosystem connections */}
-        <div style={{ background: '#0f172a', borderRadius: 24, padding: '2.5rem', marginBottom: '3rem', color: '#fff' }}>
+        {/* TRUE ECOSYSTEM — Full Map */}
+        <div style={{ marginBottom: '3rem' }}>
           <span style={{ color: '#f59e0b', fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2 }}>True Ecosystem</span>
-          <h2 style={{ fontSize: 'clamp(1.25rem, 3vw, 1.75rem)', fontWeight: 900, margin: '0.5rem 0' }}>How the Divisions Work Together</h2>
-          <p style={{ color: '#94a3b8', fontSize: 14, margin: '0 0 2rem', maxWidth: 560 }}>
-            This is not six separate businesses. Every division feeds revenue, data, hardware, or clients into the others — creating a compounding, self-reinforcing commercial engine.
+          <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 900, color: '#0f172a', margin: '0.5rem 0' }}>How All Six Divisions Work Together</h2>
+          <p style={{ color: '#64748b', margin: '0 0 2rem', maxWidth: 680, lineHeight: 1.7 }}>
+            This is not a collection of separate businesses that happen to share an owner. Every division <strong style={{ color: '#0f172a' }}>sends value into every other division</strong> — through money, hardware, data and clients. 23 documented connections. When one division wins, all six benefit. That is what makes this a true ecosystem.
           </p>
 
-          <div style={{ display: 'grid', gap: '0.75rem' }}>
-            {ECOSYSTEM_FLOWS.map((flow, i) => (
-              <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12, padding: '1rem 1.25rem', display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                <span style={{ background: 'rgba(245,158,11,0.15)', color: '#f59e0b', fontSize: 12, fontWeight: 800, padding: '4px 10px', borderRadius: 6, whiteSpace: 'nowrap' }}>{flow.from}</span>
-                <span style={{ color: '#f59e0b', fontSize: 18, flexShrink: 0 }}>→</span>
-                <span style={{ background: 'rgba(99,102,241,0.15)', color: '#a5b4fc', fontSize: 12, fontWeight: 800, padding: '4px 10px', borderRadius: 6, whiteSpace: 'nowrap' }}>{flow.to}</span>
-                <span style={{ color: '#64748b', fontSize: 13, flex: 1 }}>— {flow.flow}</span>
+          {/* Ecosystem proof stats */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1rem', marginBottom: '2.5rem' }}>
+            {[
+              { val: '23', label: 'Internal connections', sub: 'documented and active', color: '#f59e0b' },
+              { val: '4', label: 'Types of value exchange', sub: 'revenue · hardware · data · clients', color: '#8b5cf6' },
+              { val: '0', label: 'External hardware suppliers', sub: 'needed for group operations', color: '#10b981' },
+              { val: '1', label: 'Shared AI brain', sub: 'SIENNA serving all 6 divisions', color: '#6366f1' },
+              { val: '6×', label: 'Revenue amplification', sub: 'each win ripples across all', color: '#ef4444' },
+            ].map(s => (
+              <div key={s.label} style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 12, padding: '1.25rem', borderTop: `3px solid ${s.color}` }}>
+                <div style={{ fontSize: 28, fontWeight: 900, color: s.color }}>{s.val}</div>
+                <div style={{ fontSize: 12.5, fontWeight: 700, color: '#0f172a', marginTop: 4 }}>{s.label}</div>
+                <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 2 }}>{s.sub}</div>
               </div>
             ))}
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginTop: '2rem' }}>
-            {[
-              { icon: '🔄', title: 'Internal Supply Chain', desc: 'Manufacturing Division produces hardware for D.R. Autotronics and TipGuard SA — zero external supplier dependency' },
-              { icon: '🧠', title: 'Shared AI Layer', desc: 'Beryl Core AI and SIENNA serve all 6 divisions — data from every unit flows into one intelligence system' },
-              { icon: '💰', title: 'Multi-Stream Revenue', desc: 'Automotive services, trading profits, agri SaaS fees, tipping commissions, manufacturing contracts — 6 income sources' },
-              { icon: '📡', title: 'TMN as Distribution', desc: 'The Middleman Network markets all 6 divisions to a B2B audience — inbound leads at zero marginal cost' },
-            ].map(item => (
-              <div key={item.title} style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 12, padding: '1.25rem', border: '1px solid rgba(255,255,255,0.07)' }}>
-                <div style={{ fontSize: 28, marginBottom: 8 }}>{item.icon}</div>
-                <div style={{ color: '#fff', fontWeight: 800, fontSize: 13, marginBottom: 4 }}>{item.title}</div>
-                <div style={{ color: '#64748b', fontSize: 12, lineHeight: 1.6 }}>{item.desc}</div>
+          {/* Flow type legend */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
+            {FLOW_TYPES.map(ft => (
+              <div key={ft.type} style={{ background: ft.bg, border: `1px solid ${ft.border}`, borderRadius: 12, padding: '1rem 1.25rem', display: 'flex', gap: 12, alignItems: 'flex-start' }}>
+                <span style={{ fontSize: 22, flexShrink: 0 }}>{ft.icon}</span>
+                <div>
+                  <div style={{ fontWeight: 800, fontSize: 13, color: ft.color, marginBottom: 3 }}>{ft.label}</div>
+                  <div style={{ fontSize: 12, color: '#475569', lineHeight: 1.5 }}>{ft.desc}</div>
+                </div>
               </div>
             ))}
+          </div>
+
+          {/* All 23 connections grouped by flow type */}
+          {FLOW_TYPES.map(ft => {
+            const connections = ALL_CONNECTIONS.filter(c => c.type === ft.type);
+            return (
+              <div key={ft.type} style={{ background: '#0f172a', borderRadius: 20, padding: '2rem', marginBottom: '1.5rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1.25rem' }}>
+                  <span style={{ fontSize: 22 }}>{ft.icon}</span>
+                  <div>
+                    <div style={{ color: ft.color, fontWeight: 900, fontSize: 16 }}>{ft.label}</div>
+                    <div style={{ color: '#64748b', fontSize: 12 }}>{connections.length} connections</div>
+                  </div>
+                </div>
+                <div style={{ display: 'grid', gap: '0.75rem' }}>
+                  {connections.map((c, i) => (
+                    <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12, padding: '1rem 1.25rem' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
+                        <span style={{ background: ft.bg, border: `1px solid ${ft.border}`, color: ft.color, fontSize: 11, fontWeight: 800, padding: '3px 10px', borderRadius: 6, whiteSpace: 'nowrap' }}>{c.from}</span>
+                        <span style={{ color: ft.color, fontWeight: 900, fontSize: 16, flexShrink: 0 }}>→</span>
+                        <span style={{ background: 'rgba(255,255,255,0.07)', color: '#e2e8f0', fontSize: 11, fontWeight: 800, padding: '3px 10px', borderRadius: 6, whiteSpace: 'nowrap' }}>{c.to}</span>
+                      </div>
+                      <div style={{ color: '#fff', fontSize: 13, fontWeight: 600, marginBottom: 4 }}>{c.what}</div>
+                      <div style={{ color: '#64748b', fontSize: 12, lineHeight: 1.6 }}>{c.impact}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+
+          {/* If One Wins, All Win */}
+          <div style={{ background: 'linear-gradient(135deg, #0a0f1a 0%, #0f172a 100%)', borderRadius: 20, padding: '2.5rem', border: '1px solid rgba(245,158,11,0.2)' }}>
+            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+              <div style={{ color: '#f59e0b', fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2, marginBottom: 8 }}>The Compounding Effect</div>
+              <h3 style={{ color: '#fff', fontWeight: 900, fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)', margin: '0 0 8px' }}>When One Division Wins — All Six Benefit</h3>
+              <p style={{ color: '#64748b', fontSize: 13, maxWidth: 520, margin: '0 auto' }}>
+                This is what separates a true ecosystem from a holding company that just owns businesses. Every single win inside one division triggers a chain reaction across all others.
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gap: '1rem' }}>
+              {CHAIN_REACTIONS.map((cr, idx) => (
+                <div key={idx} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, overflow: 'hidden' }}>
+                  <div style={{ background: cr.color + '18', borderBottom: `2px solid ${cr.color}30`, padding: '1rem 1.5rem', display: 'flex', alignItems: 'center', gap: 12 }}>
+                    <span style={{ fontSize: 22 }}>{cr.icon}</span>
+                    <div>
+                      <div style={{ color: '#94a3b8', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1.5, marginBottom: 2 }}>Trigger Event</div>
+                      <div style={{ color: '#fff', fontWeight: 800, fontSize: 14 }}>{cr.trigger}</div>
+                    </div>
+                  </div>
+                  <div style={{ padding: '1rem 1.5rem', display: 'grid', gap: '0.5rem' }}>
+                    {cr.chain.map((step, si) => (
+                      <div key={si} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                        <span style={{ color: cr.color, fontSize: 14, fontWeight: 900, flexShrink: 0, marginTop: 1 }}>↳</span>
+                        <span style={{ background: 'rgba(255,255,255,0.06)', color: '#a5b4fc', fontSize: 10, fontWeight: 800, padding: '2px 8px', borderRadius: 4, whiteSpace: 'nowrap', flexShrink: 0, marginTop: 1 }}>{step.div}</span>
+                        <span style={{ color: '#94a3b8', fontSize: 12.5, lineHeight: 1.5 }}>{step.result}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* The closed loop proof */}
+            <div style={{ marginTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '2rem' }}>
+              <div style={{ color: '#f59e0b', fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2, marginBottom: '1rem', textAlign: 'center' }}>The Closed Loop</div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
+                {[
+                  { label: 'D.R. Autotronics', sub: 'generates income', color: '#ef4444' },
+                  { arrow: true, label: 'funds' },
+                  { label: 'Scope Indices', sub: 'trades capital', color: '#8b5cf6' },
+                  { arrow: true, label: 'powers' },
+                  { label: 'Beryl Core AI', sub: 'runs SIENNA', color: '#6366f1' },
+                  { arrow: true, label: 'automates' },
+                  { label: 'All Divisions', sub: 'operate smarter', color: '#f59e0b' },
+                  { arrow: true, label: 'found via' },
+                  { label: 'TMN', sub: 'drives leads', color: '#f59e0b' },
+                  { arrow: true, label: 'back to' },
+                  { label: 'D.R. Autotronics', sub: 'more clients', color: '#ef4444' },
+                ].map((item, i) => (
+                  item.arrow
+                    ? <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+                        <span style={{ color: '#f59e0b', fontSize: 18, lineHeight: 1 }}>→</span>
+                        <span style={{ color: '#475569', fontSize: 9, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>{item.label}</span>
+                      </div>
+                    : <div key={i} style={{ background: (item.color || '#fff') + '15', border: `1px solid ${item.color || '#fff'}30`, borderRadius: 10, padding: '8px 14px', textAlign: 'center' }}>
+                        <div style={{ color: item.color, fontSize: 12, fontWeight: 800 }}>{item.label}</div>
+                        <div style={{ color: '#64748b', fontSize: 10, marginTop: 2 }}>{item.sub}</div>
+                      </div>
+                ))}
+              </div>
+              <p style={{ color: '#475569', fontSize: 12, textAlign: 'center', marginTop: '1.5rem', maxWidth: 560, margin: '1.5rem auto 0' }}>
+                The loop is self-reinforcing. Every revolution makes the whole group stronger — more revenue, smarter AI, cheaper hardware, more clients. This is not theory — these flows are operating today.
+              </p>
+            </div>
           </div>
         </div>
 
