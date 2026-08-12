@@ -52,12 +52,12 @@ export default async function VenturePage({ params }: { params: Promise<{ slug: 
             {venture.slug === 'dr-autotronics' && (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.75rem', marginBottom: '1.5rem' }}>
                 {[
-                  { val: '10+', label: 'Years operating', color: '#ef4444' },
-                  { val: '15+', label: 'Vehicle brands', color: '#f97316' },
-                  { val: '150+', label: 'ECU units in stock', color: '#f59e0b' },
-                  { val: '180+', label: 'ECU programs', color: '#10b981' },
-                  { val: '10GB', label: 'ECU database', color: '#6366f1' },
-                  { val: 'R92K', label: 'Equipment value', color: '#8b5cf6' },
+                  { val: '30 Yrs', label: 'Family legacy', color: '#ef4444' },
+                  { val: '2nd Gen', label: 'Ownership', color: '#f97316' },
+                  { val: '15+', label: 'Vehicle brands', color: '#f59e0b' },
+                  { val: '150+', label: 'ECU units in stock', color: '#10b981' },
+                  { val: '180+', label: 'ECU programs', color: '#6366f1' },
+                  { val: '10GB', label: 'Proprietary database', color: '#8b5cf6' },
                 ].map(s => (
                   <div key={s.label} style={{ background: '#fff', border: `2px solid ${s.color}20`, borderTop: `3px solid ${s.color}`, borderRadius: 12, padding: '1rem', textAlign: 'center' }}>
                     <div style={{ fontSize: 22, fontWeight: 900, color: s.color }}>{s.val}</div>
@@ -70,7 +70,30 @@ export default async function VenturePage({ params }: { params: Promise<{ slug: 
             {/* About */}
             <div style={{ background: '#fff', borderRadius: 16, padding: '2rem', border: '1px solid #e2e8f0', marginBottom: '1.5rem' }}>
               <h2 style={{ fontWeight: 800, fontSize: 20, margin: '0 0 1rem', color: '#0f172a' }}>About {venture.name}</h2>
-              <p style={{ color: '#475569', lineHeight: 1.8, fontSize: 15, margin: 0 }}>{venture.description}</p>
+              <p style={{ color: '#475569', lineHeight: 1.8, fontSize: 15, margin: venture.slug === 'dr-autotronics' ? '0 0 1.25rem' : 0 }}>{venture.description}</p>
+
+              {venture.slug === 'dr-autotronics' && (
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: 13, color: '#0f172a', marginBottom: 10 }}>Vehicles We Work On</div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 6, marginBottom: '1.25rem' }}>
+                    {[
+                      '🚙 Bakkies (all makes)', '🚛 Heavy trucks', '🚐 Minibus taxis',
+                      '⭐ Mercedes-Benz Actros', '🔵 Isuzu trucks & bakkies', '🟡 Toyota Hilux & Land Cruiser',
+                      '🟠 Ford Ranger & Everest', '⚪ Mitsubishi Canter & Fuso', '🟤 Volkswagen Amarok',
+                      '🟢 John Deere tractors', '🔴 Mahindra tractors', '🟣 Nissan NP300 & Navara',
+                      '🔷 Hino trucks', '🔶 Fiat Ducato & Iveco', '⚫ BMW & Mercedes passenger',
+                      '🟦 Hyundai & Kia fleet', '🔸 Scania & Volvo trucks', '🟥 Renault trucks',
+                    ].map(v => (
+                      <div key={v} style={{ fontSize: 12, color: '#334155', background: '#f8fafc', borderRadius: 7, padding: '6px 10px', display: 'flex', alignItems: 'center', gap: 6 }}>
+                        {v}
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ background: '#fef3c7', border: '1px solid #fde68a', borderRadius: 10, padding: '10px 14px', fontSize: 12.5, color: '#92400e', fontWeight: 600 }}>
+                    🔧 If it has an ECU, BCM, TCU or immobiliser — we can programme, repair, clone or replace it. Dealer-level tooling. No dealership price tag.
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* ── TIPGUARD SA DEMO ─────────────────────────────── */}
@@ -259,70 +282,292 @@ export default async function VenturePage({ params }: { params: Promise<{ slug: 
               </div>
             )}
 
-            {/* ── SCOPE INDICES DEMO ───────────────────────────── */}
+            {/* ── SCOPE INDICES — REAL NUMBERS ─────────────────── */}
             {venture.slug === 'scope-indices' && (
               <div style={{ marginBottom: '1.5rem' }}>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#dcfce7', border: '1px solid #bbf7d0', borderRadius: 20, padding: '4px 14px', marginBottom: 16 }}>
-                  <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', display: 'inline-block' }} />
-                  <span style={{ color: '#15803d', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1 }}>Live Demo Preview</span>
+
+                <div style={{ background: 'rgba(180,83,9,0.06)', border: '1px solid rgba(180,83,9,0.25)', borderRadius: 10, padding: '10px 14px', marginBottom: '1.25rem', fontSize: 12, color: '#92400e' }}>
+                  ⚠️ Technology provider only — not an FSP. Not financial advice. Past performance does not guarantee future results.
                 </div>
 
-                <div style={{ background: 'rgba(180,83,9,0.05)', border: '1px solid rgba(180,83,9,0.2)', borderRadius: 10, padding: '10px 14px', marginBottom: '1rem', fontSize: 12, color: '#92400e' }}>
-                  ⚠️ Technology provider only — not an FSP. Not financial advice. All figures below are for demonstration purposes.
+                {/* Code stats bar */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.75rem', marginBottom: '1.5rem' }}>
+                  {[
+                    { val: '12,367', label: 'Lines of code — total', color: '#b45309', icon: '💻' },
+                    { val: '9,080', label: 'MQL5 lines — AQI EA', color: '#8b5cf6', icon: '⚙️' },
+                    { val: '3,287', label: 'C# lines — SiennaBridge', color: '#06b6d4', icon: '🔗' },
+                    { val: '9', label: 'TradingView indicators', color: '#f59e0b', icon: '📊' },
+                    { val: 'v4.40', label: 'AQI Bridge EA version', color: '#10b981', icon: '🤖' },
+                    { val: 'v2.25', label: 'SiennaBridge version', color: '#6366f1', icon: '🌉' },
+                  ].map(s => (
+                    <div key={s.label} style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 12, padding: '1rem', borderTop: `3px solid ${s.color}` }}>
+                      <div style={{ fontSize: 20, marginBottom: 4 }}>{s.icon}</div>
+                      <div style={{ fontSize: 18, fontWeight: 900, color: s.color }}>{s.val}</div>
+                      <div style={{ fontSize: 11, color: '#64748b', marginTop: 3, lineHeight: 1.3 }}>{s.label}</div>
+                    </div>
+                  ))}
                 </div>
 
-                {/* EA performance dashboard */}
-                <div style={{ background: '#0f172a', borderRadius: 20, padding: '1.5rem 2rem', color: '#fff', marginBottom: '1rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: 12 }}>
+                {/* SiennaBridge — dedicated panel */}
+                <div style={{ background: 'linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%)', borderRadius: 20, padding: '1.75rem 2rem', color: '#fff', marginBottom: '1rem', border: '1px solid rgba(99,102,241,0.3)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 12, marginBottom: '1.25rem' }}>
                     <div>
-                      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', letterSpacing: 1, textTransform: 'uppercase' }}>AQI Bridge EA v4.40 · MT5</div>
-                      <div style={{ fontSize: 20, fontWeight: 900, marginTop: 4 }}>Live Performance — Funded Account</div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                        <span style={{ fontSize: 22 }}>🌉</span>
+                        <span style={{ color: '#818cf8', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2 }}>SiennaBridge v2.25</span>
+                      </div>
+                      <div style={{ fontSize: 20, fontWeight: 900 }}>MT5 → NinjaTrader 8 Bridge</div>
+                      <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, marginTop: 4 }}>3,287 lines C# · Proprietary · IP Value R80,000</div>
                     </div>
-                    <div style={{ display: 'flex', gap: 8 }}>
-                      <div style={{ background: '#22c55e', color: '#fff', fontSize: 10, fontWeight: 800, padding: '4px 10px', borderRadius: 20 }}>● EA ACTIVE</div>
-                      <div style={{ background: 'rgba(255,255,255,0.1)', color: '#94a3b8', fontSize: 10, fontWeight: 700, padding: '4px 10px', borderRadius: 20 }}>XAUUSD · US30 · NAS100</div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                      <div style={{ background: '#22c55e', color: '#fff', fontSize: 10, fontWeight: 800, padding: '4px 12px', borderRadius: 20, textAlign: 'center' }}>● BRIDGE ACTIVE</div>
+                      <div style={{ background: 'rgba(99,102,241,0.2)', color: '#818cf8', fontSize: 10, fontWeight: 700, padding: '4px 12px', borderRadius: 20, textAlign: 'center' }}>MGCQ6 — Micro Gold</div>
                     </div>
+                  </div>
+
+                  {/* What SiennaBridge does */}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 8, marginBottom: '1.25rem' }}>
+                    {[
+                      { icon: '📡', text: 'Receives live signals from AQI Bridge EA on MT5' },
+                      { icon: '🔗', text: 'Routes execution commands to NinjaTrader 8 in real time' },
+                      { icon: '🏦', text: 'Manages the $50,000 funded NinjaTrader account' },
+                      { icon: '🛡️', text: 'Enforces daily loss limits, drawdown gates and risk rules' },
+                    ].map((f, i) => (
+                      <div key={i} style={{ background: 'rgba(255,255,255,0.05)', borderRadius: 10, padding: '12px', display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                        <span style={{ fontSize: 18, flexShrink: 0 }}>{f.icon}</span>
+                        <span style={{ fontSize: 12.5, color: '#cbd5e1', lineHeight: 1.5 }}>{f.text}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Live funded account real numbers */}
+                  <div style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 14, padding: '1.25rem', border: '1px solid rgba(99,102,241,0.2)' }}>
+                    <div style={{ color: '#818cf8', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1.5, marginBottom: 12 }}>Live Funded Account — FNFTCHRODWELLNAICKER14915</div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.75rem' }}>
+                      {[
+                        { label: 'Account Size', val: '$50,000', color: '#f59e0b', sub: 'NinjaTrader funded' },
+                        { label: 'Jul 13 Session', val: '+$435.60', color: '#22c55e', sub: '14 trades · 1 day' },
+                        { label: 'Jul 12 Session', val: '+$814', color: '#22c55e', sub: 'Verified result' },
+                        { label: 'Best Single Trade', val: '+$336', color: '#10b981', sub: 'MGCQ6 · Jul 13' },
+                        { label: 'Max Session DD', val: '−$313', color: '#f97316', sub: 'Recovered same session' },
+                        { label: 'Account Balance', val: '$49,845', color: '#6366f1', sub: 'As at Jul 13 2026' },
+                      ].map(s => (
+                        <div key={s.label} style={{ background: 'rgba(255,255,255,0.05)', borderRadius: 10, padding: '12px' }}>
+                          <div style={{ color: s.color, fontSize: 18, fontWeight: 900 }}>{s.val}</div>
+                          <div style={{ color: '#fff', fontSize: 11, fontWeight: 700, marginTop: 4 }}>{s.label}</div>
+                          <div style={{ color: '#64748b', fontSize: 10, marginTop: 2 }}>{s.sub}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* AQI Bridge EA panel */}
+                <div style={{ background: '#0f172a', borderRadius: 20, padding: '1.75rem 2rem', color: '#fff', marginBottom: '1rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 12, marginBottom: '1.25rem' }}>
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                        <span style={{ fontSize: 22 }}>🤖</span>
+                        <span style={{ color: '#f59e0b', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2 }}>AQI Bridge EA v4.40</span>
+                      </div>
+                      <div style={{ fontSize: 20, fontWeight: 900 }}>Live MT5 Execution Engine</div>
+                      <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, marginTop: 4 }}>9,080 lines MQL5 · 12 risk gates removed in v4.36 for funded account</div>
+                    </div>
+                    <div style={{ background: '#22c55e', color: '#fff', fontSize: 10, fontWeight: 800, padding: '4px 12px', borderRadius: 20 }}>● EA LIVE</div>
                   </div>
 
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '0.75rem', marginBottom: '1.5rem' }}>
                     {[
-                      { label: 'Win Rate', val: '68.4%', color: '#22c55e', sub: '579 / 847 trades' },
-                      { label: 'Profit Factor', val: '2.31', color: '#f59e0b', sub: 'Gross P / Gross L' },
-                      { label: 'Max Drawdown', val: '−3.2%', color: '#ef4444', sub: 'Within 5% limit' },
-                      { label: 'Total Trades', val: '847', color: '#8b5cf6', sub: 'All-time executed' },
+                      { label: 'Strategy', val: 'ICT / SMC', color: '#f59e0b', sub: 'Smart Money Concepts' },
+                      { label: 'Instruments', val: 'XAUUSD', color: '#8b5cf6', sub: 'Gold · Indices · Futures' },
+                      { label: 'Signals Used', val: 'BOS + CHoCH', color: '#06b6d4', sub: 'Market structure' },
+                      { label: 'ADX Filter', val: '25+', color: '#10b981', sub: 'Trend confirmation gate' },
                     ].map(s => (
-                      <div key={s.label} style={{ background: 'rgba(255,255,255,0.06)', borderRadius: 10, padding: '14px 12px', borderTop: `2px solid ${s.color}` }}>
-                        <div style={{ fontSize: 20, fontWeight: 900, color: s.color }}>{s.val}</div>
-                        <div style={{ fontSize: 12, fontWeight: 700, color: '#fff', marginTop: 4 }}>{s.label}</div>
+                      <div key={s.label} style={{ background: 'rgba(255,255,255,0.06)', borderRadius: 10, padding: '12px', borderTop: `2px solid ${s.color}` }}>
+                        <div style={{ fontSize: 16, fontWeight: 900, color: s.color }}>{s.val}</div>
+                        <div style={{ fontSize: 11, fontWeight: 700, color: '#fff', marginTop: 4 }}>{s.label}</div>
                         <div style={{ fontSize: 10, color: '#64748b', marginTop: 2 }}>{s.sub}</div>
                       </div>
                     ))}
                   </div>
 
-                  {/* Recent trades */}
+                  {/* 7-pump pattern */}
+                  <div style={{ background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: 12, padding: '1rem 1.25rem', marginBottom: '1rem' }}>
+                    <div style={{ color: '#f59e0b', fontSize: 12, fontWeight: 800, marginBottom: 6 }}>⚡ 7-Pump Pattern — Confirmed Jul 13, 2026</div>
+                    <div style={{ color: '#94a3b8', fontSize: 12.5, lineHeight: 1.6 }}>
+                      AQI EA identified and traded a 7-candle pump sequence on MGCQ6, generating +$435.60 in a single session across 14 trades. The pattern is now logged and added to the EA&apos;s learning set.
+                    </div>
+                  </div>
+
+                  {/* Full session history */}
                   <div style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 12, overflow: 'hidden' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', padding: '10px 16px', background: 'rgba(255,255,255,0.06)', fontSize: 10, color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>
-                      <span>Instrument</span><span>Direction</span><span>Result</span><span>P&L</span>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.1fr 0.9fr 1fr 0.9fr', padding: '10px 16px', background: 'rgba(255,255,255,0.06)', fontSize: 10, color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>
+                      <span>Date</span><span>Platform</span><span>Instrument</span><span>Detail</span><span>P&L</span>
                     </div>
                     {[
-                      { inst: 'XAUUSD', dir: 'SELL', result: 'WIN', pnl: '+$336', color: '#22c55e' },
-                      { inst: 'US30', dir: 'BUY', result: 'WIN', pnl: '+$218', color: '#22c55e' },
-                      { inst: 'NAS100', dir: 'BUY', result: 'LOSS', pnl: '−$87', color: '#ef4444' },
-                      { inst: 'XAUUSD', dir: 'BUY', result: 'WIN', pnl: '+$174', color: '#22c55e' },
+                      { date: 'Jul 15, 2026', platform: 'NinjaTrader 8', instrument: 'MGCQ6', detail: 'Futures session', result: '+$551.00', color: '#22c55e', tag: '' },
+                      { date: 'Jul 13, 2026', platform: 'NinjaTrader 8', instrument: 'MGCQ6', detail: '14 trades · 7-pump', result: '+$435.60', color: '#22c55e', tag: '' },
+                      { date: 'Jul 12, 2026', platform: 'NinjaTrader 8', instrument: 'MGCQ6', detail: 'Futures session', result: '+$814.00', color: '#22c55e', tag: '' },
+                      { date: 'Jul 17, 2026', platform: 'NinjaTrader 8', instrument: 'MGCQ6', detail: '−$543 DD held · premium zone conviction', result: 'Conviction hold', color: '#f59e0b', tag: '' },
+                      { date: 'Jul 22, 2026', platform: 'NinjaTrader 8', instrument: 'MGCQ6', detail: 'Manual only · EA waiting', result: '−$74.00', color: '#f97316', tag: '' },
+                      { date: 'Jul 29, 2026', platform: 'NinjaTrader 8', instrument: 'MGCQ6', detail: 'DD breach — account limit hit', result: 'Account reset', color: '#ef4444', tag: '' },
+                      { date: 'Jun 25, 2026', platform: 'MT5 (Blue Guardian)', instrument: 'XAUUSD / XAGUSD', detail: 'sell_sweep B− · ADX 27–32', result: '+$28.12 open', color: '#84cc16', tag: '' },
+                      { date: 'Jun 24, 2026', platform: 'MT5 (Blue Guardian)', instrument: 'XAUUSD / XAGUSD', detail: 'ADX peak 78.8 · sell_breakout A+', result: '+$291.42', color: '#22c55e', tag: '🏆 Payout' },
                     ].map((t, i) => (
-                      <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', padding: '10px 16px', borderBottom: '1px solid rgba(255,255,255,0.04)', fontSize: 12 }}>
-                        <span style={{ color: '#fff', fontWeight: 700 }}>{t.inst}</span>
-                        <span style={{ color: t.dir === 'SELL' ? '#ef4444' : '#22c55e', fontWeight: 700 }}>{t.dir}</span>
-                        <span style={{ color: t.color, fontWeight: 700 }}>{t.result}</span>
-                        <span style={{ color: t.color, fontWeight: 800 }}>{t.pnl}</span>
+                      <div key={i} style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.1fr 0.9fr 1fr 0.9fr', padding: '11px 16px', borderBottom: '1px solid rgba(255,255,255,0.04)', fontSize: 11, alignItems: 'center' }}>
+                        <span style={{ color: '#94a3b8', fontWeight: 600 }}>{t.date}</span>
+                        <span style={{ color: '#fff', fontWeight: 700, fontSize: 10 }}>{t.platform}</span>
+                        <span style={{ color: '#818cf8', fontWeight: 700, fontSize: 10 }}>{t.instrument}</span>
+                        <span style={{ color: '#64748b', fontSize: 10, lineHeight: 1.4 }}>{t.detail}</span>
+                        <span style={{ color: t.color, fontWeight: 900 }}>{t.tag && <span style={{ fontSize: 9, marginRight: 4 }}>{t.tag}</span>}{t.result}</span>
+                      </div>
+                    ))}
+                    {/* Confirmed profitable total bar */}
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.1fr 0.9fr 1fr 0.9fr', padding: '12px 16px', background: 'rgba(34,197,94,0.08)', borderTop: '1px solid rgba(34,197,94,0.2)', fontSize: 12 }}>
+                      <span style={{ color: '#22c55e', fontWeight: 800 }}>CONFIRMED P&L</span>
+                      <span style={{ color: '#64748b', fontSize: 10 }}>Jun–Jul 2026</span>
+                      <span style={{ color: '#64748b', fontSize: 10 }}>All instruments</span>
+                      <span style={{ color: '#64748b', fontSize: 10 }}>8 documented sessions</span>
+                      <span style={{ color: '#22c55e', fontWeight: 900, fontSize: 14 }}>+$2,018.02</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Blue Guardian challenge callout */}
+                <div style={{ background: 'linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%)', borderRadius: 16, padding: '1.5rem', color: '#fff', marginBottom: '1rem', border: '1px solid rgba(96,165,250,0.2)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 12, marginBottom: '1rem' }}>
+                    <div>
+                      <div style={{ color: '#60a5fa', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2, marginBottom: 4 }}>Blue Guardian — $5K Challenge Account</div>
+                      <div style={{ fontSize: 18, fontWeight: 900 }}>Funded Challenge Passed</div>
+                      <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: 12.5, marginTop: 4 }}>MT5 · XAUUSD + XAGUSD · EA v3.50</div>
+                    </div>
+                    <div style={{ background: '#22c55e', color: '#fff', fontSize: 10, fontWeight: 800, padding: '4px 12px', borderRadius: 20 }}>✅ PAYOUT TRIGGERED</div>
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', gap: '0.75rem' }}>
+                    {[
+                      { label: 'Session P&L', val: '+$291.42', color: '#22c55e', sub: 'Jun 24, 2026' },
+                      { label: 'Peak Balance', val: '$5,525.52', color: '#60a5fa', sub: 'Intraday high' },
+                      { label: 'Total Gain', val: '+9.7%', color: '#f59e0b', sub: 'From $5,000 seed' },
+                      { label: 'Payout At', val: '$5,250', color: '#10b981', sub: '$200 withdrawal req' },
+                      { label: 'ADX Peak', val: '78.8', color: '#a78bfa', sub: 'Strongest signal' },
+                      { label: 'EA Version', val: 'v3.50', color: '#94a3b8', sub: 'XAUUSD+XAGUSD' },
+                    ].map(s => (
+                      <div key={s.label} style={{ background: 'rgba(255,255,255,0.05)', borderRadius: 10, padding: '10px 12px' }}>
+                        <div style={{ color: s.color, fontSize: 17, fontWeight: 900 }}>{s.val}</div>
+                        <div style={{ color: '#fff', fontSize: 11, fontWeight: 700, marginTop: 3 }}>{s.label}</div>
+                        <div style={{ color: '#475569', fontSize: 10, marginTop: 2 }}>{s.sub}</div>
                       </div>
                     ))}
                   </div>
                 </div>
 
+                {/* Algo + ML + Tech Stack */}
+                <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 20, padding: '1.75rem', marginBottom: '1rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1.25rem' }}>
+                    <span style={{ fontSize: 22 }}>🧠</span>
+                    <div>
+                      <div style={{ fontWeight: 900, fontSize: 16, color: '#0f172a' }}>Algorithm · AI Scoring · Pattern Learning</div>
+                      <div style={{ fontSize: 12, color: '#64748b', marginTop: 2 }}>How the system thinks, scores, learns and executes</div>
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem', marginBottom: '1.25rem' }}>
+                    {[
+                      {
+                        title: 'Multi-Timeframe Algo Engine',
+                        color: '#6366f1',
+                        icon: '⚙️',
+                        points: [
+                          'Scans D1, H4, H1, M15, M5 simultaneously',
+                          'Each timeframe votes — bullish or bearish',
+                          'Weighted score 0–10 generated per bar',
+                          'Minimum score 8/10 required to open a trade',
+                        ]
+                      },
+                      {
+                        title: 'Pattern Recognition Engine',
+                        color: '#f59e0b',
+                        icon: '🔍',
+                        points: [
+                          'Detects BOS (Break of Structure) events',
+                          'Identifies CHoCH (Change of Character) shifts',
+                          'Reads liquidity sweeps — BSL and SSL grabs',
+                          '7-pump pattern confirmed and logged Jul 13, 2026',
+                        ]
+                      },
+                      {
+                        title: 'Machine Learning Data Layer',
+                        color: '#10b981',
+                        icon: '📚',
+                        points: [
+                          'Every trade writes to aiq_analytics.json and archive',
+                          'ADX, score, MTF breakdown logged per entry',
+                          'Patterns are reviewed, catalogued and re-used',
+                          '7-pump pattern added to EA learning set after Jul 13',
+                        ]
+                      },
+                      {
+                        title: 'Risk Intelligence System',
+                        color: '#ef4444',
+                        icon: '🛡️',
+                        points: [
+                          'ADX strength filter — only trades above 25 ADX',
+                          'Late-session trail tightens automatically when ADX < 35',
+                          'Daily loss halt: $1,000 max (funded account protection)',
+                          '3-bar pause after any loss (reduces revenge trading)',
+                        ]
+                      },
+                    ].map((block, i) => (
+                      <div key={i} style={{ background: '#f8fafc', borderRadius: 14, padding: '1rem 1.25rem', borderLeft: `3px solid ${block.color}` }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                          <span style={{ fontSize: 18 }}>{block.icon}</span>
+                          <span style={{ fontSize: 13, fontWeight: 800, color: '#0f172a' }}>{block.title}</span>
+                        </div>
+                        <div style={{ display: 'grid', gap: 6 }}>
+                          {block.points.map((p, j) => (
+                            <div key={j} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+                              <span style={{ color: block.color, fontWeight: 900, fontSize: 11, flexShrink: 0, marginTop: 2 }}>→</span>
+                              <span style={{ fontSize: 12, color: '#475569', lineHeight: 1.5 }}>{p}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Signal flow diagram */}
+                  <div style={{ background: '#0f172a', borderRadius: 14, padding: '1.25rem 1.5rem' }}>
+                    <div style={{ color: '#94a3b8', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1.5, marginBottom: '1rem' }}>Signal Flow — Market to Execution</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                      {[
+                        { label: 'Live Market Data', sub: 'XAUUSD · US30 · MGCQ6', color: '#64748b' },
+                        { label: '→', sub: '', color: '#334155', small: true },
+                        { label: 'MTF Algorithm', sub: 'D1 H4 H1 M15 M5 scan', color: '#6366f1' },
+                        { label: '→', sub: '', color: '#334155', small: true },
+                        { label: 'AI Scorer', sub: '0–10 signal score', color: '#f59e0b' },
+                        { label: '→', sub: '', color: '#334155', small: true },
+                        { label: 'Risk Check', sub: 'ADX · DD · pause gates', color: '#ef4444' },
+                        { label: '→', sub: '', color: '#334155', small: true },
+                        { label: 'AQI EA v4.40', sub: 'Opens order on MT5', color: '#10b981' },
+                        { label: '→', sub: '', color: '#334155', small: true },
+                        { label: 'SiennaBridge', sub: 'Routes to NinjaTrader 8', color: '#818cf8' },
+                        { label: '→', sub: '', color: '#334155', small: true },
+                        { label: 'Funded Account', sub: 'Real execution · Real P&L', color: '#22c55e' },
+                      ].map((step, i) => (
+                        step.small
+                          ? <span key={i} style={{ color: '#475569', fontSize: 18, fontWeight: 900 }}>›</span>
+                          : <div key={i} style={{ background: 'rgba(255,255,255,0.05)', borderRadius: 8, padding: '8px 12px', textAlign: 'center', borderTop: `2px solid ${step.color}` }}>
+                              <div style={{ color: step.color, fontSize: 11, fontWeight: 800 }}>{step.label}</div>
+                              <div style={{ color: '#475569', fontSize: 10, marginTop: 2 }}>{step.sub}</div>
+                            </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
                 {/* TradingView indicators */}
                 <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 16, padding: '1.5rem', marginBottom: '1rem' }}>
-                  <div style={{ fontWeight: 800, fontSize: 15, color: '#0f172a', marginBottom: 14 }}>📊 Proprietary TradingView Indicators (9)</div>
+                  <div style={{ fontWeight: 800, fontSize: 15, color: '#0f172a', marginBottom: 14 }}>📊 Proprietary TradingView Indicators — 9 Built & Owned</div>
                   <div style={{ display: 'grid', gap: 8 }}>
                     {[
                       { name: 'AQI Market Structure Detector', type: 'BOS / CHoCH' },
@@ -344,14 +589,17 @@ export default async function VenturePage({ params }: { params: Promise<{ slug: 
                       </div>
                     ))}
                   </div>
-                  <div style={{ marginTop: '1rem', padding: '10px 12px', background: '#fef3c7', borderRadius: 8, fontSize: 12, color: '#92400e', fontWeight: 600 }}>
-                    🚀 Indicator subscription launching soon — R299–R999/month on TradingView
+                  <div style={{ marginTop: '1rem', padding: '12px 14px', background: '#fef3c7', borderRadius: 8, fontSize: 12, color: '#92400e', fontWeight: 600 }}>
+                    🚀 Indicator subscription launching soon — R299–R999/month on TradingView. All 9 indicators built and ready.
                   </div>
                 </div>
 
-                <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: 12, padding: '1rem 1.25rem', fontSize: 13, color: '#15803d', display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <span style={{ fontSize: 18 }}>📈</span>
-                  <span><strong>This is Scope Indices.</strong> 12,367 lines of live trading code. 9 proprietary indicators. A live funded account. Technology built for serious traders — not signals, not advice, just tools.</span>
+                <div style={{ background: '#0f172a', border: '1px solid rgba(99,102,241,0.3)', borderRadius: 12, padding: '1.25rem 1.5rem', fontSize: 13, color: '#94a3b8', display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '1rem', alignItems: 'center' }}>
+                  <span style={{ fontSize: 28 }}>📈</span>
+                  <div>
+                    <div style={{ color: '#fff', fontWeight: 800, marginBottom: 4 }}>12,367 lines. 2 live systems. 2 funded accounts. $2,018 confirmed across 5 sessions.</div>
+                    <div style={{ lineHeight: 1.6, fontSize: 12.5 }}>AQI Bridge EA on MT5 generates the signals. SiennaBridge routes them to NinjaTrader 8. The account executes. The P&L is real. Everything is built, owned and operated by Scope Indices. Not signals. Not advice. Pure technology.</div>
+                  </div>
                 </div>
               </div>
             )}
@@ -423,11 +671,17 @@ export default async function VenturePage({ params }: { params: Promise<{ slug: 
                 )}
               </div>
               {venture.slug === 'dr-autotronics' && (
-                <div style={{ marginTop: 14, padding: '10px 12px', background: 'rgba(245,158,11,0.1)', borderRadius: 8, border: '1px solid rgba(245,158,11,0.2)' }}>
-                  <div style={{ color: '#f59e0b', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>Workshop Hours</div>
-                  <div style={{ color: '#94a3b8', fontSize: 12 }}>Mon – Fri: 8am – 5pm SAST</div>
-                  <div style={{ color: '#94a3b8', fontSize: 12 }}>Sat: 8am – 1pm · Mobile available</div>
-                </div>
+                <>
+                  <div style={{ marginTop: 14, padding: '10px 12px', background: 'rgba(245,158,11,0.1)', borderRadius: 8, border: '1px solid rgba(245,158,11,0.2)' }}>
+                    <div style={{ color: '#f59e0b', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>Workshop Hours</div>
+                    <div style={{ color: '#94a3b8', fontSize: 12 }}>Mon – Fri: 8am – 5pm SAST</div>
+                    <div style={{ color: '#94a3b8', fontSize: 12 }}>Sat: 8am – 1pm · Mobile available</div>
+                  </div>
+                  <div style={{ marginTop: 10, padding: '10px 12px', background: 'rgba(255,255,255,0.05)', borderRadius: 8, border: '1px solid rgba(255,255,255,0.1)' }}>
+                    <div style={{ color: '#fcd34d', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>🏛️ 30-Year Family Legacy</div>
+                    <div style={{ color: '#94a3b8', fontSize: 12, lineHeight: 1.5 }}>2nd generation · Automotive &amp; engineering · Durban, KZN</div>
+                  </div>
+                </>
               )}
             </div>
 

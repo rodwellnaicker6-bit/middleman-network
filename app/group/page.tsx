@@ -119,7 +119,7 @@ const FLOW_TYPES = [
 ];
 
 const ALL_CONNECTIONS = [
-  { type: 'revenue', from: 'D.R. Autotronics', to: 'Scope Indices', what: 'Workshop income funds trading capital base', impact: 'R32,800/mo verified income supports prop firm margin and trading account top-ups' },
+  { type: 'revenue', from: 'D.R. Autotronics', to: 'Scope Indices', what: 'Workshop income funds trading capital base', impact: 'R60,000/mo verified income supports prop firm margin and trading account top-ups' },
   { type: 'revenue', from: 'TipGuard SA', to: 'Manufacturing Division', what: 'Merchant growth drives NFC hardware production orders', impact: 'Every new TipGuard merchant = a new hardware kit produced by Manufacturing Division' },
   { type: 'revenue', from: 'YieldCore AI', to: 'Manufacturing Division', what: 'Farm contracts generate paid drone deployment missions', impact: 'Each farm monitoring contract = recurring drone flight revenue for Manufacturing' },
   { type: 'revenue', from: 'Manufacturing Division', to: 'D.R. Autotronics', what: 'Drone repair income supplements workshop revenue', impact: '48–72h in-house repair turnaround — new income line using in-house printed parts' },
@@ -217,18 +217,24 @@ export default function GroupPage() {
           <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 900, margin: '0 0 1rem', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
             D.R. Autotronics Group
           </h1>
-          <p style={{ color: '#94a3b8', fontSize: 'clamp(14px, 2vw, 18px)', maxWidth: 640, lineHeight: 1.7, margin: '0 0 2.5rem' }}>
-            A South African technology and services holding company with six active divisions spanning automotive technology, trading intelligence, precision agriculture, fintech, AI infrastructure and advanced manufacturing — operating for over 10 years.
+          <p style={{ color: '#94a3b8', fontSize: 'clamp(14px, 2vw, 18px)', maxWidth: 640, lineHeight: 1.7, margin: '0 0 0.75rem' }}>
+            A South African technology and services holding company with six active divisions spanning automotive technology, trading intelligence, precision agriculture, fintech, AI infrastructure and advanced manufacturing.
           </p>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: 10, padding: '8px 16px', marginBottom: '2rem' }}>
+            <span style={{ fontSize: 18 }}>🏛️</span>
+            <span style={{ color: '#fcd34d', fontSize: 13.5, fontWeight: 700, lineHeight: 1.5 }}>
+              Built on a <strong style={{ color: '#f59e0b' }}>30-year legacy</strong> of automotive &amp; engineering excellence — 2nd generation ownership, carrying forward decades of trust, trade relationships and technical authority.
+            </span>
+          </div>
 
           {/* Key stats — strength only */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(155px, 1fr))', gap: '1rem', maxWidth: 900 }}>
             {[
-              { label: 'Group Network Worth', value: 'R10,152,765', sub: 'Business assets — August 2026' },
-              { label: 'Security Package', value: 'R8,581,765', sub: 'Trust + Policy + Legacy Plan' },
+              { label: 'Group Network Worth', value: 'R13,881,000', sub: 'Business assets — August 2026' },
+              { label: 'Security Package', value: 'R9,570,000', sub: 'Trust + 3 Sanlam policies' },
               { label: 'Active Divisions', value: '6', sub: 'operating divisions' },
-              { label: 'Years Operating', value: '10+', sub: 'continuous operation' },
-              { label: 'Monthly Income', value: 'R32,800', sub: 'verified 10-month avg' },
+              { label: 'Legacy', value: '30 Years', sub: '2nd generation · automotive & engineering' },
+              { label: 'Monthly Income', value: 'R60,000', sub: 'verified 10-month avg' },
             ].map(stat => (
               <div key={stat.label} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '1.25rem' }}>
                 <div style={{ color: '#f59e0b', fontSize: 'clamp(16px, 2.5vw, 22px)', fontWeight: 900 }}>{stat.value}</div>
@@ -239,6 +245,62 @@ export default function GroupPage() {
           </div>
         </div>
       </section>
+
+      {/* ── PROVEN INCOME & TRACK RECORD ─────────────────────── */}
+      <div style={{ background: '#fff', borderBottom: '1px solid #e2e8f0' }}>
+        <div className="container" style={{ padding: '2.5rem 1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem', alignItems: 'center' }}>
+            <div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#dcfce7', borderRadius: 20, padding: '4px 12px', marginBottom: 12 }}>
+                <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#16a34a', display: 'inline-block' }} />
+                <span style={{ color: '#15803d', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1 }}>Proven Operating Business</span>
+              </div>
+              <h2 style={{ fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)', fontWeight: 900, color: '#0f172a', margin: '0 0 0.75rem' }}>30-Year Legacy · R60,000/month · Real Clients</h2>
+              <p style={{ color: '#475569', fontSize: 14, lineHeight: 1.7, margin: '0 0 0.75rem' }}>
+                D.R. Autotronics carries forward a 30-year family legacy in automotive and engineering. As a second-generation owner, Rodwell inherited the trade relationships, technical authority and industry trust built over three decades — and built a technology group on top of it.
+              </p>
+              <p style={{ color: '#475569', fontSize: 14, lineHeight: 1.7, margin: '0 0 1rem' }}>
+                The core business generates R60,000/month from ECU diagnostics, repair, programming and module work across all major vehicle brands. This is the verified financial foundation that supports the entire group.
+              </p>
+              {/* System impact story */}
+              <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: 12, padding: '1rem 1.25rem' }}>
+                <div style={{ color: '#15803d', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 10 }}>How the System Has Grown This Business</div>
+                <div style={{ display: 'grid', gap: 8 }}>
+                  {[
+                    { icon: '🤖', text: 'AQI trading system generated +$2,018 confirmed across 8 documented sessions — supplementing workshop income with trading capital' },
+                    { icon: '🌉', text: 'SiennaBridge routes MT5 signals directly to NinjaTrader 8 — removing human delay and executing on a $50K funded account' },
+                    { icon: '🌐', text: 'Middleman Network generates inbound ECU leads at zero marginal cost — 68 live pages, R60K avg job value per client' },
+                    { icon: '📊', text: 'IP portfolio grew from zero to R3.9M across 3 active software systems in under 12 months' },
+                    { icon: '🛡️', text: 'Sanlam policies and Trust structure secured R9.57M in protection — funded by the operating business cash flow' },
+                    { icon: '📈', text: 'Group network worth reached R13.88M — built from a single workshop with no external investment' },
+                  ].map((item, i) => (
+                    <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                      <span style={{ fontSize: 15, flexShrink: 0 }}>{item.icon}</span>
+                      <span style={{ fontSize: 12.5, color: '#166534', lineHeight: 1.5 }}>{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }}>
+              {[
+                { val: 'R60,000', label: 'Monthly income', sub: 'Verified 10-month avg', color: '#16a34a' },
+                { val: 'R60,000', label: 'Average job value', sub: 'ECU, modules, programming', color: '#0284c7' },
+                { val: '30 yrs', label: 'Family legacy', sub: 'Automotive & engineering', color: '#7c3aed' },
+                { val: '15+', label: 'Vehicle brands', sub: 'Covered in-house', color: '#d97706' },
+                { val: '150+', label: 'ECU units', sub: 'In inventory', color: '#0f172a' },
+                { val: 'R720K+', label: 'Annual revenue', sub: 'From core division alone', color: '#be123c' },
+              ].map(s => (
+                <div key={s.label} style={{ background: '#f8fafc', borderRadius: 10, padding: '0.875rem 1rem', borderLeft: `3px solid ${s.color}` }}>
+                  <div style={{ color: s.color, fontSize: 18, fontWeight: 900 }}>{s.val}</div>
+                  <div style={{ color: '#0f172a', fontSize: 11, fontWeight: 700, marginTop: 3 }}>{s.label}</div>
+                  <div style={{ color: '#94a3b8', fontSize: 10, marginTop: 1 }}>{s.sub}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div className="container" style={{ padding: '3rem 1.5rem' }}>
 
@@ -287,6 +349,111 @@ export default function GroupPage() {
                     </div>
                   </div>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 3-Month Growth Timeline */}
+        <div style={{ marginBottom: '3rem' }}>
+          <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.25)', borderRadius: 20, padding: '4px 14px', marginBottom: 12 }}>
+              <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
+              <span style={{ color: '#065f46', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1.5 }}>Group Progress — Last 3 Months</span>
+            </div>
+            <h2 style={{ fontWeight: 900, fontSize: 'clamp(1.25rem, 3vw, 1.75rem)', color: '#0f172a', margin: 0 }}>June · July · August 2026</h2>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+            {/* June */}
+            <div style={{ background: '#fff', borderRadius: 20, border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+              <div style={{ background: 'linear-gradient(135deg, #1e40af, #1e3a8a)', padding: '1.25rem 1.5rem' }}>
+                <div style={{ color: '#93c5fd', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2 }}>June 2026</div>
+                <div style={{ color: '#fff', fontSize: 20, fontWeight: 900, marginTop: 2 }}>Foundation Built</div>
+              </div>
+              <div style={{ padding: '1.25rem 1.5rem', display: 'grid', gap: 10 }}>
+                {[
+                  { icon: '🤖', text: 'AQI Bridge EA v3.50 — first profitable session (+$291.42)' },
+                  { icon: '🏆', text: 'Blue Guardian challenge payout triggered at $5,250' },
+                  { icon: '📈', text: 'ADX peak 78.8 — sell_breakout A+ signal confirmed' },
+                  { icon: '⚙️', text: 'EA upgraded v3.31 → v3.57 — ADX gates, session fixes' },
+                  { icon: '📊', text: 'BOS + CHoCH + DXY alignment — full structure confirmed' },
+                  { icon: '💰', text: 'Total from seed: +9.7% gain in one session' },
+                ].map((m, i) => (
+                  <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                    <span style={{ fontSize: 16, flexShrink: 0 }}>{m.icon}</span>
+                    <span style={{ fontSize: 12.5, color: '#334155', lineHeight: 1.5 }}>{m.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* July */}
+            <div style={{ background: '#fff', borderRadius: 20, border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+              <div style={{ background: 'linear-gradient(135deg, #065f46, #064e3b)', padding: '1.25rem 1.5rem' }}>
+                <div style={{ color: '#6ee7b7', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2 }}>July 2026</div>
+                <div style={{ color: '#fff', fontSize: 20, fontWeight: 900, marginTop: 2 }}>Scale & Systems</div>
+              </div>
+              <div style={{ padding: '1.25rem 1.5rem', display: 'grid', gap: 10 }}>
+                {[
+                  { icon: '🌉', text: 'SiennaBridge v2.25 built — MT5 → NinjaTrader 8 bridge (3,287 lines C#)' },
+                  { icon: '🏦', text: 'FundedNext $50K NinjaTrader account opened' },
+                  { icon: '📅', text: 'Jul 12: +$814 · Jul 13: +$435.60 (14 trades) · Jul 15: +$551' },
+                  { icon: '⚡', text: 'EA v4.36 — 12 risk gates removed, full funded-account power' },
+                  { icon: '🛡️', text: 'Sanlam signed: R1M life + R2.27M estate + R800K business cover' },
+                  { icon: '🌐', text: 'Middleman Network launched live — 53 niches, 13 industries' },
+                  { icon: '📋', text: 'IDC dealmaker (Cerina) engaged — investment memo submitted' },
+                  { icon: '💼', text: 'Net worth documented: R4.65M across 6 divisions' },
+                ].map((m, i) => (
+                  <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                    <span style={{ fontSize: 16, flexShrink: 0 }}>{m.icon}</span>
+                    <span style={{ fontSize: 12.5, color: '#334155', lineHeight: 1.5 }}>{m.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* August */}
+            <div style={{ background: '#fff', borderRadius: 20, border: '2px solid #f59e0b', overflow: 'hidden' }}>
+              <div style={{ background: 'linear-gradient(135deg, #92400e, #78350f)', padding: '1.25rem 1.5rem' }}>
+                <div style={{ color: '#fcd34d', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2 }}>August 2026</div>
+                <div style={{ color: '#fff', fontSize: 20, fontWeight: 900, marginTop: 2 }}>Capital & IP Push</div>
+                <div style={{ color: '#fcd34d', fontSize: 10, fontWeight: 700, marginTop: 4 }}>← Current month</div>
+              </div>
+              <div style={{ padding: '1.25rem 1.5rem', display: 'grid', gap: 10 }}>
+                {[
+                  { icon: '💵', text: 'Lula R40,000 loan disbursed — first external capital secured' },
+                  { icon: '🏛️', text: 'IDC investment plan deployed online (dr-autotronics-idc.vercel.app)' },
+                  { icon: '📬', text: 'TIA R2.5M application completed + 15 funder outreach emails sent' },
+                  { icon: '🔖', text: 'Middleman Ecosystem™ trademark strategy filed' },
+                  { icon: '💡', text: 'IP portfolio valued at R3.9M — 6 divisions, 3 software systems' },
+                  { icon: '🚗', text: 'TRUEMILE vehicle inspection service conceptualised' },
+                  { icon: '🌐', text: 'TMN expanded: 68 static pages, 19 new niches added' },
+                  { icon: '📊', text: 'Business Capital score within 10 points of approval threshold' },
+                ].map((m, i) => (
+                  <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                    <span style={{ fontSize: 16, flexShrink: 0 }}>{m.icon}</span>
+                    <span style={{ fontSize: 12.5, color: '#334155', lineHeight: 1.5 }}>{m.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Group growth summary bar */}
+          <div style={{ background: '#0f172a', borderRadius: 16, padding: '1.5rem 2rem', marginTop: '1.5rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '1rem' }}>
+            {[
+              { label: 'Confirmed Trading P&L', val: '+$2,018', sub: 'Across 8 sessions', color: '#22c55e' },
+              { label: 'External Capital Raised', val: 'R40,000', sub: 'Lula · Aug 2026', color: '#f59e0b' },
+              { label: 'IP Portfolio Value', val: 'R3.9M', sub: 'Across all software', color: '#8b5cf6' },
+              { label: 'Net Worth Growth', val: 'R4.65M', sub: 'Jun → Aug 2026', color: '#06b6d4' },
+              { label: 'Funders Contacted', val: '15+', sub: 'Active pipeline', color: '#f97316' },
+              { label: 'Platform Pages Live', val: '68', sub: 'TMN · Static', color: '#10b981' },
+            ].map(s => (
+              <div key={s.label} style={{ textAlign: 'center' }}>
+                <div style={{ color: s.color, fontSize: 22, fontWeight: 900 }}>{s.val}</div>
+                <div style={{ color: '#fff', fontSize: 11, fontWeight: 700, marginTop: 4 }}>{s.label}</div>
+                <div style={{ color: '#475569', fontSize: 10, marginTop: 2 }}>{s.sub}</div>
               </div>
             ))}
           </div>
@@ -455,7 +622,7 @@ export default function GroupPage() {
                 {[
                   { name: 'FNB — Gold Business Account', note: '5 years continuous relationship' },
                   { name: 'Sanlam Life Assurance', note: 'R1,000,000 policy — underwriting in progress' },
-                  { name: 'Capital Legacy / Guardrisk', note: 'Legacy Plan PN3020424 — R2,081,765' },
+                  { name: 'Capital Legacy / Guardrisk', note: 'Legacy Plan PN3020424 — R2,270,000' },
                   { name: 'Paystack', note: 'TipGuard SA payment gateway integration' },
                   { name: 'Google Pay + Apple Pay', note: 'TipGuard SA mobile payments' },
                 ].map(p => (
@@ -518,12 +685,12 @@ export default function GroupPage() {
           <span style={{ color: '#f59e0b', fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2 }}>True Potential</span>
           <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 900, color: '#0f172a', margin: '0.5rem 0' }}>Revenue Projections — All Six Divisions</h2>
           <p style={{ color: '#64748b', margin: '0 0 2rem', maxWidth: 640 }}>
-            The infrastructure is built. The platforms are live. The IP is owned. The next phase is scaling revenue across all six divisions simultaneously — from R32,800/month today to R400,000+/month at full operating capacity.
+            The infrastructure is built. The platforms are live. The IP is owned. The next phase is scaling revenue across all six divisions simultaneously — from R60,000/month today to R400,000+/month at full operating capacity.
           </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
             {[
-              { div: 'D.R. Autotronics (existing)', current: 'R32,800/mo avg', target90: 'R45,000', target12m: 'R60,000', color: '#ef4444', icon: '🔧', note: '10-year verified income base — growing with fleet clients' },
+              { div: 'D.R. Autotronics (existing)', current: 'R60,000/mo avg', target90: 'R80,000', target12m: 'R120,000', color: '#ef4444', icon: '🔧', note: '10-year verified income base — growing with fleet clients' },
               { div: 'D.R. Autotronics (Dyno)', current: 'Installing', target90: 'R135,000', target12m: 'R180,000', color: '#ef4444', icon: '⚙️', note: 'Chassis dynamometer — engine tuning + power verification — 3-month payback' },
               { div: 'Scope Indices', current: 'Live + variable', target90: 'R15,000', target12m: 'R30,000', color: '#8b5cf6', icon: '📈', note: 'TradingView subscriptions + live funded account trading profits' },
               { div: 'YieldCore AI', current: 'Platform built', target90: 'R8,000', target12m: 'R35,000', color: '#10b981', icon: '🌾', note: 'Farm SaaS contracts at R3,200/ha/yr + carbon credit commission pipeline' },
@@ -561,7 +728,7 @@ export default function GroupPage() {
           <div style={{ background: '#0f172a', borderRadius: 16, padding: '2rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1.5rem', alignItems: 'center' }}>
             <div>
               <div style={{ color: '#64748b', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>Current Monthly (Verified)</div>
-              <div style={{ color: '#fff', fontSize: 28, fontWeight: 900 }}>R32,800</div>
+              <div style={{ color: '#fff', fontSize: 28, fontWeight: 900 }}>R60,000</div>
               <div style={{ color: '#64748b', fontSize: 11 }}>Anchor division — 10-month average</div>
             </div>
             <div>
@@ -592,25 +759,26 @@ export default function GroupPage() {
               {
                 title: 'Group Legal & Protection',
                 color: '#10b981',
-                total: 'R8,581,765',
+                total: 'R9,570,000',
                 items: [
                   ['Registered Family / Business Trust', 'R5,500,000', 'Active ✓ — primary group security'],
-                  ['Sanlam Life Assurance Policy', 'R1,000,000', 'Underwriting in progress'],
-                  ['Sanlam Legacy Plan PN3020424', 'R2,081,765', 'Will signed 31 Jul 2026 ✓'],
+                  ['Sanlam Life Assurance Policy', 'R1,000,000', 'Signed Aug 2026 ✓'],
+                  ['Sanlam Legacy Plan PN3020424', 'R2,270,000', 'Estate plan — Will signed 31 Jul 2026 ✓'],
+                  ['Sanlam Business Overhead Cover', 'R800,000', 'Business protection — signed Aug 2026 ✓'],
                 ],
               },
               {
                 title: 'Intellectual Property',
                 color: '#6366f1',
-                total: 'R1,160,000',
+                total: 'R3,900,000',
                 items: [
-                  ['AQI Bridge EA v4.40', 'R180,000', '9,080 lines MQL5 — live'],
-                  ['SiennaBridge v2.25', 'R80,000', '3,287 lines C# — live'],
-                  ['TradingView Pine Scripts', 'R50,000', '9 proprietary indicators'],
-                  ['ECU Database', 'R300,000', '10GB — 180+ programs — 10 years'],
-                  ['YieldCore AI Platform', 'R200,000', 'React/Node — 17 APIs'],
-                  ['TipGuard SA Platform', 'R150,000', 'Paystack integrated'],
-                  ['Beryl Core / Rodwell OS', 'R200,000', 'Group CRM + AI platform'],
+                  ['AQI Bridge EA v4.40', 'R650,000', '9,080 lines MQL5 — live funded account'],
+                  ['SiennaBridge v2.25', 'R280,000', '3,287 lines C# — NinjaTrader bridge live'],
+                  ['TradingView Pine Scripts', 'R170,000', '9 proprietary indicators — subscription ready'],
+                  ['ECU Database', 'R900,000', '10GB · 180+ programs · 10 years of data'],
+                  ['YieldCore AI Platform', 'R600,000', 'React/Node · 17 APIs · full SaaS'],
+                  ['TipGuard SA Platform', 'R500,000', 'Paystack integrated · NFC hardware ready'],
+                  ['Beryl Core / Rodwell OS', 'R800,000', 'Group CRM + AI platform + SIENNA'],
                 ],
               },
               {
@@ -650,10 +818,10 @@ export default function GroupPage() {
             <h3 style={{ fontWeight: 900, fontSize: 18, margin: '0 0 1.25rem' }}>Group Network Asset Statement — August 2026</h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1.25rem' }}>
               {[
-                { label: 'Group Legal & Protection', value: 'R8,581,765' },
+                { label: 'Group Legal & Protection', value: 'R9,570,000' },
                 { label: 'Business Physical Assets', value: 'R411,000' },
-                { label: 'Intellectual Property', value: 'R1,160,000' },
-                { label: 'Group Network Worth', value: 'R10,152,765', highlight: true },
+                { label: 'Intellectual Property', value: 'R3,900,000' },
+                { label: 'Group Network Worth', value: 'R13,881,000', highlight: true },
               ].map(row => (
                 <div key={row.label} style={{
                   background: row.highlight ? 'rgba(245,158,11,0.1)' : 'rgba(255,255,255,0.04)',
@@ -676,16 +844,21 @@ export default function GroupPage() {
               <div style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: 10, padding: '1rem' }}>
                 <div style={{ color: '#10b981', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1 }}>Sanlam Life Policy</div>
                 <div style={{ color: '#fff', fontSize: 20, fontWeight: 900, marginTop: 2 }}>R1,000,000</div>
-                <div style={{ color: '#64748b', fontSize: 11, marginTop: 2 }}>Underwriting in progress</div>
+                <div style={{ color: '#64748b', fontSize: 11, marginTop: 2 }}>Signed Aug 2026 ✓</div>
               </div>
               <div style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: 10, padding: '1rem' }}>
                 <div style={{ color: '#10b981', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1 }}>Sanlam Legacy Plan</div>
-                <div style={{ color: '#fff', fontSize: 20, fontWeight: 900, marginTop: 2 }}>R2,081,765</div>
-                <div style={{ color: '#64748b', fontSize: 11, marginTop: 2 }}>Policy PN3020424 — Will signed 31 Jul 2026</div>
+                <div style={{ color: '#fff', fontSize: 20, fontWeight: 900, marginTop: 2 }}>R2,270,000</div>
+                <div style={{ color: '#64748b', fontSize: 11, marginTop: 2 }}>PN3020424 — Will signed 31 Jul 2026 ✓</div>
+              </div>
+              <div style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: 10, padding: '1rem' }}>
+                <div style={{ color: '#10b981', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1 }}>Sanlam Business Cover</div>
+                <div style={{ color: '#fff', fontSize: 20, fontWeight: 900, marginTop: 2 }}>R800,000</div>
+                <div style={{ color: '#64748b', fontSize: 11, marginTop: 2 }}>Business overhead protection — Aug 2026 ✓</div>
               </div>
               <div style={{ background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.25)', borderRadius: 10, padding: '1rem' }}>
                 <div style={{ color: '#f59e0b', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1 }}>Total Security Package</div>
-                <div style={{ color: '#f59e0b', fontSize: 24, fontWeight: 900, marginTop: 2 }}>R8,581,765</div>
+                <div style={{ color: '#f59e0b', fontSize: 24, fontWeight: 900, marginTop: 2 }}>R9,570,000</div>
                 <div style={{ color: '#64748b', fontSize: 11, marginTop: 2 }}>Documented and legally constituted</div>
               </div>
             </div>
@@ -732,9 +905,15 @@ export default function GroupPage() {
             </div>
             <div style={{ flex: 1, minWidth: 200 }}>
               <div style={{ fontWeight: 900, fontSize: 22, color: '#0f172a' }}>Rodwell Naicker</div>
-              <div style={{ color: '#64748b', fontSize: 14, marginBottom: 12 }}>Founder · Executive Director · D.R. Autotronics Group (Pty) Ltd</div>
+              <div style={{ color: '#64748b', fontSize: 14, marginBottom: 4 }}>Executive Director · D.R. Autotronics Group (Pty) Ltd</div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: '#fef3c7', borderRadius: 20, padding: '3px 10px', marginBottom: 12 }}>
+                <span style={{ color: '#92400e', fontSize: 11, fontWeight: 700 }}>🏛️ 2nd Generation — 30-Year Automotive & Engineering Legacy</span>
+              </div>
+              <p style={{ color: '#475569', fontSize: 13.5, lineHeight: 1.7, margin: '0 0 0.75rem' }}>
+                Rodwell inherited and advanced a 30-year family legacy in automotive and engineering — bringing with it established client relationships, supplier networks, industry credibility and deep technical knowledge built across two generations.
+              </p>
               <p style={{ color: '#475569', fontSize: 13.5, lineHeight: 1.7, margin: '0 0 1rem' }}>
-                Over 10 years building and operating the group across six divisions. Deep technical expertise in automotive ECU systems, algorithmic trading, and full-stack software development. Founded and grew all six divisions from a single automotive workshop into a diversified South African technology holding company.
+                On that foundation, he built six technology divisions: an ECU specialist workshop, an algorithmic trading platform, a precision agriculture AI, a fintech tipping system, a group AI infrastructure, and a B2B marketplace — all owned, operated and funded from within the group.
               </p>
               <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                 <a href="mailto:rodwellnaicker6@gmail.com" style={{ background: '#0f172a', color: '#fff', fontWeight: 700, fontSize: 13, padding: '8px 16px', borderRadius: 8, textDecoration: 'none' }}>
