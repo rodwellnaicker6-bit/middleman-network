@@ -18,7 +18,7 @@ export default function HomePage() {
             Connect. Quote. <span style={{ color: '#f59e0b' }}>Grow.</span>
           </h1>
           <p style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)', color: '#94a3b8', maxWidth: 560, lineHeight: 1.7, margin: '0 0 2.5rem' }}>
-            The Middleman Network connects South African businesses with verified service providers and suppliers across 11 industries — powered by AI quoting, subscription leads and 0% commission.
+            The Middleman Network connects South African businesses with verified service providers and suppliers across {INDUSTRIES.length} industries — powered by AI quoting, subscription leads and 0% commission.
           </p>
           <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
             <Link href="/marketplace" style={{ background: '#f59e0b', color: '#0f172a', fontWeight: 800, fontSize: 16, padding: '14px 28px', borderRadius: 10, display: 'inline-block' }}>
@@ -48,6 +48,117 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── WHY THIS WORKS ───────────────────────────────────── */}
+      <section style={{ padding: '5rem 0', background: '#f8fafc' }}>
+        <div className="container">
+
+          {/* Header */}
+          <div style={{ textAlign: 'center', marginBottom: '3.5rem', maxWidth: 720, margin: '0 auto 3.5rem' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fef3c7', border: '1px solid #fde68a', borderRadius: 20, padding: '4px 14px', marginBottom: 16 }}>
+              <span style={{ color: '#92400e', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1.5 }}>Built from experience — not theory</span>
+            </div>
+            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem', lineHeight: 1.2 }}>
+              Why someone like us can give every business exactly what they need
+            </h2>
+            <p style={{ color: '#475569', fontSize: 16, lineHeight: 1.7, margin: 0 }}>
+              The Middleman Network was not built in a boardroom. It was built by a business owner who spent 30 years dealing with every problem a South African business faces — and decided to build the platform he always wished existed.
+            </p>
+          </div>
+
+          {/* The core argument — 3 columns */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+            {[
+              {
+                icon: '🏛️',
+                title: 'Built on 30 years of real business',
+                color: '#f59e0b',
+                body: 'We didn\'t research this market — we lived it. Automotive, engineering, trading, finance, legal, logistics — every division in this ecosystem came from a real need we faced as a South African operator. That\'s why the scope is right. We know what businesses actually need.',
+                points: ['30-year family legacy in automotive & engineering', '6 active divisions across 7 sectors', 'R13.88M group network worth — built without external investment'],
+              },
+              {
+                icon: '✅',
+                title: 'The right providers. The right credentials.',
+                color: '#10b981',
+                body: 'Every niche on this platform requires verified credentials. RMI, PSIRA, LPC, FSP, SACAP, PIRB, NHBRC — we check before we list. That means when a business finds a provider here, they\'re not gambling. They\'re connecting with someone who can actually deliver the work legally and professionally.',
+                points: [`Compliance-checked across ${providerNiches.length}+ service niches`, 'Industry credentials verified before listing', 'Zero commission — you pay the provider direct'],
+              },
+              {
+                icon: '🔗',
+                title: 'One ecosystem — everything connects',
+                color: '#6366f1',
+                body: 'A business needs legal, insurance, financial planning, IT security, logistics, fleet and maintenance — all at once, not one at a time. The Middleman Network is the only South African B2B platform that covers all of it under one roof, connecting 22 industries that feed into each other.',
+                points: [`${INDUSTRIES.length} industries on one platform`, `${providerNiches.length}+ verified service niches`, 'Legal, financial, cyber, fleet, transport — all covered'],
+              },
+            ].map((card, i) => (
+              <div key={i} style={{ background: '#fff', borderRadius: 20, border: '1px solid #e2e8f0', padding: '2rem', borderTop: `3px solid ${card.color}` }}>
+                <div style={{ fontSize: 32, marginBottom: 12 }}>{card.icon}</div>
+                <h3 style={{ fontWeight: 900, fontSize: 17, color: '#0f172a', margin: '0 0 0.75rem', lineHeight: 1.3 }}>{card.title}</h3>
+                <p style={{ color: '#475569', fontSize: 13.5, lineHeight: 1.7, margin: '0 0 1rem' }}>{card.body}</p>
+                <div style={{ display: 'grid', gap: 6 }}>
+                  {card.points.map((pt, j) => (
+                    <div key={j} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+                      <span style={{ color: card.color, fontWeight: 900, flexShrink: 0, marginTop: 1 }}>→</span>
+                      <span style={{ fontSize: 12.5, color: '#334155' }}>{pt}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* The full scope — what we cover */}
+          <div style={{ background: '#0f172a', borderRadius: 24, padding: '2.5rem', marginBottom: '2rem' }}>
+            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+              <div style={{ color: '#f59e0b', fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2, marginBottom: 8 }}>Complete Business Coverage</div>
+              <h3 style={{ color: '#fff', fontWeight: 900, fontSize: 20, margin: 0 }}>Every service a South African business will ever need</h3>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.75rem' }}>
+              {[
+                { icon: '⚖️', label: 'Legal & Attorneys', sub: 'Wills, contracts, labour, conveyancing' },
+                { icon: '💰', label: 'Financial Planning', sub: 'Tax, bookkeeping, payroll, advisors' },
+                { icon: '🛡️', label: 'Insurance', sub: 'Life, business, short-term, medical aid' },
+                { icon: '🔐', label: 'Cybersecurity & AI', sub: 'Fraud detection, POPIA, IT audits' },
+                { icon: '🚚', label: 'Logistics & Transport', sub: 'Courier, freight, cold chain, moving' },
+                { icon: '🚐', label: 'Fleet Services', sub: 'GPS tracking, maintenance, financing' },
+                { icon: '🚙', label: 'Automotive Mobile', sub: 'Detailing, callouts, panel beating, tyres' },
+                { icon: '🔧', label: 'ECU & Auto-Tech', sub: 'Programming, diagnostics, remapping' },
+                { icon: '🏗️', label: 'Construction', sub: 'Builders, plumbers, roofers, carpenters' },
+                { icon: '⚡', label: 'Energy & Solar', sub: 'Solar installers, electricians' },
+                { icon: '🔒', label: 'Security', sub: 'CCTV, alarms, electric fence' },
+                { icon: '🌾', label: 'Agriculture AI', sub: 'Smart farms, sensors, irrigation' },
+                { icon: '💳', label: 'Fintech & Payments', sub: 'Digital tipping, NFC, hospitality' },
+                { icon: '🧹', label: 'Cleaning & Home', sub: 'Commercial, mobile, waste, handyman' },
+                { icon: '🏥', label: 'Health & Wellness', sub: 'Occupational health, corporate wellness' },
+                { icon: '📈', label: 'Trading Technology', sub: 'EAs, indicators, infrastructure' },
+              ].map((cat, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '1rem' }}>
+                  <div style={{ fontSize: 22, marginBottom: 6 }}>{cat.icon}</div>
+                  <div style={{ color: '#fff', fontSize: 12, fontWeight: 700 }}>{cat.label}</div>
+                  <div style={{ color: '#475569', fontSize: 11, marginTop: 3, lineHeight: 1.4 }}>{cat.sub}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* The closing pitch */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
+            {[
+              { icon: '🎯', title: 'Right scope for every job', body: 'Whether it\'s a R650 mobile car wash or a R85,000 AI fraud detection system — the platform scopes the job correctly, connects you to the right level of provider and gets you a quote fast.' },
+              { icon: '📋', title: 'Right credentials every time', body: 'Every listed provider is credential-checked. LPC for lawyers. FSP for financial advisors. RMI for automotive. PSIRA for security. You never need to wonder if the person is qualified.' },
+              { icon: '🚀', title: 'Real workmanship. Real finish.', body: 'We don\'t list anyone. We list verified professionals who show up, do the work and produce a finished result. The platform is built on 30 years of knowing what good workmanship looks like.' },
+              { icon: '💡', title: 'This is realizable — right now', body: 'Every niche is live today. Every quote form works. Providers can list right now. Businesses can submit jobs right now. This isn\'t a vision deck — it\'s a working platform with 116 live pages.' },
+            ].map((item, i) => (
+              <div key={i} style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 16, padding: '1.5rem' }}>
+                <div style={{ fontSize: 26, marginBottom: 10 }}>{item.icon}</div>
+                <div style={{ fontWeight: 800, fontSize: 15, color: '#0f172a', marginBottom: 8 }}>{item.title}</div>
+                <p style={{ color: '#64748b', fontSize: 13, lineHeight: 1.6, margin: 0 }}>{item.body}</p>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 
@@ -131,8 +242,100 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── PLANS PREVIEW ────────────────────────────────────── */}
+      {/* ── COMMISSION MODEL ─────────────────────────────────── */}
       <section style={{ padding: '5rem 0', background: '#fff' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#dcfce7', border: '1px solid #bbf7d0', borderRadius: 20, padding: '5px 14px', marginBottom: 16 }}>
+              <span style={{ color: '#15803d', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1.5 }}>How the money works</span>
+            </div>
+            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>0% Commission. Always.</h2>
+            <p style={{ color: '#64748b', maxWidth: 520, margin: '0 auto', fontSize: 15, lineHeight: 1.7 }}>
+              Most lead platforms take 10–30% of every job. We don&apos;t. Providers pay a flat monthly subscription — and every rand from the client goes directly to the provider. Full stop.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
+            {[
+              {
+                icon: '👤',
+                title: 'What the Client Does',
+                color: '#6366f1',
+                bg: '#eff6ff',
+                border: '#bfdbfe',
+                steps: [
+                  'Submits a job request — free, no account needed',
+                  'Receives quotes from verified providers in their area',
+                  'Compares, chooses and pays the provider directly',
+                  'Pays zero platform fee. Zero commission. R0 to TMN.',
+                ],
+              },
+              {
+                icon: '🏢',
+                title: 'What the Provider Does',
+                color: '#10b981',
+                bg: '#f0fdf4',
+                border: '#bbf7d0',
+                steps: [
+                  'Signs up and selects a monthly subscription plan',
+                  'Receives lead credits to claim jobs in their niche',
+                  'Claims relevant leads, contacts the client, closes the job',
+                  'Keeps 100% of what the client pays — no commission deducted',
+                ],
+              },
+              {
+                icon: '🌐',
+                title: 'What TMN Earns',
+                color: '#f59e0b',
+                bg: '#fefce8',
+                border: '#fde68a',
+                steps: [
+                  'Monthly subscription fees from listed providers',
+                  'No percentage of jobs. No hidden fees. No commissions.',
+                  'Aligned with providers — we earn when they grow, not when they transact',
+                  'Scalable revenue from 22 industries, 100+ niches across SA',
+                ],
+              },
+            ].map((col, i) => (
+              <div key={i} style={{ background: col.bg, border: `1px solid ${col.border}`, borderRadius: 20, padding: '1.75rem', borderTop: `3px solid ${col.color}` }}>
+                <div style={{ fontSize: 32, marginBottom: 10 }}>{col.icon}</div>
+                <h3 style={{ fontWeight: 900, fontSize: 16, color: '#0f172a', margin: '0 0 1rem' }}>{col.title}</h3>
+                <div style={{ display: 'grid', gap: 8 }}>
+                  {col.steps.map((s, j) => (
+                    <div key={j} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+                      <span style={{ color: col.color, fontWeight: 900, flexShrink: 0, fontSize: 13, marginTop: 1 }}>→</span>
+                      <span style={{ fontSize: 13, color: '#334155', lineHeight: 1.5 }}>{s}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Commission comparison bar */}
+          <div style={{ background: '#0f172a', borderRadius: 20, padding: '2rem 2.5rem' }}>
+            <div style={{ color: '#94a3b8', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2, marginBottom: '1.5rem', textAlign: 'center' }}>How TMN compares to other lead platforms</div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+              {[
+                { platform: 'Bark / Bidvine', model: 'Pay-per-lead', commission: 'R85–R420 per lead', verdict: '❌ You pay before you even speak to the client', color: '#ef4444' },
+                { platform: 'Checkatrade / Homefeed', model: 'Subscription + per-job %', commission: '10–25% of job value', verdict: '❌ They take a cut from every rand you earn', color: '#f97316' },
+                { platform: 'Gumtree / Facebook', model: 'Organic / Ads', commission: 'Unpredictable ad spend', verdict: '⚠️ No lead quality, no verification, no structure', color: '#f59e0b' },
+                { platform: 'Middleman Network', model: 'Flat subscription', commission: '0% commission', verdict: '✅ You keep every rand. Grow as fast as you like.', color: '#22c55e' },
+              ].map((row, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 14, padding: '1.25rem', borderLeft: `3px solid ${row.color}` }}>
+                  <div style={{ color: '#fff', fontWeight: 800, fontSize: 14, marginBottom: 4 }}>{row.platform}</div>
+                  <div style={{ color: '#64748b', fontSize: 11, marginBottom: 4 }}>{row.model}</div>
+                  <div style={{ color: row.color, fontWeight: 700, fontSize: 13, marginBottom: 8 }}>{row.commission}</div>
+                  <div style={{ color: '#94a3b8', fontSize: 11.5, lineHeight: 1.5 }}>{row.verdict}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── PLANS PREVIEW ────────────────────────────────────── */}
+      <section style={{ padding: '5rem 0', background: '#f8fafc' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 800, margin: '0 0 1rem', color: '#0f172a' }}>Simple Subscription Pricing</h2>
