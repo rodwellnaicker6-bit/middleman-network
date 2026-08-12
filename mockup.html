@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TMN — Desktop & Mobile Mockup</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #1e293b; }
+  .page-header { text-align: center; padding: 2rem; border-bottom: 1px solid #1e293b; }
+  .page-header h1 { color: #fff; font-size: 22px; font-weight: 900; margin-bottom: 6px; }
+  .page-header p { color: #64748b; font-size: 13px; }
+  .tmn-badge { display: inline-block; background: #f59e0b; color: #0f172a; font-weight: 900; font-size: 11px; padding: 3px 8px; border-radius: 4px; margin-right: 8px; }
+
+  .section-label { color: #f59e0b; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; text-align: center; padding: 2rem 0 1rem; }
+
+  .device-row { display: flex; gap: 3rem; justify-content: center; align-items: flex-start; padding: 0 2rem 3rem; flex-wrap: wrap; }
+
+  /* Desktop frame */
+  .desktop-frame { flex-shrink: 0; }
+  .desktop-chrome { background: #2d3748; border-radius: 12px 12px 0 0; padding: 10px 14px; display: flex; align-items: center; gap: 6px; }
+  .chrome-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .chrome-bar { flex: 1; background: #4a5568; border-radius: 4px; height: 22px; display: flex; align-items: center; padding: 0 10px; }
+  .chrome-url { color: #a0aec0; font-size: 10px; }
+  .desktop-screen { width: 900px; height: 640px; background: #f8fafc; overflow: hidden; border: 3px solid #2d3748; border-top: none; border-radius: 0 0 8px 8px; position: relative; }
+  .desktop-label { color: #475569; font-size: 11px; text-align: center; margin-top: 10px; font-weight: 600; }
+
+  /* Mobile frame */
+  .mobile-frame { flex-shrink: 0; }
+  .mobile-device { width: 320px; background: #1a1a2e; border-radius: 36px; padding: 14px 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); border: 2px solid #2d3748; }
+  .mobile-notch { width: 80px; height: 20px; background: #1a1a2e; border-radius: 10px; margin: 0 auto 8px; position: relative; z-index: 2; }
+  .mobile-screen { background: #f8fafc; border-radius: 20px; overflow: hidden; height: 580px; position: relative; }
+  .mobile-home { width: 40px; height: 5px; background: #2d3748; border-radius: 3px; margin: 8px auto 0; }
+  .mobile-label { color: #475569; font-size: 11px; text-align: center; margin-top: 10px; font-weight: 600; }
+
+  /* ── SITE CONTENT STYLES ─────────────────── */
+  .s { font-size: 9px; }
+  .s-navbar { background: #0f172a; padding: 0 14px; height: 36px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+  .s-nav-logo { display: flex; align-items: center; gap: 6px; }
+  .s-nav-badge { background: #f59e0b; color: #0f172a; font-weight: 900; font-size: 8px; padding: 2px 5px; border-radius: 3px; }
+  .s-nav-name { color: #fff; font-weight: 700; font-size: 9px; }
+  .s-nav-links { display: flex; gap: 12px; align-items: center; }
+  .s-nav-link { color: #94a3b8; font-size: 8px; }
+  .s-nav-cta { background: #f59e0b; color: #0f172a; font-weight: 700; font-size: 8px; padding: 4px 8px; border-radius: 4px; }
+
+  .s-hero { background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f1a2e 100%); color: #fff; padding: 20px 14px; }
+  .s-hero-badge { display: inline-block; background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.3); border-radius: 10px; padding: 3px 8px; font-size: 7px; color: #f59e0b; font-weight: 700; margin-bottom: 8px; }
+  .s-hero h1 { font-size: 18px; font-weight: 900; line-height: 1.1; margin-bottom: 8px; }
+  .s-hero h1 span { color: #f59e0b; }
+  .s-hero p { color: #94a3b8; font-size: 8px; line-height: 1.5; margin-bottom: 12px; max-width: 340px; }
+  .s-hero-btns { display: flex; gap: 8px; }
+  .s-btn-primary { background: #f59e0b; color: #0f172a; font-weight: 800; font-size: 8px; padding: 7px 12px; border-radius: 5px; }
+  .s-btn-sec { background: rgba(255,255,255,0.08); color: #fff; font-weight: 700; font-size: 8px; padding: 7px 12px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.15); }
+
+  .s-stats { background: #fff; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-around; padding: 10px 0; }
+  .s-stat { text-align: center; padding: 0 8px; }
+  .s-stat-val { font-size: 12px; font-weight: 900; color: #0f172a; }
+  .s-stat-label { font-size: 7px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .s-section { padding: 16px 14px; }
+  .s-section-title { font-size: 12px; font-weight: 900; color: #0f172a; margin-bottom: 4px; }
+  .s-section-sub { font-size: 7px; color: #64748b; margin-bottom: 12px; }
+
+  .s-why-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+  .s-why-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px; border-top-width: 2px; }
+  .s-why-card .s-icon { font-size: 14px; margin-bottom: 4px; }
+  .s-why-card .s-title { font-size: 7px; font-weight: 800; color: #0f172a; margin-bottom: 3px; line-height: 1.2; }
+  .s-why-card .s-body { font-size: 6.5px; color: #64748b; line-height: 1.4; }
+
+  .s-dark-grid { background: #0f172a; border-radius: 8px; padding: 10px; margin-bottom: 10px; }
+  .s-dark-grid-title { color: #f59e0b; font-size: 7px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .s-industry-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .s-ind-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 5px; padding: 5px; }
+  .s-ind-icon { font-size: 10px; margin-bottom: 2px; }
+  .s-ind-name { font-size: 6px; color: #fff; font-weight: 700; }
+  .s-ind-sub { font-size: 5.5px; color: #475569; margin-top: 1px; }
+
+  .s-comm { background: #fff; padding: 12px 14px; }
+  .s-comm-header { text-align: center; margin-bottom: 10px; }
+  .s-comm-badge { display: inline-block; background: #dcfce7; border: 1px solid #bbf7d0; border-radius: 10px; padding: 2px 8px; font-size: 6.5px; color: #15803d; font-weight: 800; margin-bottom: 4px; }
+  .s-comm-title { font-size: 13px; font-weight: 900; color: #0f172a; }
+  .s-comm-sub { font-size: 7px; color: #64748b; }
+  .s-comm-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+  .s-comm-card { border-radius: 8px; padding: 8px; border-top-width: 2px; border-top-style: solid; }
+  .s-comm-icon { font-size: 14px; margin-bottom: 4px; }
+  .s-comm-card-title { font-size: 7.5px; font-weight: 900; color: #0f172a; margin-bottom: 4px; }
+  .s-comm-step { font-size: 6.5px; color: #334155; margin-bottom: 2px; display: flex; gap: 3px; }
+
+  .s-ventures { background: #0f172a; padding: 12px 14px; }
+  .s-ventures-title { color: #fff; font-size: 12px; font-weight: 900; margin-bottom: 10px; text-align: center; }
+  .s-vent-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+  .s-vent-card { background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 8px; border-top-width: 2px; border-top-style: solid; }
+  .s-vent-icon { font-size: 16px; margin-bottom: 4px; }
+  .s-vent-name { color: #fff; font-size: 7.5px; font-weight: 800; margin-bottom: 2px; }
+  .s-vent-tag { color: #64748b; font-size: 6px; line-height: 1.3; }
+
+  .s-footer { background: #0f172a; padding: 10px 14px; border-top: 1px solid #1e293b; }
+  .s-footer-brand { display: flex; align-items: center; gap: 5px; margin-bottom: 6px; }
+  .s-footer-text { color: #64748b; font-size: 6.5px; line-height: 1.4; margin-bottom: 8px; }
+  .s-footer-copy { color: #374151; font-size: 6px; padding-top: 8px; border-top: 1px solid #1e293b; }
+
+  /* ── MARKETPLACE PAGE ─────────── */
+  .s-mkt-filters { background: #fff; border-bottom: 1px solid #e2e8f0; padding: 8px 14px; display: flex; gap: 5px; }
+  .s-filter { border: 1px solid #e2e8f0; border-radius: 6px; padding: 4px 8px; font-size: 7px; color: #475569; background: #fff; }
+  .s-filter.active { background: #0f172a; color: #fff; border-color: #0f172a; }
+  .s-mkt-pills { display: flex; gap: 4px; flex-wrap: wrap; padding: 8px 14px 0; }
+  .s-pill { border: 1px solid #e2e8f0; border-radius: 10px; padding: 3px 7px; font-size: 6.5px; color: #475569; }
+  .s-pill.active { background: #0f172a; color: #fff; border-color: #0f172a; }
+  .s-niche-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 8px 14px; }
+  .s-niche-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px; }
+  .s-niche-industry { font-size: 6px; color: #94a3b8; font-weight: 700; text-transform: uppercase; margin-bottom: 2px; }
+  .s-niche-name { font-size: 8px; font-weight: 800; color: #0f172a; margin-bottom: 3px; }
+  .s-niche-desc { font-size: 6px; color: #94a3b8; line-height: 1.4; margin-bottom: 4px; }
+  .s-niche-footer { display: flex; justify-content: space-between; align-items: center; }
+  .s-niche-val { font-size: 7px; font-weight: 700; color: #0f172a; }
+  .s-niche-cta { font-size: 6.5px; color: #f59e0b; font-weight: 700; }
+
+  /* ── NICHE / QUOTE PAGE ─────────── */
+  .s-breadcrumb { background: #fff; border-bottom: 1px solid #e2e8f0; padding: 5px 14px; display: flex; gap: 5px; align-items: center; font-size: 7px; color: #94a3b8; }
+  .s-niche-hero { background: #0f172a; color: #fff; padding: 14px 14px; }
+  .s-niche-hero-icon { font-size: 24px; margin-bottom: 6px; }
+  .s-niche-hero h1 { font-size: 14px; font-weight: 900; margin-bottom: 4px; }
+  .s-niche-hero p { color: #94a3b8; font-size: 7px; line-height: 1.5; }
+  .s-niche-layout { display: grid; grid-template-columns: 1fr 200px; gap: 8px; padding: 8px 14px; }
+  .s-quote-form { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
+  .s-form-header { background: #0f172a; padding: 8px 10px; }
+  .s-form-title { color: #fff; font-size: 8px; font-weight: 800; }
+  .s-form-sub { color: #64748b; font-size: 6.5px; margin-top: 1px; }
+  .s-form-body { padding: 8px 10px; }
+  .s-form-label { font-size: 6.5px; font-weight: 700; color: #374151; margin-bottom: 2px; display: block; }
+  .s-form-input { width: 100%; border: 1px solid #e2e8f0; border-radius: 5px; padding: 5px 7px; font-size: 7px; background: #f8fafc; margin-bottom: 6px; }
+  .s-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-bottom: 6px; }
+  .s-select { width: 100%; border: 1px solid #e2e8f0; border-radius: 5px; padding: 5px 7px; font-size: 7px; background: #f8fafc; margin-bottom: 6px; }
+  .s-consent { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 5px; padding: 6px; margin-bottom: 6px; font-size: 6px; color: #64748b; display: flex; gap: 4px; }
+  .s-form-submit { width: 100%; background: #0f172a; color: #fff; font-weight: 800; font-size: 8px; padding: 8px; border-radius: 6px; text-align: center; }
+  .s-form-note { text-align: center; font-size: 6px; color: #94a3b8; margin-top: 4px; }
+
+  .s-sidebar-contact { background: #0f172a; border-radius: 8px; padding: 8px; color: #fff; margin-bottom: 6px; }
+  .s-sidebar-title { font-size: 8px; font-weight: 800; margin-bottom: 6px; }
+  .s-sidebar-btn { display: block; padding: 6px; border-radius: 5px; text-align: center; font-size: 7px; font-weight: 700; margin-bottom: 4px; }
+
+  /* ── SCOPE INDICES PAGE ─────────── */
+  .s-scope-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 8px 14px; }
+  .s-scope-stat { background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px; border-top: 2px solid #b45309; }
+  .s-scope-val { font-size: 10px; font-weight: 900; color: #b45309; }
+  .s-scope-label { font-size: 5.5px; color: #64748b; margin-top: 2px; }
+
+  .s-bridge { background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%); border-radius: 8px; margin: 0 14px 6px; padding: 10px; border: 1px solid rgba(99,102,241,0.3); }
+  .s-bridge-title { color: #818cf8; font-size: 7px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+  .s-bridge-heading { color: #fff; font-size: 10px; font-weight: 900; margin: 3px 0; }
+  .s-bridge-sub { color: rgba(255,255,255,0.5); font-size: 6px; margin-bottom: 6px; }
+  .s-bridge-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+  .s-bridge-stat { background: rgba(255,255,255,0.05); border-radius: 5px; padding: 5px; }
+  .s-bridge-stat-val { color: #22c55e; font-size: 9px; font-weight: 900; }
+  .s-bridge-stat-label { color: #fff; font-size: 5.5px; font-weight: 700; margin-top: 1px; }
+  .s-bridge-stat-sub { color: #64748b; font-size: 5px; }
+
+  .s-session-table { background: rgba(255,255,255,0.04); border-radius: 6px; overflow: hidden; margin: 0 14px 6px; }
+  .s-table-header { display: grid; grid-template-columns: 1.2fr 1fr 0.8fr 1fr; padding: 5px 8px; background: rgba(255,255,255,0.06); font-size: 6px; color: #64748b; font-weight: 700; text-transform: uppercase; }
+  .s-table-row { display: grid; grid-template-columns: 1.2fr 1fr 0.8fr 1fr; padding: 5px 8px; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 6.5px; }
+  .s-table-total { display: grid; grid-template-columns: 1.2fr 1fr 0.8fr 1fr; padding: 5px 8px; background: rgba(34,197,94,0.08); border-top: 1px solid rgba(34,197,94,0.2); font-size: 7px; }
+
+  /* SCROLLABLE CONTENT */
+  .scroll-content { overflow-y: auto; height: 100%; }
+  .desktop-screen .scroll-content { height: 640px; }
+  .mobile-screen .scroll-content { height: 580px; }
+
+  /* WHATSAPP FLOAT */
+  .s-wa-float { position: absolute; bottom: 12px; right: 12px; background: #25d366; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: 0 3px 10px rgba(37,211,102,0.5); z-index: 10; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1><span class="tmn-badge">TMN</span> Desktop & Mobile Mockup</h1>
+  <p>The Middleman Network · middleman-network.vercel.app · D.R. Autotronics Group</p>
+</div>
+
+<!-- ══════════════════════════════════════════════ HOMEPAGE ══ -->
+<div class="section-label">PAGE 1 — HOMEPAGE</div>
+<div class="device-row">
+
+  <!-- DESKTOP -->
+  <div class="desktop-frame">
+    <div class="desktop-chrome">
+      <div class="chrome-dot" style="background:#ff5f57"></div>
+      <div class="chrome-dot" style="background:#febc2e"></div>
+      <div class="chrome-dot" style="background:#28c840"></div>
+      <div class="chrome-bar"><span class="chrome-url">middleman-network.vercel.app</span></div>
+    </div>
+    <div class="desktop-screen">
+      <div class="scroll-content s">
+        <!-- Navbar -->
+        <div class="s-navbar">
+          <div class="s-nav-logo"><span class="s-nav-badge">TMN</span><span class="s-nav-name">The Middleman Network</span></div>
+          <div class="s-nav-links">
+            <span class="s-nav-link">Marketplace</span><span class="s-nav-link">🔴 Live Leads</span>
+            <span class="s-nav-link">🏢 The Group</span><span class="s-nav-link">For Sale</span>
+            <span class="s-nav-cta">List Your Business →</span>
+          </div>
+        </div>
+        <!-- Hero -->
+        <div class="s-hero">
+          <span class="s-hero-badge">🇿🇦 South Africa's Smart B2B Marketplace</span>
+          <h1>Connect. Quote. <span>Grow.</span></h1>
+          <p>The Middleman Network connects South African businesses with verified service providers and suppliers across 22 industries — powered by AI quoting, subscription leads and 0% commission.</p>
+          <div class="s-hero-btns">
+            <span class="s-btn-primary">Browse Marketplace →</span>
+            <span class="s-btn-sec">List Your Business</span>
+          </div>
+        </div>
+        <!-- Stats bar -->
+        <div class="s-stats">
+          <div class="s-stat"><div class="s-stat-val">22</div><div class="s-stat-label">Industries</div></div>
+          <div class="s-stat"><div class="s-stat-val">120+</div><div class="s-stat-label">Service Niches</div></div>
+          <div class="s-stat"><div class="s-stat-val">6</div><div class="s-stat-label">Ventures</div></div>
+          <div class="s-stat"><div class="s-stat-val">0%</div><div class="s-stat-label">Commission</div></div>
+          <div class="s-stat"><div class="s-stat-val">R18,400</div><div class="s-stat-label">Avg Job Value</div></div>
+        </div>
+        <!-- Why This Works -->
+        <div class="s-section" style="background:#f8fafc">
+          <div style="text-align:center;margin-bottom:12px">
+            <span style="display:inline-block;background:#fef3c7;border:1px solid #fde68a;border-radius:10px;padding:2px 8px;font-size:7px;color:#92400e;font-weight:800;margin-bottom:6px">Built from experience — not theory</span>
+            <div class="s-section-title">Why someone like us can give every business exactly what they need</div>
+            <div class="s-section-sub">The Middleman Network was built by a business owner who spent 30 years in South African business.</div>
+          </div>
+          <div class="s-why-grid">
+            <div class="s-why-card" style="border-top-color:#f59e0b">
+              <div class="s-icon">🏛️</div>
+              <div class="s-title">Built on 30 years of real business</div>
+              <div class="s-body">Automotive, engineering, trading, finance — every division came from a real need. 6 active divisions. R13.88M group network worth.</div>
+            </div>
+            <div class="s-why-card" style="border-top-color:#10b981">
+              <div class="s-icon">✅</div>
+              <div class="s-title">The right providers. The right credentials.</div>
+              <div class="s-body">RMI, PSIRA, LPC, FSP, SACAP — we check before we list. 120+ compliance-checked niches. Zero commission on jobs.</div>
+            </div>
+            <div class="s-why-card" style="border-top-color:#6366f1">
+              <div class="s-icon">🔗</div>
+              <div class="s-title">One ecosystem — everything connects</div>
+              <div class="s-body">Legal, insurance, IT, logistics, fleet, maintenance — all covered. 22 industries on one platform. SA's only complete B2B network.</div>
+            </div>
+          </div>
+        </div>
+        <!-- Industry grid dark -->
+        <div class="s-section" style="background:#f8fafc;padding-top:0">
+          <div class="s-dark-grid">
+            <div class="s-dark-grid-title">Complete Business Coverage — Every service a South African business will ever need</div>
+            <div class="s-industry-grid">
+              <div class="s-ind-card"><div class="s-ind-icon">⚖️</div><div class="s-ind-name">Legal</div><div class="s-ind-sub">Wills, contracts, labour</div></div>
+              <div class="s-ind-card"><div class="s-ind-icon">💰</div><div class="s-ind-name">Financial</div><div class="s-ind-sub">Tax, bookkeeping</div></div>
+              <div class="s-ind-card"><div class="s-ind-icon">🛡️</div><div class="s-ind-name">Insurance</div><div class="s-ind-sub">Life, business, ST</div></div>
+              <div class="s-ind-card"><div class="s-ind-icon">🔐</div><div class="s-ind-name">Cybersecurity</div><div class="s-ind-sub">POPIA, IT audits</div></div>
+              <div class="s-ind-card"><div class="s-ind-icon">🚚</div><div class="s-ind-name">Logistics</div><div class="s-ind-sub">DSV, Aramex, freight</div></div>
+              <div class="s-ind-card"><div class="s-ind-icon">📡</div><div class="s-ind-name">Telecoms</div><div class="s-ind-sub">MTN, Vodacom, fibre</div></div>
+              <div class="s-ind-card"><div class="s-ind-icon">⚙️</div><div class="s-ind-name">CNC / Mfg</div><div class="s-ind-sub">Robot floor plans</div></div>
+              <div class="s-ind-card"><div class="s-ind-icon">🌾</div><div class="s-ind-name">Agriculture AI</div><div class="s-ind-sub">Drones, sensors</div></div>
+              <div class="s-ind-card"><div class="s-ind-icon">⚡</div><div class="s-ind-name">Energy/Solar</div><div class="s-ind-sub">Solar installers</div></div>
+              <div class="s-ind-card"><div class="s-ind-icon">🏗️</div><div class="s-ind-name">Construction</div><div class="s-ind-sub">Builders, plumbers</div></div>
+              <div class="s-ind-card"><div class="s-ind-icon">🔒</div><div class="s-ind-name">Security</div><div class="s-ind-sub">CCTV, alarms, PSIRA</div></div>
+              <div class="s-ind-card"><div class="s-ind-icon">📈</div><div class="s-ind-name">Trading Tech</div><div class="s-ind-sub">EAs, indicators</div></div>
+            </div>
+          </div>
+        </div>
+        <!-- Commission section -->
+        <div class="s-comm">
+          <div class="s-comm-header">
+            <span class="s-comm-badge">How the money works</span>
+            <div class="s-comm-title">0% Commission. Always.</div>
+            <div class="s-comm-sub">Most platforms take 10–30% per job. We don't. Flat monthly subscription — every rand goes to the provider.</div>
+          </div>
+          <div class="s-comm-grid">
+            <div class="s-comm-card" style="background:#eff6ff;border-top-color:#6366f1">
+              <div class="s-comm-icon">👤</div>
+              <div class="s-comm-card-title">Client</div>
+              <div class="s-comm-step"><span style="color:#6366f1">→</span> Submits job request free</div>
+              <div class="s-comm-step"><span style="color:#6366f1">→</span> Receives verified quotes</div>
+              <div class="s-comm-step"><span style="color:#6366f1">→</span> Pays provider direct</div>
+              <div class="s-comm-step"><span style="color:#6366f1">→</span> R0 to TMN. Ever.</div>
+            </div>
+            <div class="s-comm-card" style="background:#f0fdf4;border-top-color:#10b981">
+              <div class="s-comm-icon">🏢</div>
+              <div class="s-comm-card-title">Provider</div>
+              <div class="s-comm-step"><span style="color:#10b981">→</span> Monthly subscription</div>
+              <div class="s-comm-step"><span style="color:#10b981">→</span> Credits to claim leads</div>
+              <div class="s-comm-step"><span style="color:#10b981">→</span> Contacts client directly</div>
+              <div class="s-comm-step"><span style="color:#10b981">→</span> Keeps 100% of job</div>
+            </div>
+            <div class="s-comm-card" style="background:#fefce8;border-top-color:#f59e0b">
+              <div class="s-comm-icon">🌐</div>
+              <div class="s-comm-card-title">TMN Earns</div>
+              <div class="s-comm-step"><span style="color:#f59e0b">→</span> Subscription fees only</div>
+              <div class="s-comm-step"><span style="color:#f59e0b">→</span> No job commissions</div>
+              <div class="s-comm-step"><span style="color:#f59e0b">→</span> Aligned with growth</div>
+              <div class="s-comm-step"><span style="color:#f59e0b">→</span> 22 industries scaling</div>
+            </div>
+          </div>
+        </div>
+        <!-- Ventures -->
+        <div class="s-ventures">
+          <div class="s-ventures-title">DR Autotronics Group Ventures</div>
+          <div class="s-vent-grid">
+            <div class="s-vent-card" style="border-top-color:#1e3a5f"><div class="s-vent-icon">🔧</div><div class="s-vent-name">D.R. Autotronics</div><div class="s-vent-tag">30-Year Legacy · 2nd Gen · ECU Specialists</div></div>
+            <div class="s-vent-card" style="border-top-color:#1a5e3a"><div class="s-vent-icon">🌾</div><div class="s-vent-name">YieldCore AI</div><div class="s-vent-tag">Smart Agriculture · Drones · KZN Farms</div></div>
+            <div class="s-vent-card" style="border-top-color:#7c3aed"><div class="s-vent-icon">💳</div><div class="s-vent-name">TipGuard SA</div><div class="s-vent-tag">Digital Tipping · QR · NFC Payments</div></div>
+            <div class="s-vent-card" style="border-top-color:#b45309"><div class="s-vent-icon">📈</div><div class="s-vent-name">Scope Indices</div><div class="s-vent-tag">Trading Tech · $2,018 P&L · 12,367 lines</div></div>
+            <div class="s-vent-card" style="border-top-color:#4f46e5"><div class="s-vent-icon">🧠</div><div class="s-vent-name">Beryl Core AI</div><div class="s-vent-tag">Group AI OS · SIENNA · Automation</div></div>
+            <div class="s-vent-card" style="border-top-color:#c2410c"><div class="s-vent-icon">🏭</div><div class="s-vent-name">Manufacturing</div><div class="s-vent-tag">3D Print · Drones · NFC Hardware</div></div>
+          </div>
+        </div>
+        <!-- Footer -->
+        <div class="s-footer">
+          <div class="s-footer-brand"><span class="s-nav-badge">TMN</span><span style="color:#fff;font-weight:700;font-size:9px">The Middleman Network</span></div>
+          <div class="s-footer-text">South Africa's smart B2B marketplace. 22 industries. 120+ verified niches. 0% commission.</div>
+          <div class="s-footer-copy">© 2026 The Middleman Network · D.R. Autotronics Group (Pty) Ltd · POPIA compliant</div>
+        </div>
+      </div>
+      <div class="s-wa-float">💬</div>
+    </div>
+    <div class="desktop-label">Desktop — 1280px</div>
+  </div>
+
+  <!-- MOBILE -->
+  <div class="mobile-frame">
+    <div class="mobile-device">
+      <div class="mobile-notch"></div>
+      <div class="mobile-screen">
+        <div class="scroll-content s">
+          <div class="s-navbar" style="height:32px">
+            <div class="s-nav-logo"><span class="s-nav-badge">TMN</span><span class="s-nav-name" style="display:none"></span></div>
+            <span style="color:#fff;font-size:14px">☰</span>
+          </div>
+          <div class="s-hero" style="padding:14px 12px">
+            <span class="s-hero-badge">🇿🇦 SA's Smart B2B Marketplace</span>
+            <h1 style="font-size:15px">Connect. Quote. <span>Grow.</span></h1>
+            <p style="font-size:7.5px">Connect with verified providers across 22 industries. AI quoting. 0% commission.</p>
+            <div class="s-hero-btns" style="flex-direction:column;gap:5px">
+              <span class="s-btn-primary" style="text-align:center">Browse Marketplace →</span>
+              <span class="s-btn-sec" style="text-align:center">List Your Business</span>
+            </div>
+          </div>
+          <div class="s-stats" style="flex-wrap:wrap;gap:0">
+            <div class="s-stat" style="width:50%;border-right:1px solid #f1f5f9;border-bottom:1px solid #f1f5f9"><div class="s-stat-val">22</div><div class="s-stat-label">Industries</div></div>
+            <div class="s-stat" style="width:50%;border-bottom:1px solid #f1f5f9"><div class="s-stat-val">120+</div><div class="s-stat-label">Niches</div></div>
+            <div class="s-stat" style="width:50%;border-right:1px solid #f1f5f9"><div class="s-stat-val">0%</div><div class="s-stat-label">Commission</div></div>
+            <div class="s-stat" style="width:50%"><div class="s-stat-val">R18K</div><div class="s-stat-label">Avg Job</div></div>
+          </div>
+          <div class="s-section" style="background:#f8fafc">
+            <div class="s-section-title" style="font-size:10px;text-align:center">Why This Works</div>
+            <div style="display:grid;gap:5px;margin-top:8px">
+              <div class="s-why-card" style="border-top-color:#f59e0b"><div style="display:flex;align-items:center;gap:6px"><span style="font-size:12px">🏛️</span><div><div class="s-title">30 Years of Real Business</div><div class="s-body">6 divisions. R13.88M network worth. Built from experience.</div></div></div></div>
+              <div class="s-why-card" style="border-top-color:#10b981"><div style="display:flex;align-items:center;gap:6px"><span style="font-size:12px">✅</span><div><div class="s-title">Verified Credentials</div><div class="s-body">RMI, PSIRA, LPC, FSP — every provider credential-checked.</div></div></div></div>
+              <div class="s-why-card" style="border-top-color:#6366f1"><div style="display:flex;align-items:center;gap:6px"><span style="font-size:12px">🔗</span><div><div class="s-title">One Ecosystem</div><div class="s-body">Legal, fleet, logistics, CNC, telecoms — all in one place.</div></div></div></div>
+            </div>
+          </div>
+          <div class="s-comm" style="padding:10px 12px">
+            <div class="s-comm-header"><span class="s-comm-badge">0% Commission</span><div class="s-comm-title" style="font-size:11px">How the Money Works</div></div>
+            <div style="display:grid;gap:5px">
+              <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:7px"><div style="font-size:7.5px;font-weight:800;color:#15803d;margin-bottom:3px">Client → pays R0 to TMN</div><div style="font-size:6.5px;color:#64748b">Submits free · gets quotes · pays provider direct</div></div>
+              <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:6px;padding:7px"><div style="font-size:7.5px;font-weight:800;color:#1d4ed8;margin-bottom:3px">Provider → keeps 100%</div><div style="font-size:6.5px;color:#64748b">Monthly subscription · claim leads · zero commission cut</div></div>
+            </div>
+          </div>
+          <div class="s-ventures" style="padding:10px 12px">
+            <div class="s-ventures-title" style="font-size:10px">Group Ventures</div>
+            <div style="display:grid;gap:5px">
+              <div class="s-vent-card" style="border-top-color:#1e3a5f;display:flex;align-items:center;gap:6px"><span style="font-size:14px">🔧</span><div><div class="s-vent-name">D.R. Autotronics</div><div class="s-vent-tag">30-Year Legacy · ECU Specialists</div></div></div>
+              <div class="s-vent-card" style="border-top-color:#b45309;display:flex;align-items:center;gap:6px"><span style="font-size:14px">📈</span><div><div class="s-vent-name">Scope Indices</div><div class="s-vent-tag">Trading Tech · $2,018 P&L confirmed</div></div></div>
+              <div class="s-vent-card" style="border-top-color:#1a5e3a;display:flex;align-items:center;gap:6px"><span style="font-size:14px">🌾</span><div><div class="s-vent-name">YieldCore AI</div><div class="s-vent-tag">Smart Farms · Drone Division</div></div></div>
+            </div>
+          </div>
+          <div class="s-footer" style="padding:10px 12px">
+            <div class="s-footer-copy">© 2026 The Middleman Network · POPIA compliant · 0% commission</div>
+          </div>
+        </div>
+        <div class="s-wa-float">💬</div>
+      </div>
+      <div class="mobile-home"></div>
+    </div>
+    <div class="mobile-label">Mobile — 375px</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ MARKETPLACE ══ -->
+<div class="section-label">PAGE 2 — MARKETPLACE</div>
+<div class="device-row">
+  <div class="desktop-frame">
+    <div class="desktop-chrome"><div class="chrome-dot" style="background:#ff5f57"></div><div class="chrome-dot" style="background:#febc2e"></div><div class="chrome-dot" style="background:#28c840"></div><div class="chrome-bar"><span class="chrome-url">middleman-network.vercel.app/marketplace</span></div></div>
+    <div class="desktop-screen"><div class="scroll-content s">
+      <div class="s-navbar"><div class="s-nav-logo"><span class="s-nav-badge">TMN</span><span class="s-nav-name">The Middleman Network</span></div><div class="s-nav-links"><span class="s-nav-link" style="color:#fff;font-weight:700">Marketplace</span><span class="s-nav-link">🔴 Live Leads</span><span class="s-nav-link">🏢 The Group</span><span class="s-nav-cta">List Your Business →</span></div></div>
+      <div style="background:#0f172a;color:#fff;padding:18px 14px"><h1 style="font-size:16px;font-weight:900;margin-bottom:4px">Marketplace</h1><p style="color:#94a3b8;font-size:8px">121 niches across 22 industries — find exactly what you need.</p></div>
+      <div class="s-mkt-filters" style="padding:10px 14px"><input style="flex:1;border:1px solid #e2e8f0;border-radius:6px;padding:5px 8px;font-size:7px" placeholder="Search niches..."><select class="s-filter" style="margin-left:5px"><option>All Industries</option></select><select class="s-filter" style="margin-left:5px"><option>All Types</option></select><span style="color:#94a3b8;font-size:7px;margin-left:8px">121 results</span></div>
+      <div class="s-mkt-pills">
+        <span class="s-pill active">All</span><span class="s-pill">⚡ Energy</span><span class="s-pill">🏗️ Construction</span><span class="s-pill">🔒 Security</span><span class="s-pill">🔧 Auto Tech</span><span class="s-pill">🌾 AgriAI</span><span class="s-pill">⚖️ Legal</span><span class="s-pill">🚚 Logistics</span><span class="s-pill">📡 Telecoms</span><span class="s-pill">⚙️ CNC</span>
+      </div>
+      <div class="s-niche-grid" style="grid-template-columns:repeat(3,1fr);padding:8px 14px">
+        <div class="s-niche-card"><div class="s-niche-industry">⚡ Energy & Solar</div><div class="s-niche-name">Solar PV Installers</div><div class="s-niche-desc">Grid-tied, hybrid and off-grid solar installations for homes and businesses.</div><div class="s-niche-footer"><span class="s-niche-val">R85,000 avg</span><span class="s-niche-cta">Get Quote →</span></div></div>
+        <div class="s-niche-card"><div class="s-niche-industry">🔧 Auto Tech</div><div class="s-niche-name">ECU Repair & Programming</div><div class="s-niche-desc">ECU diagnostics, repair, flashing and programming for all vehicle brands.</div><div class="s-niche-footer"><span class="s-niche-val">R60,000 avg</span><span class="s-niche-cta">Get Quote →</span></div></div>
+        <div class="s-niche-card"><div class="s-niche-industry">⚖️ Legal Services</div><div class="s-niche-name">Commercial Attorneys</div><div class="s-niche-desc">Company formations, contracts, shareholder agreements, CIPC compliance.</div><div class="s-niche-footer"><span class="s-niche-val">R22,000 avg</span><span class="s-niche-cta">Get Quote →</span></div></div>
+        <div class="s-niche-card"><div class="s-niche-industry">🚚 Logistics</div><div class="s-niche-name">DSV International Freight</div><div class="s-niche-desc">Air, sea and road freight forwarding. Customs clearing. Import/export.</div><div class="s-niche-footer"><span class="s-niche-val">R28,000 avg</span><span class="s-niche-cta">Get Quote →</span></div></div>
+        <div class="s-niche-card"><div class="s-niche-industry">⚙️ CNC Manufacturing</div><div class="s-niche-name">CNC Floor Plans & Foundations</div><div class="s-niche-desc">CAD-to-CNC floor plan execution on actual foundations with robotic precision.</div><div class="s-niche-footer"><span class="s-niche-val">R55,000 avg</span><span class="s-niche-cta">Get Quote →</span></div></div>
+        <div class="s-niche-card"><div class="s-niche-industry">📡 Telecoms</div><div class="s-niche-name">Business WiFi & Networking</div><div class="s-niche-desc">Structured cabling, access points, server rooms, VLAN setup for offices.</div><div class="s-niche-footer"><span class="s-niche-val">R18,000 avg</span><span class="s-niche-cta">Get Quote →</span></div></div>
+      </div>
+      <div class="s-footer"><div class="s-footer-copy">© 2026 The Middleman Network · 0% commission marketplace · POPIA compliant</div></div>
+    </div><div class="s-wa-float">💬</div></div>
+    <div class="desktop-label">Marketplace — Desktop 1280px</div>
+  </div>
+
+  <div class="mobile-frame">
+    <div class="mobile-device"><div class="mobile-notch"></div>
+    <div class="mobile-screen"><div class="scroll-content s">
+      <div class="s-navbar" style="height:32px"><div class="s-nav-logo"><span class="s-nav-badge">TMN</span></div><span style="color:#fff;font-size:14px">☰</span></div>
+      <div style="background:#0f172a;color:#fff;padding:12px"><h1 style="font-size:13px;font-weight:900;margin-bottom:3px">Marketplace</h1><p style="color:#94a3b8;font-size:7px">121 niches · 22 industries</p></div>
+      <div style="padding:8px 10px"><input style="width:100%;border:1px solid #e2e8f0;border-radius:6px;padding:6px 10px;font-size:7.5px;margin-bottom:6px" placeholder="🔍 Search niches...">
+        <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px">
+          <span class="s-pill active">All</span><span class="s-pill">⚡ Energy</span><span class="s-pill">🏗️ Build</span><span class="s-pill">⚖️ Legal</span><span class="s-pill">🚚 Logistics</span>
+        </div>
+      </div>
+      <div style="display:grid;gap:6px;padding:0 10px 10px">
+        <div class="s-niche-card"><div class="s-niche-industry">🔧 Automotive Tech</div><div class="s-niche-name">ECU Repair & Programming</div><div class="s-niche-desc">ECU diagnostics, repair, flashing for all brands. 30-year legacy.</div><div class="s-niche-footer"><span class="s-niche-val">R60,000 avg</span><span class="s-niche-cta">Get Quote →</span></div></div>
+        <div class="s-niche-card"><div class="s-niche-industry">🚚 Logistics</div><div class="s-niche-name">DSV International Freight</div><div class="s-niche-desc">Air, sea, road freight. Customs clearing. Import/export.</div><div class="s-niche-footer"><span class="s-niche-val">R28,000 avg</span><span class="s-niche-cta">Get Quote →</span></div></div>
+        <div class="s-niche-card"><div class="s-niche-industry">⚙️ CNC Manufacturing</div><div class="s-niche-name">CNC Floor Plans — Robot Execution</div><div class="s-niche-desc">Floor plans machined onto actual foundations. No drawing plans.</div><div class="s-niche-footer"><span class="s-niche-val">R55,000 avg</span><span class="s-niche-cta">Get Quote →</span></div></div>
+        <div class="s-niche-card"><div class="s-niche-industry">📡 Telecoms</div><div class="s-niche-name">Fibre & Internet Providers</div><div class="s-niche-desc">Fibre to home/office, LTE fixed wireless, business ISP.</div><div class="s-niche-footer"><span class="s-niche-val">R8,500 avg</span><span class="s-niche-cta">Get Quote →</span></div></div>
+      </div>
+      <div class="s-footer" style="padding:10px 12px"><div class="s-footer-copy">© 2026 The Middleman Network · POPIA compliant</div></div>
+    </div><div class="s-wa-float">💬</div></div>
+    <div class="mobile-home"></div></div>
+    <div class="mobile-label">Marketplace — Mobile 375px</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ NICHE/QUOTE PAGE ══ -->
+<div class="section-label">PAGE 3 — NICHE & QUOTE FORM</div>
+<div class="device-row">
+  <div class="desktop-frame">
+    <div class="desktop-chrome"><div class="chrome-dot" style="background:#ff5f57"></div><div class="chrome-dot" style="background:#febc2e"></div><div class="chrome-dot" style="background:#28c840"></div><div class="chrome-bar"><span class="chrome-url">middleman-network.vercel.app/niche/ecu-repair-programming</span></div></div>
+    <div class="desktop-screen"><div class="scroll-content s">
+      <div class="s-navbar"><div class="s-nav-logo"><span class="s-nav-badge">TMN</span><span class="s-nav-name">The Middleman Network</span></div><div class="s-nav-links"><span class="s-nav-link">Marketplace</span><span class="s-nav-link">🔴 Live Leads</span><span class="s-nav-cta">List Your Business →</span></div></div>
+      <div class="s-breadcrumb">Home <span>/</span> Marketplace <span>/</span> <strong style="color:#0f172a">ECU Repair & Programming</strong></div>
+      <div class="s-niche-hero">
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <div class="s-niche-hero-icon">🔧</div>
+          <div style="flex:1">
+            <span style="display:inline-flex;align-items:center;gap:4px;background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.3);border-radius:10px;padding:2px 8px;font-size:6.5px;color:#f59e0b;font-weight:700;margin-bottom:6px">🔧 D.R. Autotronics</span>
+            <h1 class="s-niche-hero" style="background:none;padding:0">ECU Repair & Programming</h1>
+            <p style="color:#94a3b8;font-size:7.5px;line-height:1.5">Dealer-level ECU diagnostics, repair, flashing and programming for all vehicle brands. Bakkies, trucks, Actros, John Deere, Hino, Scania — 30-year legacy, 2nd generation specialists.</p>
+            <div style="display:flex;gap:6px;margin-top:8px">
+              <span style="background:rgba(245,158,11,0.2);color:#f59e0b;font-size:6.5px;font-weight:700;padding:3px 8px;border-radius:10px">Site Visit</span>
+              <span style="background:rgba(255,255,255,0.1);color:#e2e8f0;font-size:6.5px;padding:3px 8px;border-radius:10px">Avg job: R60,000</span>
+              <span style="background:rgba(245,158,11,0.1);color:#fbbf24;font-size:6.5px;padding:3px 8px;border-radius:10px">🔒 RMI Membership</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="s-niche-layout">
+        <div>
+          <!-- Info + providers -->
+          <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px;margin-bottom:6px">
+            <div style="font-size:8px;font-weight:800;color:#0f172a;margin-bottom:6px">About ECU Repair & Programming</div>
+            <div style="font-size:7px;color:#475569;line-height:1.6">We diagnose, repair, reprogram and clone Engine Control Units for all vehicle makes including bakkies, heavy trucks, tractors and luxury vehicles. Dealer-level tooling with 10GB proprietary database. 150+ ECUs in stock.</div>
+          </div>
+          <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:10px;margin-bottom:6px">
+            <div style="font-size:8px;font-weight:800;color:#0f172a;margin-bottom:8px">Verified Providers</div>
+            <div style="display:grid;gap:5px">
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:#f8fafc;border-radius:6px">
+                <div><div style="font-size:7.5px;font-weight:700;color:#0f172a">D.R. Autotronics</div><div style="font-size:6.5px;color:#94a3b8">⭐ 4.9 · 94 reviews · Durban, KZN</div></div>
+                <span style="background:#f59e0b;color:#0f172a;font-size:6.5px;font-weight:700;padding:3px 7px;border-radius:4px">🥇 Top Rated</span>
+              </div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:#f8fafc;border-radius:6px">
+                <div><div style="font-size:7.5px;font-weight:700;color:#0f172a">SA Auto Electronics</div><div style="font-size:6.5px;color:#94a3b8">⭐ 4.6 · 41 reviews · Cape Town, WC</div></div>
+                <span style="background:#dcfce7;color:#15803d;font-size:6.5px;font-weight:700;padding:3px 7px;border-radius:4px">✅ Verified</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <!-- Quote form -->
+          <div class="s-quote-form">
+            <div class="s-form-header">
+              <div class="s-form-title">Get a Quote →</div>
+              <div class="s-form-sub">Free · No obligation · Verified providers respond within 2hrs</div>
+            </div>
+            <div class="s-form-body">
+              <label class="s-form-label">Full Name *</label>
+              <div class="s-form-input" style="color:#94a3b8">Your name</div>
+              <div class="s-form-row">
+                <div><label class="s-form-label">Phone *</label><div class="s-form-input" style="color:#94a3b8">+27 8X XXX</div></div>
+                <div><label class="s-form-label">Email</label><div class="s-form-input" style="color:#94a3b8">Optional</div></div>
+              </div>
+              <div style="border-top:1px solid #f1f5f9;margin:6px 0;padding-top:6px;font-size:6.5px;color:#94a3b8;text-transform:uppercase;letter-spacing:1px">Service Details</div>
+              <label class="s-form-label">Vehicle Make *</label>
+              <div class="s-select" style="color:#94a3b8">Select vehicle make</div>
+              <label class="s-form-label">ECU Fault Code</label>
+              <div class="s-form-input" style="color:#94a3b8">e.g. P0335, U0101</div>
+              <label class="s-form-label">Services Needed</label>
+              <div style="display:flex;flex-wrap:wrap;gap:3px;margin-bottom:6px">
+                <span style="padding:3px 6px;border-radius:8px;font-size:6px;border:1px solid #0f172a;background:#0f172a;color:#fff">Diagnostics</span>
+                <span style="padding:3px 6px;border-radius:8px;font-size:6px;border:1px solid #e2e8f0;color:#475569">Repair</span>
+                <span style="padding:3px 6px;border-radius:8px;font-size:6px;border:1px solid #e2e8f0;color:#475569">Programming</span>
+                <span style="padding:3px 6px;border-radius:8px;font-size:6px;border:1px solid #e2e8f0;color:#475569">Clone</span>
+              </div>
+              <div class="s-consent">☑ I consent to TMN sharing my details with verified providers. POPIA compliant.</div>
+              <div class="s-form-submit">Get Quote 🚀</div>
+              <div class="s-form-note">Free · No obligation · 0% commission marketplace</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="s-footer"><div class="s-footer-copy">© 2026 The Middleman Network · POPIA compliant</div></div>
+    </div><div class="s-wa-float">💬</div></div>
+    <div class="desktop-label">Niche Page + Quote Form — Desktop 1280px</div>
+  </div>
+
+  <div class="mobile-frame">
+    <div class="mobile-device"><div class="mobile-notch"></div>
+    <div class="mobile-screen"><div class="scroll-content s">
+      <div class="s-navbar" style="height:32px"><div class="s-nav-logo"><span class="s-nav-badge">TMN</span></div><span style="color:#fff;font-size:14px">☰</span></div>
+      <div class="s-breadcrumb" style="font-size:6.5px">Home / Marketplace / <strong style="color:#0f172a">ECU Repair</strong></div>
+      <div class="s-niche-hero" style="padding:12px">
+        <div class="s-niche-hero-icon" style="font-size:20px">🔧</div>
+        <h1 style="font-size:12px;font-weight:900;color:#fff;margin-bottom:4px">ECU Repair & Programming</h1>
+        <p style="color:#94a3b8;font-size:7px;line-height:1.5">Dealer-level ECU diagnostics and programming. All brands. 30-year legacy.</p>
+        <div style="display:flex;gap:4px;margin-top:6px;flex-wrap:wrap">
+          <span style="background:rgba(245,158,11,0.2);color:#f59e0b;font-size:6px;padding:2px 6px;border-radius:8px">Site Visit</span>
+          <span style="background:rgba(255,255,255,0.1);color:#e2e8f0;font-size:6px;padding:2px 6px;border-radius:8px">Avg R60,000</span>
+        </div>
+      </div>
+      <!-- Quote form — full width on mobile -->
+      <div style="margin:8px 10px">
+        <div class="s-quote-form">
+          <div class="s-form-header">
+            <div class="s-form-title">Get a Quote →</div>
+            <div class="s-form-sub">Free · Responds within 2hrs</div>
+          </div>
+          <div class="s-form-body">
+            <label class="s-form-label">Full Name *</label>
+            <div class="s-form-input" style="color:#94a3b8">Your name</div>
+            <div class="s-form-row">
+              <div><label class="s-form-label">Phone *</label><div class="s-form-input" style="color:#94a3b8">+27 8X</div></div>
+              <div><label class="s-form-label">Email</label><div class="s-form-input" style="color:#94a3b8">Optional</div></div>
+            </div>
+            <label class="s-form-label">Vehicle Make *</label>
+            <div class="s-select" style="color:#94a3b8">Select vehicle</div>
+            <label class="s-form-label">ECU Fault Code</label>
+            <div class="s-form-input" style="color:#94a3b8">e.g. P0335</div>
+            <div class="s-consent">☑ POPIA consent to share details with providers.</div>
+            <div class="s-form-submit">Get Quote 🚀</div>
+          </div>
+        </div>
+      </div>
+      <div class="s-footer" style="padding:10px 12px"><div class="s-footer-copy">© 2026 The Middleman Network</div></div>
+    </div><div class="s-wa-float">💬</div></div>
+    <div class="mobile-home"></div></div>
+    <div class="mobile-label">Niche + Quote — Mobile 375px</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ SCOPE INDICES ══ -->
+<div class="section-label">PAGE 4 — SCOPE INDICES (Trading Tech Venture)</div>
+<div class="device-row">
+  <div class="desktop-frame">
+    <div class="desktop-chrome"><div class="chrome-dot" style="background:#ff5f57"></div><div class="chrome-dot" style="background:#febc2e"></div><div class="chrome-dot" style="background:#28c840"></div><div class="chrome-bar"><span class="chrome-url">middleman-network.vercel.app/ventures/scope-indices</span></div></div>
+    <div class="desktop-screen"><div class="scroll-content s">
+      <div class="s-navbar"><div class="s-nav-logo"><span class="s-nav-badge">TMN</span><span class="s-nav-name">The Middleman Network</span></div><div class="s-nav-links"><span class="s-nav-link">Marketplace</span><span class="s-nav-link">🔴 Live Leads</span><span class="s-nav-cta">List Your Business →</span></div></div>
+      <div style="background:linear-gradient(135deg,#b45309 0%,#0f172a 100%);color:#fff;padding:20px 14px">
+        <div style="font-size:7px;color:rgba(255,255,255,0.5);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px">D.R. Autotronics Group Venture</div>
+        <h1 style="font-size:18px;font-weight:900;margin-bottom:6px">📈 Scope Indices</h1>
+        <p style="color:rgba(255,255,255,0.7);font-size:7.5px;line-height:1.5;max-width:400px;margin-bottom:10px">Trading Technology, Automation & Charting Tools · Not an FSP. Not financial advice.</p>
+        <span style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.4);border-radius:6px;padding:4px 10px;font-size:7px;color:#fbbf24">⚠️ Technology provider only. Not registered with the FSCA.</span>
+      </div>
+      <!-- Code stats -->
+      <div class="s-scope-stats" style="grid-template-columns:repeat(6,1fr)">
+        <div class="s-scope-stat"><div class="s-scope-val">12,367</div><div class="s-scope-label">Lines total</div></div>
+        <div class="s-scope-stat" style="border-top-color:#8b5cf6"><div class="s-scope-val" style="color:#8b5cf6">9,080</div><div class="s-scope-label">MQL5 — EA</div></div>
+        <div class="s-scope-stat" style="border-top-color:#06b6d4"><div class="s-scope-val" style="color:#06b6d4">3,287</div><div class="s-scope-label">C# — Bridge</div></div>
+        <div class="s-scope-stat" style="border-top-color:#f59e0b"><div class="s-scope-val" style="color:#f59e0b">9</div><div class="s-scope-label">TV Indicators</div></div>
+        <div class="s-scope-stat" style="border-top-color:#10b981"><div class="s-scope-val" style="color:#10b981">v4.40</div><div class="s-scope-label">EA Version</div></div>
+        <div class="s-scope-stat" style="border-top-color:#6366f1"><div class="s-scope-val" style="color:#6366f1">v2.25</div><div class="s-scope-label">Bridge Ver</div></div>
+      </div>
+      <!-- SiennaBridge panel -->
+      <div class="s-bridge">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+          <div><div class="s-bridge-title">🌉 SiennaBridge v2.25</div><div class="s-bridge-heading">MT5 → NinjaTrader 8 Bridge</div><div class="s-bridge-sub">3,287 lines C# · IP Value R80,000</div></div>
+          <div><div style="background:#22c55e;color:#fff;font-size:7px;font-weight:800;padding:3px 8px;border-radius:10px">● BRIDGE ACTIVE</div></div>
+        </div>
+        <div class="s-bridge-stats">
+          <div class="s-bridge-stat"><div class="s-bridge-stat-val">$50,000</div><div class="s-bridge-stat-label">Account Size</div><div class="s-bridge-stat-sub">NinjaTrader funded</div></div>
+          <div class="s-bridge-stat"><div class="s-bridge-stat-val">+$435.60</div><div class="s-bridge-stat-label">Jul 13 Session</div><div class="s-bridge-stat-sub">14 trades · 1 day</div></div>
+          <div class="s-bridge-stat"><div class="s-bridge-stat-val">+$814</div><div class="s-bridge-stat-label">Jul 12 Session</div><div class="s-bridge-stat-sub">Verified result</div></div>
+          <div class="s-bridge-stat"><div class="s-bridge-stat-val">+$336</div><div class="s-bridge-stat-label">Best Trade</div><div class="s-bridge-stat-sub">MGCQ6 · Jul 13</div></div>
+          <div class="s-bridge-stat"><div class="s-bridge-stat-val">-$313</div><div class="s-bridge-stat-label">Max DD</div><div class="s-bridge-stat-sub">Recovered same day</div></div>
+          <div class="s-bridge-stat"><div class="s-bridge-stat-val">$49,845</div><div class="s-bridge-stat-label">Balance</div><div class="s-bridge-stat-sub">As at Jul 13 2026</div></div>
+        </div>
+      </div>
+      <!-- Session table -->
+      <div class="s-session-table">
+        <div class="s-table-header"><span>Date</span><span>Platform</span><span>P&L</span><span>Detail</span></div>
+        <div class="s-table-row"><span style="color:#94a3b8">Jul 15, 2026</span><span style="color:#fff;font-size:6px">NinjaTrader 8</span><span style="color:#22c55e;font-weight:900">+$551.00</span><span style="color:#64748b">MGCQ6 futures</span></div>
+        <div class="s-table-row"><span style="color:#94a3b8">Jul 13, 2026</span><span style="color:#fff;font-size:6px">NinjaTrader 8</span><span style="color:#22c55e;font-weight:900">+$435.60</span><span style="color:#64748b">14 trades · 7-pump</span></div>
+        <div class="s-table-row"><span style="color:#94a3b8">Jul 12, 2026</span><span style="color:#fff;font-size:6px">NinjaTrader 8</span><span style="color:#22c55e;font-weight:900">+$814.00</span><span style="color:#64748b">Verified</span></div>
+        <div class="s-table-row"><span style="color:#94a3b8">Jun 24, 2026</span><span style="color:#fff;font-size:6px">MT5 Blue Guardian</span><span style="color:#22c55e;font-weight:900">+$291.42</span><span style="color:#64748b">🏆 Payout triggered</span></div>
+        <div class="s-table-total"><span style="color:#22c55e;font-weight:800">CONFIRMED P&L</span><span style="color:#64748b;font-size:6px">Jun–Jul 2026</span><span style="color:#22c55e;font-weight:900;font-size:9px">+$2,018.02</span><span style="color:#64748b;font-size:6px">8 sessions</span></div>
+      </div>
+      <!-- Live app links -->
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;margin:6px 14px;padding:10px">
+        <div style="font-size:8px;font-weight:800;color:#0f172a;margin-bottom:3px">🔗 View Our Live Applications</div>
+        <div style="font-size:7px;color:#64748b;margin-bottom:8px">Click to see the real thing — every app is live and deployed.</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px">
+          <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:6px;padding:7px"><div style="font-size:12px;margin-bottom:3px">🌐</div><div style="font-size:7px;font-weight:800;color:#0f172a">Middleman Network</div><div style="font-size:6px;color:#64748b;margin:2px 0">Live production platform · 121 pages</div><div style="font-size:6.5px;color:#15803d;font-weight:700">● LIVE →</div></div>
+          <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:6px;padding:7px"><div style="font-size:12px;margin-bottom:3px">📊</div><div style="font-size:7px;font-weight:800;color:#0f172a">IDC Investor Deck</div><div style="font-size:6px;color:#64748b;margin:2px 0">dr-autotronics-idc.vercel.app</div><div style="font-size:6.5px;color:#1d4ed8;font-weight:700">pw: DRA2026IDC →</div></div>
+          <div style="background:#fefce8;border:1px solid #fde68a;border-radius:6px;padding:7px"><div style="font-size:12px;margin-bottom:3px">📈</div><div style="font-size:7px;font-weight:800;color:#0f172a">TradingView</div><div style="font-size:6px;color:#64748b;margin:2px 0">9 indicators · R299–R999/mo</div><div style="font-size:6.5px;color:#d97706;font-weight:700">Launching soon →</div></div>
+        </div>
+      </div>
+      <div class="s-footer"><div class="s-footer-copy">© 2026 The Middleman Network · Technology only · Not financial advice</div></div>
+    </div><div class="s-wa-float">💬</div></div>
+    <div class="desktop-label">Scope Indices Venture — Desktop 1280px</div>
+  </div>
+
+  <div class="mobile-frame">
+    <div class="mobile-device"><div class="mobile-notch"></div>
+    <div class="mobile-screen"><div class="scroll-content s">
+      <div class="s-navbar" style="height:32px"><div class="s-nav-logo"><span class="s-nav-badge">TMN</span></div><span style="color:#fff;font-size:14px">☰</span></div>
+      <div style="background:linear-gradient(135deg,#b45309 0%,#0f172a 100%);color:#fff;padding:14px 12px">
+        <h1 style="font-size:14px;font-weight:900;margin-bottom:4px">📈 Scope Indices</h1>
+        <p style="color:rgba(255,255,255,0.7);font-size:7px">Trading Technology · 12,367 lines of code · Not an FSP</p>
+      </div>
+      <div class="s-scope-stats" style="grid-template-columns:repeat(3,1fr);padding:6px 10px">
+        <div class="s-scope-stat"><div class="s-scope-val" style="font-size:9px">12,367</div><div class="s-scope-label">Lines</div></div>
+        <div class="s-scope-stat" style="border-top-color:#10b981"><div class="s-scope-val" style="color:#10b981;font-size:9px">v4.40</div><div class="s-scope-label">EA Version</div></div>
+        <div class="s-scope-stat" style="border-top-color:#6366f1"><div class="s-scope-val" style="color:#6366f1;font-size:9px">v2.25</div><div class="s-scope-label">Bridge</div></div>
+      </div>
+      <div class="s-bridge" style="margin:0 10px 6px">
+        <div class="s-bridge-title">🌉 SiennaBridge v2.25</div>
+        <div class="s-bridge-heading" style="font-size:9px">MT5 → NinjaTrader 8</div>
+        <div class="s-bridge-stats" style="grid-template-columns:repeat(2,1fr);margin-top:6px">
+          <div class="s-bridge-stat"><div class="s-bridge-stat-val">+$435.60</div><div class="s-bridge-stat-label">Jul 13</div></div>
+          <div class="s-bridge-stat"><div class="s-bridge-stat-val">+$814</div><div class="s-bridge-stat-label">Jul 12</div></div>
+          <div class="s-bridge-stat"><div class="s-bridge-stat-val">+$551</div><div class="s-bridge-stat-label">Jul 15</div></div>
+          <div class="s-bridge-stat"><div class="s-bridge-stat-val" style="color:#f59e0b">+$2,018</div><div class="s-bridge-stat-label">Total P&L</div></div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid #e2e8f0;border-radius:6px;margin:0 10px 6px;padding:8px">
+        <div style="font-size:7.5px;font-weight:800;color:#0f172a;margin-bottom:6px">🔗 Live Applications</div>
+        <div style="display:grid;gap:4px">
+          <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:5px;padding:6px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:7px;font-weight:700;color:#0f172a">🌐 TMN Platform</span><span style="font-size:6.5px;color:#15803d;font-weight:700">● LIVE</span></div>
+          <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:5px;padding:6px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:7px;font-weight:700;color:#0f172a">📊 IDC Investor Deck</span><span style="font-size:6.5px;color:#1d4ed8;font-weight:700">View →</span></div>
+        </div>
+      </div>
+      <div class="s-footer" style="padding:10px 12px"><div class="s-footer-copy">© 2026 · Technology only · Not financial advice</div></div>
+    </div><div class="s-wa-float">💬</div></div>
+    <div class="mobile-home"></div></div>
+    <div class="mobile-label">Scope Indices — Mobile 375px</div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<div style="text-align:center;padding:3rem 2rem;border-top:1px solid #1e293b;margin-top:2rem">
+  <div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:8px"><span class="tmn-badge">TMN</span><span style="color:#fff;font-weight:700">The Middleman Network</span></div>
+  <p style="color:#475569;font-size:12px">middleman-network.vercel.app · Launch-ready · 121 pages · 0% commission</p>
+</div>
+
+</body>
+</html>

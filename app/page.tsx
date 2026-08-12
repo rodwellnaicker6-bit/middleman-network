@@ -217,8 +217,55 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── HOW IT WORKS ─────────────────────────────────────── */}
+      {/* ── ECOSYSTEM MAP ────────────────────────────────────── */}
       <section style={{ padding: '5rem 0', background: '#f8fafc' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fef3c7', border: '1px solid #fde68a', borderRadius: 20, padding: '5px 14px', marginBottom: 16 }}>
+              <span style={{ color: '#92400e', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1.5 }}>How the ecosystem feeds itself</span>
+            </div>
+            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Every venture powers every other</h2>
+            <p style={{ color: '#64748b', maxWidth: 560, margin: '0 auto', fontSize: 15, lineHeight: 1.7 }}>
+              Tipping flows from restaurants into YieldCore farm data. ECU tech feeds CNC machining. Drone footage fuels AI analysis. Every division is a client of the others — and a revenue stream for the group.
+            </p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+            {[
+              { icon: '🔧', venture: 'D.R. Autotronics', color: '#1e3a5f', feeds: ['ECU data feeds into Beryl Core AI diagnostics database', 'Vehicle fleet data powers YieldCore farm equipment monitoring', 'Workshop clients routed through TMN marketplace', 'CNC division manufactures custom ECU enclosures'], gets: ['Leads from TMN marketplace', 'AI diagnostics from Beryl Core', 'CNC parts from Manufacturing Division'] },
+              { icon: '🌾', venture: 'YieldCore AI', color: '#1a5e3a', feeds: ['Farm data feeds Beryl Core AI training pipeline', 'Drone footage creates carbon credit data for export', 'Irrigation automation uses Manufacturing Division sensors', 'Farm operators tip via TipGuard SA'], gets: ['Drone hardware from Manufacturing Division', 'Leads via TMN agriculture niches', 'AI layer from Beryl Core AI'] },
+              { icon: '💳', venture: 'TipGuard SA', color: '#7c3aed', feeds: ['Tipping data feeds Beryl Core AI spend analytics', 'Restaurant/hospitality leads routed via TMN', 'NFC hardware produced by Manufacturing Division', 'Transaction data informs TMN provider rankings'], gets: ['NFC wristbands/keyrings from Manufacturing Division', 'Hospitality leads from TMN', 'AI fraud detection from Beryl Core AI'] },
+              { icon: '📈', venture: 'Scope Indices', color: '#b45309', feeds: ['EA signals logged to Beryl Core AI analytics', 'SiennaBridge infrastructure hosted on Beryl Core', 'TradingView indicators drive TMN trading tech niches', 'P&L data validates group\'s fintech credibility'], gets: ['AI data layer from Beryl Core', 'Server infrastructure from group', 'Leads from TMN trading tech niches'] },
+              { icon: '🧠', venture: 'Beryl Core AI', color: '#4f46e5', feeds: ['AI layer to all 5 other ventures simultaneously', 'Business automation drives TMN lead matching', 'WhatsApp bots power all group client comms', 'Data pipelines feed investor reporting on group page'], gets: ['Data from all 5 divisions to train models', 'Commercial revenue from TMN tech clients', 'Infrastructure hosted by group'] },
+              { icon: '🏭', venture: 'Manufacturing', color: '#c2410c', feeds: ['3D-printed components to D.R. Autotronics (ECU enclosures)', 'NFC hardware to TipGuard SA (wristbands, keyrings)', 'Drone parts and service to YieldCore AI', 'CNC fabrication for construction sector via TMN'], gets: ['Orders from all other 5 divisions', 'CNC floor plan leads from TMN', 'Design specs from Beryl Core AI'] },
+            ].map((item, i) => (
+              <div key={i} style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 20, padding: '1.5rem', borderTop: `3px solid ${item.color}` }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1rem' }}>
+                  <span style={{ fontSize: 28 }}>{item.icon}</span>
+                  <div style={{ fontWeight: 900, fontSize: 14, color: '#0f172a' }}>{item.venture}</div>
+                </div>
+                <div style={{ fontSize: 11, fontWeight: 800, color: '#64748b', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 6 }}>Feeds into →</div>
+                <div style={{ display: 'grid', gap: 4, marginBottom: '1rem' }}>
+                  {item.feeds.map((f, j) => (
+                    <div key={j} style={{ display: 'flex', gap: 6, alignItems: 'flex-start' }}>
+                      <span style={{ color: item.color, fontWeight: 900, fontSize: 11, flexShrink: 0, marginTop: 1 }}>→</span>
+                      <span style={{ fontSize: 11.5, color: '#475569', lineHeight: 1.4 }}>{f}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ background: '#f8fafc', borderRadius: 8, padding: '8px 10px' }}>
+                  <div style={{ fontSize: 10, fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>Receives from group</div>
+                  {item.gets.map((g, j) => (
+                    <div key={j} style={{ fontSize: 11, color: '#64748b', marginBottom: 2 }}>✓ {g}</div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── HOW IT WORKS ─────────────────────────────────────── */}
+      <section style={{ padding: '5rem 0', background: '#fff' }}>
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 800, margin: '0 0 1rem', color: '#0f172a' }}>How It Works</h2>
