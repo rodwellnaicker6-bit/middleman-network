@@ -50,9 +50,10 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 768px) {
   .container { padding: 0 1rem; }
 
-  /* Niche & venture sidebar layout → stack */
+  /* All two-column layouts → stack */
   div[style*="grid-template-columns: 1fr 380px"],
   div[style*="grid-template-columns: 1fr 340px"],
+  div[style*="grid-template-columns: 1fr 400px"],
   div[style*="grid-template-columns: minmax(0,1fr) 340px"] {
     grid-template-columns: 1fr !important;
   }
