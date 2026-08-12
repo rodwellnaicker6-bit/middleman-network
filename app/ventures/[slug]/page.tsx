@@ -45,9 +45,28 @@ export default async function VenturePage({ params }: { params: Promise<{ slug: 
       </section>
 
       <div className="container" style={{ padding: '3rem 1.5rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '2rem', alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 340px', gap: '2rem', alignItems: 'start' }}>
           {/* Main content */}
           <div>
+            {/* D.R. Autotronics key stats */}
+            {venture.slug === 'dr-autotronics' && (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '0.75rem', marginBottom: '1.5rem' }}>
+                {[
+                  { val: '10+', label: 'Years operating', color: '#ef4444' },
+                  { val: '15+', label: 'Vehicle brands', color: '#f97316' },
+                  { val: '150+', label: 'ECU units in stock', color: '#f59e0b' },
+                  { val: '180+', label: 'ECU programs', color: '#10b981' },
+                  { val: '10GB', label: 'ECU database', color: '#6366f1' },
+                  { val: 'R92K', label: 'Equipment value', color: '#8b5cf6' },
+                ].map(s => (
+                  <div key={s.label} style={{ background: '#fff', border: `2px solid ${s.color}20`, borderTop: `3px solid ${s.color}`, borderRadius: 12, padding: '1rem', textAlign: 'center' }}>
+                    <div style={{ fontSize: 22, fontWeight: 900, color: s.color }}>{s.val}</div>
+                    <div style={{ fontSize: 11, color: '#64748b', marginTop: 4, fontWeight: 600 }}>{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+
             {/* About */}
             <div style={{ background: '#fff', borderRadius: 16, padding: '2rem', border: '1px solid #e2e8f0', marginBottom: '1.5rem' }}>
               <h2 style={{ fontWeight: 800, fontSize: 20, margin: '0 0 1rem', color: '#0f172a' }}>About {venture.name}</h2>
@@ -106,13 +125,27 @@ export default async function VenturePage({ params }: { params: Promise<{ slug: 
             <div style={{ background: '#0f172a', borderRadius: 16, padding: '1.75rem', marginBottom: '1.5rem', color: '#fff' }}>
               <h3 style={{ fontWeight: 800, fontSize: 18, margin: '0 0 1rem' }}>Contact {venture.name}</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                <a href="https://wa.me/27627135401?text=Hi%2C%20I%27m%20interested%20in%20your%20services" target="_blank" rel="noopener noreferrer"
+                  style={{ background: '#25d366', color: '#fff', fontWeight: 800, padding: '13px 16px', borderRadius: 8, textAlign: 'center', display: 'block', fontSize: 15 }}>
+                  💬 WhatsApp Us
+                </a>
                 <a href={`mailto:${venture.support_email}`} style={{ background: '#f59e0b', color: '#0f172a', fontWeight: 700, padding: '12px 16px', borderRadius: 8, textAlign: 'center', display: 'block' }}>
-                  📧 {venture.support_email}
+                  📧 Email Us
                 </a>
-                <a href={venture.website_url} target="_blank" rel="noopener noreferrer" style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', fontWeight: 700, padding: '12px 16px', borderRadius: 8, textAlign: 'center', display: 'block', border: '1px solid rgba(255,255,255,0.15)' }}>
-                  🌐 Visit Website
-                </a>
+                {venture.slug === 'dr-autotronics' && (
+                  <a href="https://maps.google.com/?q=Durban+KwaZulu-Natal+South+Africa" target="_blank" rel="noopener noreferrer"
+                    style={{ background: 'rgba(255,255,255,0.08)', color: '#fff', fontWeight: 700, padding: '12px 16px', borderRadius: 8, textAlign: 'center', display: 'block', border: '1px solid rgba(255,255,255,0.15)' }}>
+                    📍 Durban, KwaZulu-Natal
+                  </a>
+                )}
               </div>
+              {venture.slug === 'dr-autotronics' && (
+                <div style={{ marginTop: 14, padding: '10px 12px', background: 'rgba(245,158,11,0.1)', borderRadius: 8, border: '1px solid rgba(245,158,11,0.2)' }}>
+                  <div style={{ color: '#f59e0b', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>Workshop Hours</div>
+                  <div style={{ color: '#94a3b8', fontSize: 12 }}>Mon – Fri: 8am – 5pm SAST</div>
+                  <div style={{ color: '#94a3b8', fontSize: 12 }}>Sat: 8am – 1pm · Mobile available</div>
+                </div>
+              )}
             </div>
 
             {/* Part of group */}

@@ -224,8 +224,7 @@ export default function GroupPage() {
           {/* Key stats — strength only */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(155px, 1fr))', gap: '1rem', maxWidth: 900 }}>
             {[
-              { label: 'Verified Net Worth', value: 'R11,513,720', sub: 'August 2026' },
-              { label: 'Gross Asset Value', value: 'R11,642,765', sub: 'Legal + IP + Physical' },
+              { label: 'Group Network Worth', value: 'R10,152,765', sub: 'Business assets — August 2026' },
               { label: 'Security Package', value: 'R8,581,765', sub: 'Trust + Policy + Legacy Plan' },
               { label: 'Active Divisions', value: '6', sub: 'operating divisions' },
               { label: 'Years Operating', value: '10+', sub: 'continuous operation' },
@@ -591,14 +590,13 @@ export default function GroupPage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
             {[
               {
-                title: 'Legal & Protection Assets',
+                title: 'Group Legal & Protection',
                 color: '#10b981',
-                total: 'R9,781,765',
+                total: 'R8,581,765',
                 items: [
-                  ['Registered Family / Business Trust', 'R5,500,000', 'Active ✓'],
+                  ['Registered Family / Business Trust', 'R5,500,000', 'Active ✓ — primary group security'],
                   ['Sanlam Life Assurance Policy', 'R1,000,000', 'Underwriting in progress'],
                   ['Sanlam Legacy Plan PN3020424', 'R2,081,765', 'Will signed 31 Jul 2026 ✓'],
-                  ['Household & Contents Cover', 'R1,200,000', 'Signed August 2026 ✓'],
                 ],
               },
               {
@@ -616,16 +614,14 @@ export default function GroupPage() {
                 ],
               },
               {
-                title: 'Physical Assets',
+                title: 'Business Physical Assets',
                 color: '#f59e0b',
-                total: 'R701,000',
+                total: 'R411,000',
                 items: [
+                  ['ECU Inventory', 'R225,000', '150+ units — 15+ brands'],
                   ['Workshop & Diagnostic Equipment', 'R92,000', 'ECU tools, iProg+ V84'],
                   ['Computing Equipment', 'R69,000', 'Dev machines, servers, networking'],
-                  ['ECU Inventory', 'R225,000', '150+ units — 15+ brands'],
-                  ['NFC Inventory', 'R25,000', 'TipGuard merchant hardware stock'],
-                  ['Vehicles', 'R250,000', 'Almera, W203, BMW E90, VW VR6'],
-                  ['Marine Asset', 'R40,000', 'Vivacity 20 boat'],
+                  ['NFC Hardware Stock', 'R25,000', 'TipGuard merchant hardware — ready to deploy'],
                 ],
               },
             ].map(cat => (
@@ -651,13 +647,13 @@ export default function GroupPage() {
 
           {/* Gross asset total — no debt mention */}
           <div style={{ background: '#0f172a', borderRadius: 16, padding: '2rem', color: '#fff' }}>
-            <h3 style={{ fontWeight: 900, fontSize: 18, margin: '0 0 1.25rem' }}>Consolidated Asset Statement — August 2026</h3>
+            <h3 style={{ fontWeight: 900, fontSize: 18, margin: '0 0 1.25rem' }}>Group Network Asset Statement — August 2026</h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1.25rem' }}>
               {[
-                { label: 'Legal & Protection Assets', value: 'R9,781,765' },
-                { label: 'Physical Assets', value: 'R701,000' },
+                { label: 'Group Legal & Protection', value: 'R8,581,765' },
+                { label: 'Business Physical Assets', value: 'R411,000' },
                 { label: 'Intellectual Property', value: 'R1,160,000' },
-                { label: 'Total Net Worth', value: 'R11,513,720', highlight: true },
+                { label: 'Group Network Worth', value: 'R10,152,765', highlight: true },
               ].map(row => (
                 <div key={row.label} style={{
                   background: row.highlight ? 'rgba(245,158,11,0.1)' : 'rgba(255,255,255,0.04)',

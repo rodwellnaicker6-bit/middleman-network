@@ -158,6 +158,31 @@ export default async function NichePage({ params }: { params: Promise<{ slug: st
 
           {/* Quote form sidebar */}
           <div style={{ position: 'sticky', top: 80 }}>
+
+            {/* Price range */}
+            {niche.avg_job_value_zar > 0 && (
+              <div style={{ background: '#fff', borderRadius: 14, border: '1px solid #e2e8f0', padding: '1.25rem 1.5rem', marginBottom: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
+                <div>
+                  <div style={{ fontSize: 11, color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>Typical price range</div>
+                  <div style={{ fontSize: 20, fontWeight: 900, color: '#0f172a', marginTop: 4 }}>
+                    {formatZAR(Math.round(niche.avg_job_value_zar * 0.55))} – {formatZAR(Math.round(niche.avg_job_value_zar * 1.75))}
+                  </div>
+                  <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 2 }}>Varies by scope · Get exact quote below</div>
+                </div>
+                <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                  <div style={{ fontSize: 11, color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>Avg job</div>
+                  <div style={{ fontSize: 15, fontWeight: 800, color: '#f59e0b' }}>{formatZAR(niche.avg_job_value_zar)}</div>
+                </div>
+              </div>
+            )}
+
+            {/* WhatsApp quick contact */}
+            <a href="https://wa.me/27627135401?text=Hi%2C%20I%20need%20a%20quote%20for%20a%20service%20I%20found%20on%20TMN"
+              target="_blank" rel="noopener noreferrer"
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, background: '#25d366', color: '#fff', fontWeight: 800, padding: '13px', borderRadius: 12, marginBottom: '1rem', fontSize: 15, textDecoration: 'none' }}>
+              💬 <span>Quick Quote via WhatsApp</span>
+            </a>
+
             <div style={{ background: '#fff', borderRadius: 16, border: '2px solid #f59e0b', overflow: 'hidden', boxShadow: '0 4px 24px rgba(0,0,0,0.08)' }}>
               <div style={{ background: '#f59e0b', padding: '1.25rem 1.5rem' }}>
                 <h2 style={{ fontWeight: 800, fontSize: 18, margin: 0, color: '#0f172a' }}>{txLabel.cta}</h2>

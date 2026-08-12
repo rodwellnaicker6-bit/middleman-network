@@ -45,3 +45,32 @@ a { color: inherit; text-decoration: none; }
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #f1f5f9; }
 ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+
+/* Mobile: stack two-column grids */
+@media (max-width: 768px) {
+  .container { padding: 0 1rem; }
+
+  /* Niche & venture sidebar layout → stack */
+  div[style*="grid-template-columns: 1fr 380px"],
+  div[style*="grid-template-columns: 1fr 340px"],
+  div[style*="grid-template-columns: minmax(0,1fr) 340px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Unstick sidebar on mobile */
+  div[style*="position: sticky"] {
+    position: static !important;
+  }
+
+  /* Hero text sizing */
+  h1 { font-size: clamp(1.6rem, 6vw, 2.5rem) !important; }
+
+  /* WhatsApp float — smaller on mobile */
+  a[aria-label="Chat on WhatsApp"] {
+    width: 50px !important;
+    height: 50px !important;
+    bottom: 16px !important;
+    right: 16px !important;
+    font-size: 24px !important;
+  }
+}
