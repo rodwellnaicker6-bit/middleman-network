@@ -275,9 +275,50 @@ export default async function VenturePage({ params }: { params: Promise<{ slug: 
                   ))}
                 </div>
 
+                {/* Drone & AgriCulture */}
+                <div style={{ background: 'linear-gradient(135deg, #064e3b 0%, #1a3a2a 100%)', borderRadius: 20, padding: '1.75rem 2rem', color: '#fff', marginBottom: '1rem', border: '1px solid rgba(34,197,94,0.2)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1.25rem' }}>
+                    <span style={{ fontSize: 26 }}>🚁</span>
+                    <div>
+                      <div style={{ color: '#4ade80', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2 }}>YieldCore Drone Division</div>
+                      <div style={{ fontSize: 18, fontWeight: 900 }}>Eyes in the Sky. Intelligence on the Ground.</div>
+                      <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 12, marginTop: 3 }}>Autonomous drone ops over active South African farmland</div>
+                    </div>
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem', marginBottom: '1.25rem' }}>
+                    {[
+                      { icon: '📡', title: 'Multispectral Crop Scanning', text: 'Drones fly a pre-mapped grid and capture NDVI data. YieldCore AI reads plant health, stress zones and yield projections — per-hectare, per-field, updated weekly.' },
+                      { icon: '🌿', title: 'Pest & Disease Detection', text: 'AI identifies early signs of fungal infection, insect damage and nutrient deficiency before they spread. One drone flight saves weeks of manual scouting.' },
+                      { icon: '💧', title: 'Precision Spray Runs', text: 'Variable-rate pesticide and fertiliser spraying direct from the drone. No over-spray. No under-spray. Targeted down to the plant row — slash input costs by 35%.' },
+                      { icon: '🗺️', title: 'Topography & Drainage Mapping', text: '3D terrain maps show water pooling, drainage failures and erosion risk. Fix irrigation design before it costs you a season.' },
+                    ].map((d, i) => (
+                      <div key={i} style={{ background: 'rgba(255,255,255,0.05)', borderRadius: 12, padding: '1rem 1.25rem', borderLeft: `3px solid #4ade80` }}>
+                        <div style={{ fontSize: 22, marginBottom: 8 }}>{d.icon}</div>
+                        <div style={{ fontSize: 13, fontWeight: 800, color: '#fff', marginBottom: 6 }}>{d.title}</div>
+                        <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>{d.text}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(110px, 1fr))', gap: '0.5rem' }}>
+                    {[
+                      { val: '40ha/hr', label: 'Coverage rate' },
+                      { val: '−35%', label: 'Input cost savings' },
+                      { val: '2cm', label: 'Map accuracy' },
+                      { val: 'Weekly', label: 'Flight frequency' },
+                      { val: 'SACAA', label: 'Regulatory ready' },
+                      { val: '100%', label: 'Autonomous mission' },
+                    ].map(s => (
+                      <div key={s.label} style={{ background: 'rgba(74,222,128,0.08)', border: '1px solid rgba(74,222,128,0.2)', borderRadius: 8, padding: '10px', textAlign: 'center' }}>
+                        <div style={{ color: '#4ade80', fontSize: 16, fontWeight: 900 }}>{s.val}</div>
+                        <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 10, marginTop: 3 }}>{s.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
                 <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: 12, padding: '1rem 1.25rem', fontSize: 13, color: '#15803d', display: 'flex', alignItems: 'center', gap: 10 }}>
                   <span style={{ fontSize: 18 }}>🌾</span>
-                  <span><strong>This is YieldCore AI.</strong> Real-time farm intelligence, automated irrigation, satellite monitoring and carbon credit tracking — all in one platform built for South African farms.</span>
+                  <span><strong>This is YieldCore AI.</strong> Satellite monitoring, AI field analysis and autonomous drone operations — all in one platform built for South African farms. Less guessing. More yield.</span>
                 </div>
               </div>
             )}
@@ -591,6 +632,60 @@ export default async function VenturePage({ params }: { params: Promise<{ slug: 
                   </div>
                   <div style={{ marginTop: '1rem', padding: '12px 14px', background: '#fef3c7', borderRadius: 8, fontSize: 12, color: '#92400e', fontWeight: 600 }}>
                     🚀 Indicator subscription launching soon — R299–R999/month on TradingView. All 9 indicators built and ready.
+                  </div>
+                </div>
+
+                {/* Live Application Links */}
+                <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 16, padding: '1.5rem', marginBottom: '1rem' }}>
+                  <div style={{ fontWeight: 800, fontSize: 15, color: '#0f172a', marginBottom: 4 }}>🔗 View Our Live Applications</div>
+                  <div style={{ fontSize: 12, color: '#64748b', marginBottom: '1rem' }}>Every app listed below is deployed and live — click to see the real thing.</div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '0.75rem' }}>
+                    {[
+                      {
+                        name: 'Middleman Network',
+                        desc: 'The full TMN marketplace — 100+ categories, quote forms, lead capture. The live production platform.',
+                        url: 'https://middleman-network.vercel.app',
+                        badge: '● LIVE',
+                        badgeColor: '#22c55e',
+                        icon: '🌐',
+                        cta: 'View Platform →',
+                        bg: '#f0fdf4',
+                        border: '#bbf7d0',
+                      },
+                      {
+                        name: 'DR Autotronics — IDC Investor Deck',
+                        desc: 'Full investor presentation: 6 divisions, R9.3M+ net assets, R694K funding ask. Built for IDC Dealmakers.',
+                        url: 'https://dr-autotronics-idc.vercel.app',
+                        badge: 'Password: DRA2026IDC',
+                        badgeColor: '#6366f1',
+                        icon: '📊',
+                        cta: 'View Investor Deck →',
+                        bg: '#eff6ff',
+                        border: '#bfdbfe',
+                      },
+                      {
+                        name: 'TradingView — Indicators',
+                        desc: '9 proprietary indicators built and owned by Scope Indices. Preview on TradingView chart platform.',
+                        url: 'https://www.tradingview.com',
+                        badge: 'Launching R299/mo',
+                        badgeColor: '#f59e0b',
+                        icon: '📈',
+                        cta: 'View TradingView →',
+                        bg: '#fefce8',
+                        border: '#fde68a',
+                      },
+                    ].map((app, i) => (
+                      <a key={i} href={app.url} target="_blank" rel="noopener noreferrer"
+                        style={{ background: app.bg, border: `1px solid ${app.border}`, borderRadius: 12, padding: '1.25rem', display: 'block', textDecoration: 'none', transition: 'transform 0.1s' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
+                          <span style={{ fontSize: 24 }}>{app.icon}</span>
+                          <span style={{ background: app.badgeColor + '20', color: app.badgeColor, fontSize: 9, fontWeight: 800, padding: '3px 8px', borderRadius: 20, textAlign: 'center', lineHeight: 1.4 }}>{app.badge}</span>
+                        </div>
+                        <div style={{ fontWeight: 800, fontSize: 13, color: '#0f172a', marginBottom: 6 }}>{app.name}</div>
+                        <div style={{ fontSize: 11.5, color: '#64748b', lineHeight: 1.5, marginBottom: 10 }}>{app.desc}</div>
+                        <div style={{ fontSize: 12, fontWeight: 700, color: '#0f172a' }}>{app.cta}</div>
+                      </a>
+                    ))}
                   </div>
                 </div>
 
