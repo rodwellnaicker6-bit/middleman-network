@@ -441,7 +441,8 @@ export default async function VenturePage({ params }: { params: Promise<{ slug: 
                   </div>
 
                   {/* Full session history */}
-                  <div style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 12, overflow: 'hidden' }}>
+                  <div className="table-scroll">
+                  <div style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 12, overflow: 'hidden', minWidth: 580 }}>
                     <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1.1fr 0.9fr 1fr 0.9fr', padding: '10px 16px', background: 'rgba(255,255,255,0.06)', fontSize: 10, color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>
                       <span>Date</span><span>Platform</span><span>Instrument</span><span>Detail</span><span>P&L</span>
                     </div>
@@ -472,6 +473,7 @@ export default async function VenturePage({ params }: { params: Promise<{ slug: 
                       <span style={{ color: '#22c55e', fontWeight: 900, fontSize: 14 }}>+$2,018.02</span>
                     </div>
                   </div>
+                  </div>{/* /table-scroll */}
                 </div>
 
                 {/* Blue Guardian challenge callout */}
@@ -579,7 +581,8 @@ export default async function VenturePage({ params }: { params: Promise<{ slug: 
                   {/* Signal flow diagram */}
                   <div style={{ background: '#0f172a', borderRadius: 14, padding: '1.25rem 1.5rem' }}>
                     <div style={{ color: '#94a3b8', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1.5, marginBottom: '1rem' }}>Signal Flow — Market to Execution</div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                    <div className="flow-scroll">
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'nowrap', justifyContent: 'flex-start', minWidth: 560 }}>
                       {[
                         { label: 'Live Market Data', sub: 'XAUUSD · US30 · MGCQ6', color: '#64748b' },
                         { label: '→', sub: '', color: '#334155', small: true },
@@ -603,6 +606,7 @@ export default async function VenturePage({ params }: { params: Promise<{ slug: 
                             </div>
                       ))}
                     </div>
+                    </div>{/* /flow-scroll */}
                   </div>
                 </div>
 

@@ -562,7 +562,8 @@ export default function GroupPage() {
             {/* The closed loop proof */}
             <div style={{ marginTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '2rem' }}>
               <div style={{ color: '#f59e0b', fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2, marginBottom: '1rem', textAlign: 'center' }}>The Closed Loop</div>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
+              <div className="flow-scroll">
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', flexWrap: 'nowrap', gap: '0.5rem', minWidth: 580 }}>
                 {[
                   { label: 'D.R. Autotronics', sub: 'generates income', color: '#ef4444' },
                   { arrow: true, label: 'funds' },
@@ -587,6 +588,7 @@ export default function GroupPage() {
                       </div>
                 ))}
               </div>
+              </div>{/* /flow-scroll */}
               <p style={{ color: '#475569', fontSize: 12, textAlign: 'center', marginTop: '1.5rem', maxWidth: 560, margin: '1.5rem auto 0' }}>
                 The loop is self-reinforcing. Every revolution makes the whole group stronger — more revenue, smarter AI, cheaper hardware, more clients. This is not theory — these flows are operating today.
               </p>
