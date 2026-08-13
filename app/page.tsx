@@ -8,43 +8,67 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f1a2e 100%)', color: '#fff', padding: '5rem 0 6rem', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', top: 0, right: 0, width: '50%', height: '100%', background: 'radial-gradient(ellipse at 80% 50%, rgba(245,158,11,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <section style={{ background: '#0a0f1a', color: '#fff', padding: '6rem 0 7rem', position: 'relative', overflow: 'hidden' }}>
+        {/* Ambient glow */}
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none',
+          background: 'radial-gradient(ellipse 70% 60% at 80% 40%, rgba(245,158,11,0.07) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 10% 80%, rgba(99,102,241,0.06) 0%, transparent 50%)' }} />
+        {/* Grid texture */}
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.03,
+          backgroundImage: 'linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)',
+          backgroundSize: '60px 60px' }} />
+
         <div className="container" style={{ position: 'relative' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(245,158,11,0.15)', border: '1px solid rgba(245,158,11,0.3)', borderRadius: 20, padding: '6px 14px', marginBottom: 24 }}>
-            <span style={{ color: '#f59e0b', fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>🇿🇦 South Africa&apos;s Smart B2B Marketplace</span>
+          {/* Eyebrow */}
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.22)', borderRadius: 999, padding: '5px 14px', marginBottom: 28 }}>
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981', display: 'inline-block', flexShrink: 0 }} />
+            <span style={{ color: '#f59e0b', fontSize: 11.5, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' }}>South Africa&apos;s Smart B2B Marketplace</span>
           </div>
-          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 900, margin: '0 0 1.5rem', lineHeight: 1.1, maxWidth: 700 }}>
-            Connect. Quote. <span style={{ color: '#f59e0b' }}>Grow.</span>
+
+          <h1 style={{ fontSize: 'clamp(2.25rem, 6vw, 4rem)', fontWeight: 900, margin: '0 0 1.5rem', lineHeight: 1.05, letterSpacing: '-0.03em', maxWidth: 680 }}>
+            The platform South African<br />businesses were waiting for.
           </h1>
-          <p style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)', color: '#94a3b8', maxWidth: 560, lineHeight: 1.7, margin: '0 0 2.5rem' }}>
-            The Middleman Network connects South African businesses with verified service providers and suppliers across {INDUSTRIES.length} industries — powered by AI quoting, subscription leads and 0% commission.
+
+          <p style={{ fontSize: 'clamp(1rem, 1.8vw, 1.2rem)', color: '#94a3b8', maxWidth: 520, lineHeight: 1.75, margin: '0 0 2.75rem', fontWeight: 400 }}>
+            Connect with verified service providers across {INDUSTRIES.length} industries. Get AI-powered quotes in minutes. Pay zero commission — ever.
           </p>
-          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-            <Link href="/marketplace" style={{ background: '#f59e0b', color: '#0f172a', fontWeight: 800, fontSize: 16, padding: '14px 28px', borderRadius: 10, display: 'inline-block' }}>
-              Browse Marketplace →
-            </Link>
-            <Link href="/get-listed" style={{ background: 'rgba(255,255,255,0.08)', color: '#fff', fontWeight: 700, fontSize: 16, padding: '14px 28px', borderRadius: 10, border: '1px solid rgba(255,255,255,0.15)', display: 'inline-block' }}>
-              List Your Business
-            </Link>
+
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+            <Link href="/marketplace" className="btn-gold">Browse Marketplace →</Link>
+            <Link href="/get-listed" className="btn-ghost">List Your Business</Link>
+          </div>
+
+          {/* Trust badges */}
+          <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', marginTop: '3rem', paddingTop: '2.5rem', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+            {[
+              { label: `${INDUSTRIES.length} Industries` },
+              { label: `${providerNiches.length}+ Service Niches` },
+              { label: '0% Commission' },
+              { label: 'POPIA Compliant' },
+              { label: 'SSL Secured' },
+            ].map(b => (
+              <div key={b.label} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12.5, color: '#64748b', fontWeight: 500 }}>
+                <span style={{ color: '#10b981', fontSize: 11, fontWeight: 800 }}>✓</span>
+                {b.label}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ── STATS BAR ────────────────────────────────────────── */}
-      <section style={{ background: '#fff', borderBottom: '1px solid #e2e8f0' }}>
+      <section style={{ background: '#fff', borderBottom: '1px solid #f1f5f9' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', textAlign: 'center', padding: '1.5rem 0' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', textAlign: 'center', padding: '1.75rem 0' }}>
             {[
               { value: `${INDUSTRIES.length}`, label: 'Industries' },
               { value: `${providerNiches.length}+`, label: 'Service Niches' },
-              { value: `${VENTURES.length}`, label: 'Ventures' },
+              { value: `${VENTURES.length}`, label: 'Group Ventures' },
               { value: '0%', label: 'Commission' },
               { value: formatZAR(avgJobValue), label: 'Avg Job Value' },
-            ].map(stat => (
-              <div key={stat.label} style={{ padding: '1rem', borderRight: '1px solid #f1f5f9' }}>
-                <div style={{ fontSize: 'clamp(1.2rem, 3vw, 2rem)', fontWeight: 900, color: '#0f172a' }}>{stat.value}</div>
-                <div style={{ fontSize: 12, color: '#64748b', textTransform: 'uppercase', letterSpacing: 0.5, marginTop: 2 }}>{stat.label}</div>
+            ].map((stat, i) => (
+              <div key={stat.label} style={{ padding: '0.75rem 1rem', borderRight: i < 4 ? '1px solid #f1f5f9' : 'none' }}>
+                <div style={{ fontSize: 'clamp(1.3rem, 2.5vw, 1.9rem)', fontWeight: 900, color: '#0a0f1a', letterSpacing: '-0.02em' }}>{stat.value}</div>
+                <div style={{ fontSize: 11.5, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: 3, fontWeight: 600 }}>{stat.label}</div>
               </div>
             ))}
           </div>
