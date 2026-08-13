@@ -46,25 +46,26 @@ export default function MarketplacePage() {
 
       <div className="container" style={{ padding: '2rem 1.5rem' }}>
         {/* Filters */}
-        <div style={{ background: '#fff', borderRadius: 16, padding: '1rem 1.5rem', border: '1px solid #e2e8f0', marginBottom: '1.5rem', display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
-          <span style={{ fontSize: 13, fontWeight: 700, color: '#64748b' }}>Filter:</span>
-          <select value={selectedIndustry} onChange={e => setSelectedIndustry(e.target.value)}
-            style={{ border: '1px solid #e2e8f0', borderRadius: 8, padding: '9px 14px', fontSize: 14, background: '#fff', cursor: 'pointer', outline: 'none' }}>
-            <option value="all">All Industries</option>
-            {INDUSTRIES.map(i => <option key={i.slug} value={i.slug}>{i.icon} {i.name}</option>)}
-          </select>
+        <div style={{ background: '#fff', borderRadius: 14, padding: '0.875rem 1.25rem', border: '1px solid #e2e8f0', marginBottom: '1rem', display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
           <select value={selectedType} onChange={e => setSelectedType(e.target.value)}
-            style={{ border: '1px solid #e2e8f0', borderRadius: 8, padding: '9px 14px', fontSize: 14, background: '#fff', cursor: 'pointer', outline: 'none' }}>
+            style={{ border: '1px solid #e2e8f0', borderRadius: 8, padding: '8px 14px', fontSize: 13, background: '#fff', cursor: 'pointer', outline: 'none', fontWeight: 600, color: '#0f172a' }}>
             <option value="all">All Types</option>
             <option value="provider">Service Providers</option>
             <option value="supplier">Suppliers</option>
           </select>
           {search && (
-            <button onClick={() => setSearch('')} style={{ background: '#f1f5f9', border: 'none', color: '#475569', fontSize: 12, padding: '6px 12px', borderRadius: 6, cursor: 'pointer', fontWeight: 600 }}>
+            <button onClick={() => setSearch('')} style={{ background: '#f1f5f9', border: 'none', color: '#475569', fontSize: 12, padding: '7px 12px', borderRadius: 6, cursor: 'pointer', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 5 }}>
               ✕ Clear search
             </button>
           )}
-          <div style={{ color: '#94a3b8', fontSize: 13, marginLeft: 'auto', whiteSpace: 'nowrap' }}>{filtered.length} result{filtered.length !== 1 ? 's' : ''}</div>
+          {selectedIndustry !== 'all' && (
+            <button onClick={() => setSelectedIndustry('all')} style={{ background: '#f1f5f9', border: 'none', color: '#475569', fontSize: 12, padding: '7px 12px', borderRadius: 6, cursor: 'pointer', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 5 }}>
+              ✕ Clear industry
+            </button>
+          )}
+          <div style={{ color: '#94a3b8', fontSize: 13, marginLeft: 'auto', whiteSpace: 'nowrap', fontWeight: 600 }}>
+            <span style={{ color: '#0f172a', fontWeight: 800 }}>{filtered.length}</span> result{filtered.length !== 1 ? 's' : ''}
+          </div>
         </div>
 
         {/* Industry pills */}

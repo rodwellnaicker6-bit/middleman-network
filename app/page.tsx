@@ -70,114 +70,95 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── WHY THIS WORKS ───────────────────────────────────── */}
-      <section style={{ padding: '5rem 0', background: '#f8fafc' }}>
+      {/* ── VALUE PROPS ──────────────────────────────────────── */}
+      <section style={{ padding: '5rem 0', background: '#fff' }}>
         <div className="container">
-
-          {/* Header */}
-          <div style={{ textAlign: 'center', marginBottom: '3.5rem', maxWidth: 720, margin: '0 auto 3.5rem' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fef3c7', border: '1px solid #fde68a', borderRadius: 20, padding: '4px 14px', marginBottom: 16 }}>
-              <span style={{ color: '#92400e', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1.5 }}>Built from experience — not theory</span>
-            </div>
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem', lineHeight: 1.2 }}>
-              Why someone like us can give every business exactly what they need
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <div className="section-label section-label-light" style={{ marginBottom: 14 }}>Why it works</div>
+            <h2 style={{ color: '#0a0f1a', margin: '0 0 0.75rem', lineHeight: 1.1 }}>
+              Built by a business owner.<br />
+              <span style={{ color: '#64748b', fontWeight: 600, fontSize: '0.85em' }}>Not a startup. Not a VC. Real 30-year SA experience.</span>
             </h2>
-            <p style={{ color: '#475569', fontSize: 16, lineHeight: 1.7, margin: 0 }}>
-              The Middleman Network was not built in a boardroom. It was built by a business owner who spent 30 years dealing with every problem a South African business faces — and decided to build the platform he always wished existed.
-            </p>
           </div>
 
-          {/* The core argument — 3 columns */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+          {/* 3 big value prop cards */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.25rem', marginBottom: '2.5rem' }}>
             {[
               {
-                icon: '🏛️',
-                title: 'Built on 30 years of real business',
-                color: '#f59e0b',
-                body: 'We didn\'t research this market — we lived it. Automotive, engineering, trading, finance, legal, logistics — every division in this ecosystem came from a real need we faced as a South African operator. That\'s why the scope is right. We know what businesses actually need.',
-                points: ['30-year family legacy in automotive & engineering', '6 active divisions across 7 sectors', 'R13.88M group network worth — built without external investment'],
+                accent: '#f59e0b',
+                icon: '💳',
+                big: '0%',
+                label: 'Commission. Always.',
+                body: 'Every rand you earn from a job goes straight to you. We earn via subscriptions only. No cuts, no surprises — ever.',
+                tag: 'South Africa\'s only zero-commission B2B marketplace',
               },
               {
-                icon: '✅',
-                title: 'The right providers. The right credentials.',
-                color: '#10b981',
-                body: 'Every niche on this platform requires verified credentials. RMI, PSIRA, LPC, FSP, SACAP, PIRB, NHBRC — we check before we list. That means when a business finds a provider here, they\'re not gambling. They\'re connecting with someone who can actually deliver the work legally and professionally.',
-                points: [`Compliance-checked across ${providerNiches.length}+ service niches`, 'Industry credentials verified before listing', 'Zero commission — you pay the provider direct'],
+                accent: '#10b981',
+                icon: '🔒',
+                big: `${providerNiches.length}+`,
+                label: 'Credential-verified niches',
+                body: 'RMI. PSIRA. LPC. FSP. SACAP. PIRB. NHBRC. Each niche has a compliance requirement. We check it. You trust it.',
+                tag: 'No unverified providers ever get listed',
               },
               {
-                icon: '🔗',
-                title: 'One ecosystem — everything connects',
-                color: '#6366f1',
-                body: 'A business needs legal, insurance, financial planning, IT security, logistics, fleet and maintenance — all at once, not one at a time. The Middleman Network is the only South African B2B platform that covers all of it under one roof, connecting 22 industries that feed into each other.',
-                points: [`${INDUSTRIES.length} industries on one platform`, `${providerNiches.length}+ verified service niches`, 'Legal, financial, cyber, fleet, transport — all covered'],
+                accent: '#818cf8',
+                icon: '🌐',
+                big: `${INDUSTRIES.length}`,
+                label: 'Industries. One platform.',
+                body: 'Legal, insurance, automotive, logistics, solar, fintech, construction, AI — a full SA business ecosystem, cross-connected.',
+                tag: 'The only SA marketplace with this scope',
               },
             ].map((card, i) => (
-              <div key={i} style={{ background: '#fff', borderRadius: 20, border: '1px solid #e2e8f0', padding: '2rem', borderTop: `3px solid ${card.color}` }}>
-                <div style={{ fontSize: 32, marginBottom: 12 }}>{card.icon}</div>
-                <h3 style={{ fontWeight: 900, fontSize: 17, color: '#0f172a', margin: '0 0 0.75rem', lineHeight: 1.3 }}>{card.title}</h3>
-                <p style={{ color: '#475569', fontSize: 13.5, lineHeight: 1.7, margin: '0 0 1rem' }}>{card.body}</p>
-                <div style={{ display: 'grid', gap: 6 }}>
-                  {card.points.map((pt, j) => (
-                    <div key={j} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
-                      <span style={{ color: card.color, fontWeight: 900, flexShrink: 0, marginTop: 1 }}>→</span>
-                      <span style={{ fontSize: 12.5, color: '#334155' }}>{pt}</span>
-                    </div>
+              <div key={i} className="card-glow" style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 20, padding: '2rem', borderLeft: `3px solid ${card.accent}`, position: 'relative', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', top: -20, right: -20, width: 100, height: 100, borderRadius: '50%', background: `${card.accent}10`, pointerEvents: 'none' }} />
+                <div style={{ fontSize: 28, marginBottom: 12 }}>{card.icon}</div>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 900, color: card.accent, lineHeight: 1, marginBottom: 6, letterSpacing: '-0.04em' }}>{card.big}</div>
+                <div style={{ fontWeight: 800, fontSize: 16, color: '#0a0f1a', marginBottom: 10 }}>{card.label}</div>
+                <p style={{ color: '#64748b', fontSize: 13.5, lineHeight: 1.7, margin: '0 0 1.25rem' }}>{card.body}</p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 5, background: `${card.accent}15`, border: `1px solid ${card.accent}30`, borderRadius: 999, padding: '4px 10px' }}>
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: card.accent, display: 'inline-block', flexShrink: 0 }} />
+                  <span style={{ fontSize: 11, fontWeight: 700, color: card.accent }}>{card.tag}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Comparison strip — TMN vs alternatives */}
+          <div style={{ background: '#0a0f1a', borderRadius: 20, padding: '2rem', overflow: 'hidden' }}>
+            <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+              <div style={{ color: '#f59e0b', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2, marginBottom: 6 }}>How TMN compares</div>
+              <div style={{ color: '#94a3b8', fontSize: 13 }}>Why businesses choose us over the alternatives</div>
+            </div>
+            <div style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', minWidth: 520, borderCollapse: 'collapse', fontSize: 13 }}>
+                <thead>
+                  <tr>
+                    <th style={{ textAlign: 'left', padding: '8px 12px', color: '#475569', fontWeight: 600, fontSize: 11, textTransform: 'uppercase', letterSpacing: 1 }}>Feature</th>
+                    {['TMN', 'Gumtree', 'FB Groups', 'Bark.com'].map(h => (
+                      <th key={h} style={{ textAlign: 'center', padding: '8px 12px', color: h === 'TMN' ? '#f59e0b' : '#475569', fontWeight: h === 'TMN' ? 900 : 600, fontSize: 12 }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    ['0% commission on jobs', '✅', '✅', '✅', '❌ 15–20%'],
+                    ['Verified credentials', '✅', '❌', '❌', '❌'],
+                    ['AI quote estimation', '✅', '❌', '❌', '❌'],
+                    ['22 industry categories', '✅', '❌', '❌', '❌'],
+                    ['SA-specific niches', '✅', '⚠️', '⚠️', '⚠️'],
+                    ['Flat predictable fee', '✅', '❌', '✅', '❌'],
+                  ].map((row, i) => (
+                    <tr key={i} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                      <td style={{ padding: '10px 12px', color: '#94a3b8', fontWeight: 500 }}>{row[0]}</td>
+                      {row.slice(1).map((val, j) => (
+                        <td key={j} style={{ textAlign: 'center', padding: '10px 12px', fontSize: 15, background: j === 0 ? 'rgba(245,158,11,0.04)' : 'transparent' }}>{val}</td>
+                      ))}
+                    </tr>
                   ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* The full scope — what we cover */}
-          <div style={{ background: '#0f172a', borderRadius: 24, padding: '2.5rem', marginBottom: '2rem' }}>
-            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-              <div style={{ color: '#f59e0b', fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2, marginBottom: 8 }}>Complete Business Coverage</div>
-              <h3 style={{ color: '#fff', fontWeight: 900, fontSize: 20, margin: 0 }}>Every service a South African business will ever need</h3>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.75rem' }}>
-              {[
-                { icon: '⚖️', label: 'Legal & Attorneys', sub: 'Wills, contracts, labour, conveyancing' },
-                { icon: '💰', label: 'Financial Planning', sub: 'Tax, bookkeeping, payroll, advisors' },
-                { icon: '🛡️', label: 'Insurance', sub: 'Life, business, short-term, medical aid' },
-                { icon: '🔐', label: 'Cybersecurity & AI', sub: 'Fraud detection, POPIA, IT audits' },
-                { icon: '🚚', label: 'Logistics & Transport', sub: 'Courier, freight, cold chain, moving' },
-                { icon: '🚐', label: 'Fleet Services', sub: 'GPS tracking, maintenance, financing' },
-                { icon: '🚙', label: 'Automotive Mobile', sub: 'Detailing, callouts, panel beating, tyres' },
-                { icon: '🔧', label: 'ECU & Auto-Tech', sub: 'Programming, diagnostics, remapping' },
-                { icon: '🏗️', label: 'Construction', sub: 'Builders, plumbers, roofers, carpenters' },
-                { icon: '⚡', label: 'Energy & Solar', sub: 'Solar installers, electricians' },
-                { icon: '🔒', label: 'Security', sub: 'CCTV, alarms, electric fence' },
-                { icon: '🌾', label: 'Agriculture AI', sub: 'Smart farms, sensors, irrigation' },
-                { icon: '💳', label: 'Fintech & Payments', sub: 'Digital tipping, NFC, hospitality' },
-                { icon: '🧹', label: 'Cleaning & Home', sub: 'Commercial, mobile, waste, handyman' },
-                { icon: '🏥', label: 'Health & Wellness', sub: 'Occupational health, corporate wellness' },
-                { icon: '📈', label: 'Trading Technology', sub: 'EAs, indicators, infrastructure' },
-              ].map((cat, i) => (
-                <div key={i} style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: '1rem' }}>
-                  <div style={{ fontSize: 22, marginBottom: 6 }}>{cat.icon}</div>
-                  <div style={{ color: '#fff', fontSize: 12, fontWeight: 700 }}>{cat.label}</div>
-                  <div style={{ color: '#475569', fontSize: 11, marginTop: 3, lineHeight: 1.4 }}>{cat.sub}</div>
-                </div>
-              ))}
+                </tbody>
+              </table>
             </div>
           </div>
-
-          {/* The closing pitch */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
-            {[
-              { icon: '🎯', title: 'Right scope for every job', body: 'Whether it\'s a R650 mobile car wash or a R85,000 AI fraud detection system — the platform scopes the job correctly, connects you to the right level of provider and gets you a quote fast.' },
-              { icon: '📋', title: 'Right credentials every time', body: 'Every listed provider is credential-checked. LPC for lawyers. FSP for financial advisors. RMI for automotive. PSIRA for security. You never need to wonder if the person is qualified.' },
-              { icon: '🚀', title: 'Real workmanship. Real finish.', body: 'We don\'t list anyone. We list verified professionals who show up, do the work and produce a finished result. The platform is built on 30 years of knowing what good workmanship looks like.' },
-              { icon: '💡', title: 'This is realizable — right now', body: 'Every niche is live today. Every quote form works. Providers can list right now. Businesses can submit jobs right now. This isn\'t a vision deck — it\'s a working platform with 116 live pages.' },
-            ].map((item, i) => (
-              <div key={i} style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 16, padding: '1.5rem' }}>
-                <div style={{ fontSize: 26, marginBottom: 10 }}>{item.icon}</div>
-                <div style={{ fontWeight: 800, fontSize: 15, color: '#0f172a', marginBottom: 8 }}>{item.title}</div>
-                <p style={{ color: '#64748b', fontSize: 13, lineHeight: 1.6, margin: 0 }}>{item.body}</p>
-              </div>
-            ))}
-          </div>
-
         </div>
       </section>
 

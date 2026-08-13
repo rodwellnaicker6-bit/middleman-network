@@ -559,6 +559,40 @@ button:not(:disabled):active {
   padding-bottom: 4px;
 }
 
+/* ── COMPARISON TABLE ──────────────────────────────────────── */
+table { border-collapse: collapse; }
+td, th { vertical-align: middle; }
+
+/* ── PREMIUM SECTION DIVIDERS ──────────────────────────────── */
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(245,158,11,0.5) 30%, rgba(245,158,11,0.8) 50%, rgba(245,158,11,0.5) 70%, transparent);
+  margin: 0;
+}
+
+/* ── METRIC CARD ───────────────────────────────────────────── */
+.metric-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.metric-card:hover {
+  border-color: rgba(245,158,11,0.3);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.07), 0 0 0 1px rgba(245,158,11,0.1);
+  transform: translateY(-3px);
+}
+.metric-num {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
 /* ── SELECTION ─────────────────────────────────────────────── */
 ::selection {
   background: rgba(245, 158, 11, 0.25);
