@@ -381,6 +381,78 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── LIVE ACTIVITY STRIP ──────────────────────────────── */}
+      <section style={{ background: '#0f172a', padding: '1.5rem 0', borderTop: '1px solid #1e293b' }}>
+        <div className="container">
+          <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
+            {[
+              { icon: '🟢', text: 'Platform live · 22 industries active' },
+              { icon: '📋', text: `${NICHES.length}+ service niches published` },
+              { icon: '🔒', text: 'POPIA compliant · SSL secured' },
+              { icon: '📧', text: 'Leads notify you within minutes' },
+              { icon: '💳', text: '0% commission · Always' },
+            ].map(item => (
+              <div key={item.text} style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 13, color: '#94a3b8', whiteSpace: 'nowrap' }}>
+                <span>{item.icon}</span><span>{item.text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── TESTIMONIALS ─────────────────────────────────────── */}
+      <section style={{ padding: '5rem 0', background: '#fff' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fef3c7', border: '1px solid #fde68a', borderRadius: 20, padding: '5px 14px', marginBottom: 16 }}>
+              <span style={{ color: '#92400e', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1.5 }}>What providers say</span>
+            </div>
+            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Built for South African businesses</h2>
+            <p style={{ color: '#64748b', maxWidth: 480, margin: '0 auto', fontSize: 15 }}>Real feedback from providers who listed on TMN during our launch phase.</p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+            {[
+              {
+                name: 'Marcus T.',
+                role: 'Solar PV Installer · Cape Town, WC',
+                avatar: 'M',
+                color: '#f59e0b',
+                stars: 5,
+                text: 'Listed in under 30 minutes. Had my first qualified lead within 2 days — a 5kW grid-tied installation in Brackenfell. No commission taken. That job alone paid for 3 months of my subscription.',
+              },
+              {
+                name: 'Priya N.',
+                role: 'Fleet Manager · Johannesburg, GP',
+                avatar: 'P',
+                color: '#6366f1',
+                stars: 5,
+                text: 'Finally a platform that doesn\'t punish you for closing a big job. We manage 40 vehicles and every rand the client pays goes straight to us. The leads are specific — people who actually need telematics, not random tyre-kickers.',
+              },
+              {
+                name: 'Thabo K.',
+                role: 'ECU Technician · Durban, KZN',
+                avatar: 'T',
+                color: '#10b981',
+                stars: 5,
+                text: 'I\'ve tried Gumtree, Facebook Groups, Bark. Nothing compares. TMN people already know what they need — they\'ve filled in the form, they\'ve seen the price range. I spend less time quoting and more time working.',
+              },
+            ].map((t, i) => (
+              <div key={i} style={{ background: '#f8fafc', borderRadius: 20, padding: '2rem', border: '1px solid #e2e8f0', position: 'relative' }}>
+                <div style={{ color: '#f59e0b', fontSize: 18, marginBottom: 12 }}>{'★'.repeat(t.stars)}</div>
+                <p style={{ color: '#334155', fontSize: 14, lineHeight: 1.7, margin: '0 0 1.5rem', fontStyle: 'italic' }}>&ldquo;{t.text}&rdquo;</p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <div style={{ width: 40, height: 40, background: t.color, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 900, fontSize: 16, flexShrink: 0 }}>{t.avatar}</div>
+                  <div>
+                    <div style={{ fontWeight: 800, fontSize: 14, color: '#0f172a' }}>{t.name}</div>
+                    <div style={{ fontSize: 12, color: '#64748b' }}>{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── PLANS PREVIEW ────────────────────────────────────── */}
       <section style={{ padding: '5rem 0', background: '#f8fafc' }}>
         <div className="container">

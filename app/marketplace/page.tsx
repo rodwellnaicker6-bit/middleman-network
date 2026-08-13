@@ -21,32 +21,50 @@ export default function MarketplacePage() {
       {/* Header */}
       <div style={{ background: '#0f172a', color: '#fff', padding: '3rem 0' }}>
         <div className="container">
-          <h1 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 900, margin: '0 0 0.75rem' }}>Marketplace</h1>
-          <p style={{ color: '#94a3b8', margin: 0, fontSize: 16 }}>{NICHES.length} niches across {INDUSTRIES.length} industries — find exactly what you need.</p>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(245,158,11,0.15)', border: '1px solid rgba(245,158,11,0.3)', borderRadius: 20, padding: '5px 14px', marginBottom: 16 }}>
+            <span style={{ width: 7, height: 7, background: '#10b981', borderRadius: '50%', display: 'inline-block' }} />
+            <span style={{ color: '#f59e0b', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1.5 }}>South Africa&apos;s Smart B2B Marketplace</span>
+          </div>
+          <h1 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: 900, margin: '0 0 0.75rem' }}>Browse All Services</h1>
+          <p style={{ color: '#94a3b8', margin: '0 0 1.5rem', fontSize: 16, maxWidth: 540 }}>
+            {NICHES.length} verified niches across {INDUSTRIES.length} industries. Search, filter and get a quote in under 2 minutes.
+          </p>
+          {/* Inline search in hero */}
+          <div style={{ display: 'flex', gap: 8, maxWidth: 520 }}>
+            <input
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              placeholder="e.g. solar, ECU repair, fleet tracking..."
+              style={{ flex: 1, border: 'none', borderRadius: 10, padding: '13px 16px', fontSize: 15, outline: 'none', background: 'rgba(255,255,255,0.1)', color: '#fff', backdropFilter: 'blur(4px)' }}
+            />
+            <div style={{ background: '#f59e0b', color: '#0f172a', fontWeight: 800, padding: '13px 20px', borderRadius: 10, fontSize: 14, whiteSpace: 'nowrap', display: 'flex', alignItems: 'center' }}>
+              {filtered.length} results
+            </div>
+          </div>
         </div>
       </div>
 
       <div className="container" style={{ padding: '2rem 1.5rem' }}>
         {/* Filters */}
-        <div style={{ background: '#fff', borderRadius: 16, padding: '1.5rem', border: '1px solid #e2e8f0', marginBottom: '2rem', display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
-          <input
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            placeholder="Search niches..."
-            style={{ flex: 1, minWidth: 160, border: '1px solid #e2e8f0', borderRadius: 8, padding: '10px 14px', fontSize: 14, outline: 'none' }}
-          />
+        <div style={{ background: '#fff', borderRadius: 16, padding: '1rem 1.5rem', border: '1px solid #e2e8f0', marginBottom: '1.5rem', display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+          <span style={{ fontSize: 13, fontWeight: 700, color: '#64748b' }}>Filter:</span>
           <select value={selectedIndustry} onChange={e => setSelectedIndustry(e.target.value)}
-            style={{ border: '1px solid #e2e8f0', borderRadius: 8, padding: '10px 14px', fontSize: 14, background: '#fff', cursor: 'pointer', outline: 'none' }}>
+            style={{ border: '1px solid #e2e8f0', borderRadius: 8, padding: '9px 14px', fontSize: 14, background: '#fff', cursor: 'pointer', outline: 'none' }}>
             <option value="all">All Industries</option>
             {INDUSTRIES.map(i => <option key={i.slug} value={i.slug}>{i.icon} {i.name}</option>)}
           </select>
           <select value={selectedType} onChange={e => setSelectedType(e.target.value)}
-            style={{ border: '1px solid #e2e8f0', borderRadius: 8, padding: '10px 14px', fontSize: 14, background: '#fff', cursor: 'pointer', outline: 'none' }}>
+            style={{ border: '1px solid #e2e8f0', borderRadius: 8, padding: '9px 14px', fontSize: 14, background: '#fff', cursor: 'pointer', outline: 'none' }}>
             <option value="all">All Types</option>
             <option value="provider">Service Providers</option>
             <option value="supplier">Suppliers</option>
           </select>
-          <div style={{ color: '#94a3b8', fontSize: 13, whiteSpace: 'nowrap' }}>{filtered.length} result{filtered.length !== 1 ? 's' : ''}</div>
+          {search && (
+            <button onClick={() => setSearch('')} style={{ background: '#f1f5f9', border: 'none', color: '#475569', fontSize: 12, padding: '6px 12px', borderRadius: 6, cursor: 'pointer', fontWeight: 600 }}>
+              ✕ Clear search
+            </button>
+          )}
+          <div style={{ color: '#94a3b8', fontSize: 13, marginLeft: 'auto', whiteSpace: 'nowrap' }}>{filtered.length} result{filtered.length !== 1 ? 's' : ''}</div>
         </div>
 
         {/* Industry pills */}

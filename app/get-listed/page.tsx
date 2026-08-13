@@ -235,6 +235,26 @@ export default function GetListedPage() {
             </div>
           </div>
         </div>
+
+        {/* ── FAQ SECTION ─────────────────────────────────── */}
+        <div style={{ marginTop: '4rem', maxWidth: 720, margin: '4rem auto 0' }}>
+          <h2 style={{ fontWeight: 900, fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)', color: '#0f172a', marginBottom: '2rem', textAlign: 'center' }}>Common Questions</h2>
+          <div style={{ display: 'grid', gap: '1rem' }}>
+            {[
+              { q: 'Do I pay commission on jobs I close?', a: 'Never. You pay a flat monthly subscription. Every rand the client pays you stays with you. 0% commission, always.' },
+              { q: 'What are "lead credits"?', a: 'Each subscription plan includes a monthly credit allocation. You spend credits to claim leads in your niche. Once claimed, the client\'s contact details are released to you and you reach out directly.' },
+              { q: 'How long before my listing goes live?', a: 'Applications are reviewed within 24 hours. Once verified, your profile goes live immediately and you start receiving leads in your niche area.' },
+              { q: 'Do I need to be a registered company?', a: 'No — sole proprietors, CCs, and registered companies all qualify. You do need to provide basic business details and relevant credentials for regulated niches (e.g. SAPVIA PV GreenCard for solar, Wireman\'s Licence for electrical).' },
+              { q: 'Can I list in more than one niche?', a: 'Yes. Pro and Enterprise plans allow multi-niche listings. If you offer solar and electrical, you can list in both and receive leads from both categories.' },
+              { q: 'What if I don\'t get any leads?', a: 'Lead volume depends on demand in your area and niche. We show you the live leads board before you apply so you can see how active your niche is. If a niche is too quiet, we\'ll let you know and suggest alternatives.' },
+            ].map((faq, i) => (
+              <div key={i} style={{ background: '#fff', borderRadius: 14, padding: '1.25rem 1.5rem', border: '1px solid #e2e8f0' }}>
+                <div style={{ fontWeight: 800, fontSize: 15, color: '#0f172a', marginBottom: 8 }}>Q: {faq.q}</div>
+                <div style={{ fontSize: 14, color: '#475569', lineHeight: 1.7 }}>{faq.a}</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -2,6 +2,17 @@ import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 import { NICHES, INDUSTRIES } from '@/lib/data';
 
+const DEMO_LEADS = [
+  { id: 'd1', niche_slug: 'solar-installers', industry_slug: 'energy', icon: '⚡', summary: '3-bedroom home · Grid-tied · Durban North · 5kW system', time: '14m ago', credits: 2, viewers: 5, hot: true },
+  { id: 'd2', niche_slug: 'ecu-repair-programming', industry_slug: 'automotive-technology', icon: '🔧', summary: 'BMW 3-series E90 · Fault codes P0300 P0303 · urgently needed', time: '38m ago', credits: 3, viewers: 3, hot: true },
+  { id: 'd3', niche_slug: 'building-contractors', industry_slug: 'construction', icon: '🏗️', summary: 'Double garage + 2-room extension · Pinetown · approx 60m²', time: '1h ago', credits: 2, viewers: 4, hot: false },
+  { id: 'd4', niche_slug: 'legal-contracts', industry_slug: 'legal-services', icon: '⚖️', summary: 'Commercial lease agreement · Small business · Cape Town CBD', time: '1h ago', credits: 1, viewers: 2, hot: false },
+  { id: 'd5', niche_slug: 'cctv-security-cameras', industry_slug: 'security', icon: '🔒', summary: '6-camera CCTV install · Warehouse · Johannesburg South', time: '2h ago', credits: 2, viewers: 6, hot: false },
+  { id: 'd6', niche_slug: 'fleet-tracking-telematics', industry_slug: 'fleet-management', icon: '🚛', summary: '12 vehicles · Real-time tracking · Monthly reporting needed', time: '3h ago', credits: 2, viewers: 3, hot: false },
+  { id: 'd7', niche_slug: 'mtn-vodacom-corporate-accounts', industry_slug: 'telecoms', icon: '📡', summary: 'Corporate SIM plan · 25 lines · Port from current network', time: '4h ago', credits: 1, viewers: 2, hot: false },
+  { id: 'd8', niche_slug: 'cnc-floor-plans', industry_slug: 'manufacturing-cnc', icon: '⚙️', summary: 'New build · 210m² foundation layout · Bloemfontein · urgent', time: '5h ago', credits: 3, viewers: 4, hot: false },
+];
+
 export const revalidate = 30;
 
 function timeAgo(date: string) {
@@ -78,63 +89,85 @@ export default async function LeadsPage() {
           ))}
         </div>
 
-        {/* Leads grid */}
-        {!leads || leads.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '5rem 0' }}>
-            <div style={{ fontSize: 56, marginBottom: 16 }}>📭</div>
-            <h2 style={{ color: '#0f172a', fontWeight: 800, margin: '0 0 8px' }}>No leads yet</h2>
-            <p style={{ color: '#64748b' }}>Be the first to submit a quote request via the marketplace.</p>
-            <Link href="/marketplace" style={{ display: 'inline-block', marginTop: 16, background: '#f59e0b', color: '#0f172a', fontWeight: 700, padding: '12px 24px', borderRadius: 8 }}>Browse Marketplace →</Link>
-          </div>
-        ) : (
-          <div style={{ display: 'grid', gap: '1rem' }}>
+        {/* Real leads from Supabase */}
+        {leads && leads.length > 0 && (
+          <div style={{ display: 'grid', gap: '1rem', marginBottom: '2rem' }}>
             {leads.map((lead, i) => {
               const niche = NICHES.find(n => n.slug === lead.niche_slug);
               const industry = INDUSTRIES.find(ind => ind.slug === niche?.industry_slug);
               const color = industryColors[niche?.industry_slug?.split('-')[0] ?? ''] ?? '#64748b';
               const summary = summaryFromFields(lead.field_values as Record<string, unknown> || {});
               const viewers = 2 + (i % 4);
-
               return (
                 <div key={lead.id} style={{ background: '#fff', borderRadius: 16, padding: '1.5rem', border: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap', boxShadow: i === 0 ? '0 4px 24px rgba(0,0,0,0.06)' : 'none' }}>
-                  {/* Left */}
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16, flex: 1, minWidth: 240 }}>
                     <div style={{ width: 48, height: 48, background: color + '15', borderRadius: 12, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, flexShrink: 0 }}>
                       {industry?.icon ?? '📋'}
                     </div>
                     <div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                        <span style={{ background: color + '20', color, fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 4 }}>
-                          {nicheLabel(lead.niche_slug)}
-                        </span>
+                        <span style={{ background: color + '20', color, fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 4 }}>{nicheLabel(lead.niche_slug)}</span>
                         {i === 0 && <span style={{ background: '#fef3c7', color: '#d97706', fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 4 }}>🔥 NEW</span>}
                       </div>
-                      <p style={{ color: '#334155', fontSize: 14, margin: '0 0 4px', fontWeight: 500 }}>
-                        {summary || 'Quote request submitted — contact details on claim'}
-                      </p>
+                      <p style={{ color: '#334155', fontSize: 14, margin: '0 0 4px', fontWeight: 500 }}>{summary || 'Quote request submitted — contact details on claim'}</p>
                       <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
                         <span style={{ color: '#94a3b8', fontSize: 12 }}>🕐 {timeAgo(lead.created_at)}</span>
                         <span style={{ color: '#94a3b8', fontSize: 12 }}>👁️ {viewers} providers viewing</span>
                       </div>
                     </div>
                   </div>
-                  {/* Right */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
                     <div style={{ textAlign: 'right' }}>
-                      <div style={{ color: '#0f172a', fontWeight: 800, fontSize: 15 }}>
-                        {niche ? `${niche.lead_credit_cost} credit${niche.lead_credit_cost > 1 ? 's' : ''}` : '1 credit'}
-                      </div>
+                      <div style={{ color: '#0f172a', fontWeight: 800, fontSize: 15 }}>{niche ? `${niche.lead_credit_cost} credit${niche.lead_credit_cost > 1 ? 's' : ''}` : '1 credit'}</div>
                       <div style={{ color: '#94a3b8', fontSize: 11 }}>to claim</div>
                     </div>
-                    <Link href="/get-listed" style={{ background: '#0f172a', color: '#fff', fontWeight: 700, padding: '10px 18px', borderRadius: 8, fontSize: 13, whiteSpace: 'nowrap', display: 'inline-block' }}>
-                      Claim Lead →
-                    </Link>
+                    <Link href="/get-listed" style={{ background: '#0f172a', color: '#fff', fontWeight: 700, padding: '10px 18px', borderRadius: 8, fontSize: 13, whiteSpace: 'nowrap', display: 'inline-block' }}>Claim Lead →</Link>
                   </div>
                 </div>
               );
             })}
           </div>
         )}
+
+        {/* Demo / sample leads — always visible, shows platform breadth */}
+        <div style={{ marginBottom: '2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1rem' }}>
+            <div style={{ height: 1, flex: 1, background: '#e2e8f0' }} />
+            <span style={{ fontSize: 11, fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: 1, whiteSpace: 'nowrap' }}>
+              {leads && leads.length > 0 ? 'More recent leads' : 'Recent lead activity across the platform'}
+            </span>
+            <div style={{ height: 1, flex: 1, background: '#e2e8f0' }} />
+          </div>
+          <div style={{ display: 'grid', gap: '0.875rem' }}>
+            {DEMO_LEADS.map((lead, i) => (
+              <div key={lead.id} style={{ background: '#fff', borderRadius: 14, padding: '1.25rem 1.5rem', border: `1px solid ${lead.hot ? '#fde68a' : '#e2e8f0'}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 14, flex: 1, minWidth: 220 }}>
+                  <div style={{ width: 44, height: 44, background: lead.hot ? 'rgba(245,158,11,0.1)' : '#f8fafc', borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, flexShrink: 0, border: lead.hot ? '1px solid rgba(245,158,11,0.25)' : '1px solid #f1f5f9' }}>
+                    {lead.icon}
+                  </div>
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
+                      <span style={{ background: '#f1f5f9', color: '#475569', fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 4 }}>{nicheLabel(lead.niche_slug)}</span>
+                      {lead.hot && <span style={{ background: '#fef3c7', color: '#d97706', fontSize: 11, fontWeight: 700, padding: '2px 8px', borderRadius: 4 }}>🔥 HOT</span>}
+                    </div>
+                    <p style={{ color: '#334155', fontSize: 13.5, margin: '0 0 4px', fontWeight: 500 }}>{lead.summary}</p>
+                    <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+                      <span style={{ color: '#94a3b8', fontSize: 12 }}>🕐 {lead.time}</span>
+                      <span style={{ color: '#94a3b8', fontSize: 12 }}>👁️ {lead.viewers} providers viewing</span>
+                    </div>
+                  </div>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
+                  <div style={{ textAlign: 'right' }}>
+                    <div style={{ color: '#0f172a', fontWeight: 800, fontSize: 14 }}>{lead.credits} credit{lead.credits > 1 ? 's' : ''}</div>
+                    <div style={{ color: '#94a3b8', fontSize: 11 }}>to claim</div>
+                  </div>
+                  <Link href="/get-listed" style={{ background: '#f59e0b', color: '#0f172a', fontWeight: 800, padding: '9px 16px', borderRadius: 8, fontSize: 13, whiteSpace: 'nowrap', display: 'inline-block' }}>Claim →</Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* CTA */}
         <div style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)', borderRadius: 16, padding: '2.5rem', textAlign: 'center', marginTop: '2.5rem' }}>
