@@ -8,72 +8,64 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section style={{ background: '#0a0f1a', color: '#fff', padding: '6rem 0 7rem', position: 'relative', overflow: 'hidden' }}>
-        {/* Ambient glow */}
-        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none',
-          background: 'radial-gradient(ellipse 70% 60% at 80% 40%, rgba(245,158,11,0.07) 0%, transparent 60%), radial-gradient(ellipse 50% 50% at 10% 80%, rgba(99,102,241,0.06) 0%, transparent 50%)' }} />
-        {/* Grid texture */}
-        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.03,
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)',
-          backgroundSize: '60px 60px' }} />
+      <section className="hero-aurora hero-grid" style={{ color: '#fff', padding: '6.5rem 0 7.5rem' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
 
-        <div className="container" style={{ position: 'relative' }}>
-          {/* Eyebrow */}
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.22)', borderRadius: 999, padding: '5px 14px', marginBottom: 28 }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981', display: 'inline-block', flexShrink: 0 }} />
-            <span style={{ color: '#f59e0b', fontSize: 11.5, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' }}>South Africa&apos;s Smart B2B Marketplace</span>
+          {/* Live badge */}
+          <div className="section-label section-label-gold float" style={{ marginBottom: 28 }}>
+            <span className="dot-live" />
+            South Africa&apos;s Smart B2B Marketplace · Live Now
           </div>
 
-          <h1 style={{ fontSize: 'clamp(2.25rem, 6vw, 4rem)', fontWeight: 900, margin: '0 0 1.5rem', lineHeight: 1.05, letterSpacing: '-0.03em', maxWidth: 680 }}>
-            The platform South African<br />businesses were waiting for.
+          {/* Headline */}
+          <h1 style={{ fontSize: 'clamp(2.5rem, 6.5vw, 4.5rem)', fontWeight: 900, margin: '0 0 1.5rem', lineHeight: 1.0, letterSpacing: '-0.035em', maxWidth: 740 }}>
+            <span className="text-gradient-gold">Connect. Quote.</span>
+            <br />
+            <span style={{ color: '#fff' }}>Grow your business.</span>
           </h1>
 
-          <p style={{ fontSize: 'clamp(1rem, 1.8vw, 1.2rem)', color: '#94a3b8', maxWidth: 520, lineHeight: 1.75, margin: '0 0 2.75rem', fontWeight: 400 }}>
-            Connect with verified service providers across {INDUSTRIES.length} industries. Get AI-powered quotes in minutes. Pay zero commission — ever.
+          <p style={{ fontSize: 'clamp(1rem, 1.8vw, 1.2rem)', color: '#94a3b8', maxWidth: 500, lineHeight: 1.8, margin: '0 0 2.75rem', fontWeight: 400 }}>
+            Verified service providers. {INDUSTRIES.length} industries. AI-powered quotes in minutes. Zero commission — ever. Built for South Africa.
           </p>
 
-          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+          {/* CTAs */}
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center', marginBottom: '3rem' }}>
             <Link href="/marketplace" className="btn-gold">Browse Marketplace →</Link>
             <Link href="/get-listed" className="btn-ghost">List Your Business</Link>
           </div>
 
-          {/* Trust badges */}
-          <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap', marginTop: '3rem', paddingTop: '2.5rem', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+          {/* Social proof strip */}
+          <div style={{ display: 'flex', gap: 0, flexWrap: 'wrap', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden', maxWidth: 680 }}>
             {[
-              { label: `${INDUSTRIES.length} Industries` },
-              { label: `${providerNiches.length}+ Service Niches` },
-              { label: '0% Commission' },
-              { label: 'POPIA Compliant' },
-              { label: 'SSL Secured' },
-            ].map(b => (
-              <div key={b.label} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12.5, color: '#64748b', fontWeight: 500 }}>
-                <span style={{ color: '#10b981', fontSize: 11, fontWeight: 800 }}>✓</span>
-                {b.label}
+              { value: `${INDUSTRIES.length}`, label: 'Industries' },
+              { value: `${providerNiches.length}+`, label: 'Niches' },
+              { value: '0%', label: 'Commission' },
+              { value: 'R' + Math.round(avgJobValue / 1000) + 'K', label: 'Avg Job' },
+              { value: `${VENTURES.length}`, label: 'Ventures' },
+            ].map((s, i) => (
+              <div key={s.label} style={{ flex: '1 1 80px', padding: '1rem 1.25rem', textAlign: 'center', borderRight: i < 4 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
+                <div className="stat-gold" style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.6rem)', fontWeight: 900, letterSpacing: '-0.02em' }}>{s.value}</div>
+                <div style={{ fontSize: 10.5, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.07em', fontWeight: 600, marginTop: 2 }}>{s.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── STATS BAR ────────────────────────────────────────── */}
-      <section style={{ background: '#fff', borderBottom: '1px solid #f1f5f9' }}>
+      {/* ── TRUST BAR ────────────────────────────────────────── */}
+      <div style={{ background: '#fff', borderBottom: '1px solid #f1f5f9', padding: '0.875rem 0' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', textAlign: 'center', padding: '1.75rem 0' }}>
+          <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
             {[
-              { value: `${INDUSTRIES.length}`, label: 'Industries' },
-              { value: `${providerNiches.length}+`, label: 'Service Niches' },
-              { value: `${VENTURES.length}`, label: 'Group Ventures' },
-              { value: '0%', label: 'Commission' },
-              { value: formatZAR(avgJobValue), label: 'Avg Job Value' },
-            ].map((stat, i) => (
-              <div key={stat.label} style={{ padding: '0.75rem 1rem', borderRight: i < 4 ? '1px solid #f1f5f9' : 'none' }}>
-                <div style={{ fontSize: 'clamp(1.3rem, 2.5vw, 1.9rem)', fontWeight: 900, color: '#0a0f1a', letterSpacing: '-0.02em' }}>{stat.value}</div>
-                <div style={{ fontSize: 11.5, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.06em', marginTop: 3, fontWeight: 600 }}>{stat.label}</div>
+              'POPIA Compliant', 'SSL Secured', '0% Commission', 'Verified Providers Only', 'Instant Quote Forms',
+            ].map(t => (
+              <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: '#64748b', fontWeight: 600, whiteSpace: 'nowrap' }}>
+                <span style={{ color: '#10b981', fontWeight: 900, fontSize: 10 }}>✓</span>{t}
               </div>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
       {/* ── WHY THIS WORKS ───────────────────────────────────── */}
       <section style={{ padding: '5rem 0', background: '#f8fafc' }}>
@@ -186,218 +178,179 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── INDUSTRIES GRID ──────────────────────────────────── */}
-      <section style={{ padding: '5rem 0' }}>
+      {/* ── PRICING — prominent, near top ────────────────────── */}
+      <section style={{ padding: '4.5rem 0', background: '#0a0f1a' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 800, margin: '0 0 1rem', color: '#0f172a' }}>Browse by Industry</h2>
-            <p style={{ color: '#64748b', maxWidth: 500, margin: '0 auto' }}>{INDUSTRIES.length} industries, {NICHES.length} niches, one platform. Whether you need a solar quote or a trading bot — we&apos;ve got you.</p>
+          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <div className="section-label section-label-gold" style={{ marginBottom: 16 }}>Simple, transparent pricing</div>
+            <h2 style={{ color: '#fff', margin: '0 0 0.75rem', letterSpacing: '-0.025em' }}>From <span className="stat-gold">R299</span> / month</h2>
+            <p style={{ color: '#64748b', maxWidth: 440, margin: '0 auto', fontSize: 14 }}>
+              Flat subscription. No per-lead fees. No commission on jobs. Every rand the client pays goes to you.
+            </p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '1rem', maxWidth: 960, margin: '0 auto' }}>
+            {PLANS.filter(p => p.party_type === 'provider').map(plan => (
+              <div key={plan.slug} className={plan.highlight ? 'border-gradient' : ''} style={{ position: 'relative' }}>
+                <div style={{
+                  background: plan.highlight ? 'rgba(245,158,11,0.08)' : 'rgba(255,255,255,0.03)',
+                  border: plan.highlight ? '1px solid rgba(245,158,11,0.3)' : '1px solid rgba(255,255,255,0.07)',
+                  borderRadius: 16, padding: '1.75rem',
+                  position: 'relative',
+                }}>
+                  {plan.highlight && (
+                    <div style={{ position: 'absolute', top: -11, left: '50%', transform: 'translateX(-50%)', background: '#f59e0b', color: '#0a0f1a', fontSize: 10, fontWeight: 900, padding: '3px 14px', borderRadius: 999, whiteSpace: 'nowrap', letterSpacing: '0.05em' }}>MOST POPULAR</div>
+                  )}
+                  <div style={{ color: plan.highlight ? '#fbbf24' : '#94a3b8', fontSize: 12, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 6 }}>{plan.name}</div>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 4 }}>
+                    <span style={{ color: '#fff', fontWeight: 900, fontSize: 32, letterSpacing: '-0.02em' }}>R{plan.price_monthly.toLocaleString()}</span>
+                    <span style={{ color: '#475569', fontSize: 13 }}>/mo</span>
+                  </div>
+                  <div style={{ color: '#334155', fontSize: 11, marginBottom: 16 }}>excl. VAT</div>
+                  <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '1rem', display: 'grid', gap: 7, marginBottom: '1.25rem' }}>
+                    {plan.features.map(f => (
+                      <div key={f} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+                        <span style={{ color: '#10b981', fontWeight: 900, fontSize: 11, flexShrink: 0, marginTop: 1 }}>✓</span>
+                        <span style={{ color: '#94a3b8', fontSize: 12.5, lineHeight: 1.4 }}>{f}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Link href="/get-listed#plans" className={plan.highlight ? 'btn-gold' : ''} style={plan.highlight ? { display: 'block', textAlign: 'center', fontSize: 13, padding: '11px 0' } : { display: 'block', textAlign: 'center', background: 'rgba(255,255,255,0.07)', color: '#e2e8f0', fontWeight: 700, fontSize: 13, padding: '11px 0', borderRadius: 8, border: '1px solid rgba(255,255,255,0.1)' }}>
+                    Get Started
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Revenue clarity */}
+          <div style={{ marginTop: '2.5rem', background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.15)', borderRadius: 14, padding: '1.25rem 1.75rem', maxWidth: 680, margin: '2.5rem auto 0', display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ color: '#10b981', fontWeight: 900, fontSize: 20 }}>R29,900</div>
+              <div style={{ color: '#475569', fontSize: 11, fontWeight: 600, marginTop: 2 }}>100 Starter providers/mo</div>
+            </div>
+            <div style={{ color: '#334155', fontSize: 18 }}>→</div>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ color: '#10b981', fontWeight: 900, fontSize: 20 }}>R119,800</div>
+              <div style={{ color: '#475569', fontSize: 11, fontWeight: 600, marginTop: 2 }}>200 Growth providers/mo</div>
+            </div>
+            <div style={{ color: '#334155', fontSize: 18 }}>→</div>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ color: '#10b981', fontWeight: 900, fontSize: 20 }}>R499,500</div>
+              <div style={{ color: '#475569', fontSize: 11, fontWeight: 600, marginTop: 2 }}>500 providers/mo (scale)</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── INDUSTRIES GRID ──────────────────────────────────── */}
+      <section style={{ padding: '4.5rem 0', background: '#fff' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <div className="section-label section-label-light">Browse the marketplace</div>
+            <h2 style={{ margin: '0 0 0.75rem', color: '#0a0f1a' }}>{INDUSTRIES.length} Industries. {NICHES.length} Niches.</h2>
+            <p style={{ color: '#64748b', maxWidth: 440, margin: '0 auto', fontSize: 14 }}>Every verified service category South African businesses need — one platform.</p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: '0.875rem' }}>
             {INDUSTRIES.map(industry => {
               const count = NICHES.filter(n => n.industry_slug === industry.slug && n.party_type === 'provider').length;
               return (
-                <Link key={industry.slug} href={`/marketplace?industry=${industry.slug}`} className="card-hover"
-                  style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 12, padding: '1.25rem', display: 'block', cursor: 'pointer' }}>
-                  <div style={{ fontSize: 32, marginBottom: 8 }}>{industry.icon}</div>
-                  <div style={{ fontWeight: 700, fontSize: 14, color: '#0f172a', marginBottom: 4 }}>{industry.name}</div>
-                  <div style={{ fontSize: 12, color: '#94a3b8' }}>{count > 0 ? `${count} niche${count > 1 ? 's' : ''}` : 'Supplier'}</div>
+                <Link key={industry.slug} href={`/marketplace?industry=${industry.slug}`} className="card-3d"
+                  style={{ background: '#f8fafc', border: '1px solid #f1f5f9', borderRadius: 14, padding: '1.25rem 1rem', display: 'block', cursor: 'pointer', textAlign: 'center' }}>
+                  <div style={{ fontSize: 34, marginBottom: 10, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.15))' }}>{industry.icon}</div>
+                  <div style={{ fontWeight: 700, fontSize: 13, color: '#0f172a', marginBottom: 3 }}>{industry.name}</div>
+                  <div style={{ fontSize: 11.5, color: '#94a3b8', fontWeight: 600 }}>{count > 0 ? `${count} niche${count > 1 ? 's' : ''}` : 'Supplier'}</div>
                 </Link>
               );
             })}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <Link href="/marketplace" className="btn-dark">Explore All {NICHES.length} Niches →</Link>
           </div>
         </div>
       </section>
 
       {/* ── VENTURES SHOWCASE ────────────────────────────────── */}
-      <section id="ventures" style={{ background: '#0f172a', padding: '5rem 0' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <div style={{ display: 'inline-block', background: 'rgba(245,158,11,0.15)', border: '1px solid rgba(245,158,11,0.3)', borderRadius: 20, padding: '5px 14px', marginBottom: 16 }}>
-              <span style={{ color: '#f59e0b', fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1 }}>DR Autotronics Group Ventures</span>
-            </div>
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 800, margin: '0 0 1rem', color: '#fff' }}>Brands on the Platform</h2>
-            <p style={{ color: '#64748b', maxWidth: 520, margin: '0 auto' }}>Six active divisions under one holding company — D.R. Autotronics Group — each with its own marketplace presence, branding and service offering.</p>
+      <section id="ventures" className="hero-aurora" style={{ padding: '4.5rem 0' }}>
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <div className="section-label section-label-gold">D.R. Autotronics Group Ventures</div>
+            <h2 style={{ color: '#fff', margin: '0 0 0.75rem' }}>Six Divisions. One Ecosystem.</h2>
+            <p style={{ color: '#64748b', maxWidth: 460, margin: '0 auto', fontSize: 14 }}>Each with its own marketplace presence, branding and revenue stream — all cross-feeding each other.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.25rem' }}>
             {VENTURES.map(venture => (
-              <Link key={venture.slug} href={`/ventures/${venture.slug}`} className="card-hover"
-                style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: 16, padding: '1.75rem', display: 'block', cursor: 'pointer', borderTop: `3px solid ${venture.color}` }}>
-                <div style={{ fontSize: 40, marginBottom: 12 }}>{venture.icon}</div>
-                <h3 style={{ color: '#fff', fontWeight: 800, fontSize: 18, margin: '0 0 8px' }}>{venture.name}</h3>
-                <p style={{ color: '#64748b', fontSize: 13, lineHeight: 1.6, margin: '0 0 1rem' }}>{venture.tagline}</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: '1rem' }}>
+              <Link key={venture.slug} href={`/ventures/${venture.slug}`} className="card-3d glass"
+                style={{ borderRadius: 16, padding: '1.75rem', display: 'block', cursor: 'pointer', borderTop: `2px solid ${venture.color}` }}>
+                <div style={{ fontSize: 36, marginBottom: 12, filter: `drop-shadow(0 4px 12px ${venture.color}55)` }}>{venture.icon}</div>
+                <h3 style={{ color: '#fff', fontWeight: 800, fontSize: 17, margin: '0 0 6px', letterSpacing: '-0.015em' }}>{venture.name}</h3>
+                <p style={{ color: '#64748b', fontSize: 12.5, lineHeight: 1.6, margin: '0 0 1rem' }}>{venture.tagline}</p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginBottom: '1rem' }}>
                   {venture.services.slice(0, 3).map(svc => (
-                    <span key={svc} style={{ background: 'rgba(255,255,255,0.05)', color: '#94a3b8', fontSize: 11, padding: '3px 8px', borderRadius: 4 }}>{svc}</span>
+                    <span key={svc} style={{ background: 'rgba(255,255,255,0.06)', color: '#94a3b8', fontSize: 10.5, padding: '3px 8px', borderRadius: 4, border: '1px solid rgba(255,255,255,0.06)' }}>{svc}</span>
                   ))}
-                  {venture.services.length > 3 && (
-                    <span style={{ background: 'rgba(255,255,255,0.05)', color: '#64748b', fontSize: 11, padding: '3px 8px', borderRadius: 4 }}>+{venture.services.length - 3} more</span>
-                  )}
                 </div>
-                <div style={{ color: '#f59e0b', fontSize: 13, fontWeight: 700 }}>View venture →</div>
+                <div style={{ color: venture.color, fontSize: 12.5, fontWeight: 700 }}>View venture →</div>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── ECOSYSTEM MAP ────────────────────────────────────── */}
-      <section style={{ padding: '5rem 0', background: '#f8fafc' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fef3c7', border: '1px solid #fde68a', borderRadius: 20, padding: '5px 14px', marginBottom: 16 }}>
-              <span style={{ color: '#92400e', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1.5 }}>How the ecosystem feeds itself</span>
-            </div>
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Every venture powers every other</h2>
-            <p style={{ color: '#64748b', maxWidth: 560, margin: '0 auto', fontSize: 15, lineHeight: 1.7 }}>
-              Tipping flows from restaurants into YieldCore farm data. ECU tech feeds CNC machining. Drone footage fuels AI analysis. Every division is a client of the others — and a revenue stream for the group.
-            </p>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
-            {[
-              { icon: '🔧', venture: 'D.R. Autotronics', color: '#1e3a5f', feeds: ['ECU data feeds into Beryl Core AI diagnostics database', 'Vehicle fleet data powers YieldCore farm equipment monitoring', 'Workshop clients routed through TMN marketplace', 'CNC division manufactures custom ECU enclosures'], gets: ['Leads from TMN marketplace', 'AI diagnostics from Beryl Core', 'CNC parts from Manufacturing Division'] },
-              { icon: '🌾', venture: 'YieldCore AI', color: '#1a5e3a', feeds: ['Farm data feeds Beryl Core AI training pipeline', 'Drone footage creates carbon credit data for export', 'Irrigation automation uses Manufacturing Division sensors', 'Farm operators tip via TipGuard SA'], gets: ['Drone hardware from Manufacturing Division', 'Leads via TMN agriculture niches', 'AI layer from Beryl Core AI'] },
-              { icon: '💳', venture: 'TipGuard SA', color: '#7c3aed', feeds: ['Tipping data feeds Beryl Core AI spend analytics', 'Restaurant/hospitality leads routed via TMN', 'NFC hardware produced by Manufacturing Division', 'Transaction data informs TMN provider rankings'], gets: ['NFC wristbands/keyrings from Manufacturing Division', 'Hospitality leads from TMN', 'AI fraud detection from Beryl Core AI'] },
-              { icon: '📈', venture: 'Scope Indices', color: '#b45309', feeds: ['EA signals logged to Beryl Core AI analytics', 'SiennaBridge infrastructure hosted on Beryl Core', 'TradingView indicators drive TMN trading tech niches', 'P&L data validates group\'s fintech credibility'], gets: ['AI data layer from Beryl Core', 'Server infrastructure from group', 'Leads from TMN trading tech niches'] },
-              { icon: '🧠', venture: 'Beryl Core AI', color: '#4f46e5', feeds: ['AI layer to all 5 other ventures simultaneously', 'Business automation drives TMN lead matching', 'WhatsApp bots power all group client comms', 'Data pipelines feed investor reporting on group page'], gets: ['Data from all 5 divisions to train models', 'Commercial revenue from TMN tech clients', 'Infrastructure hosted by group'] },
-              { icon: '🏭', venture: 'Manufacturing', color: '#c2410c', feeds: ['3D-printed components to D.R. Autotronics (ECU enclosures)', 'NFC hardware to TipGuard SA (wristbands, keyrings)', 'Drone parts and service to YieldCore AI', 'CNC fabrication for construction sector via TMN'], gets: ['Orders from all other 5 divisions', 'CNC floor plan leads from TMN', 'Design specs from Beryl Core AI'] },
-            ].map((item, i) => (
-              <div key={i} style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 20, padding: '1.5rem', borderTop: `3px solid ${item.color}` }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1rem' }}>
-                  <span style={{ fontSize: 28 }}>{item.icon}</span>
-                  <div style={{ fontWeight: 900, fontSize: 14, color: '#0f172a' }}>{item.venture}</div>
-                </div>
-                <div style={{ fontSize: 11, fontWeight: 800, color: '#64748b', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 6 }}>Feeds into →</div>
-                <div style={{ display: 'grid', gap: 4, marginBottom: '1rem' }}>
-                  {item.feeds.map((f, j) => (
-                    <div key={j} style={{ display: 'flex', gap: 6, alignItems: 'flex-start' }}>
-                      <span style={{ color: item.color, fontWeight: 900, fontSize: 11, flexShrink: 0, marginTop: 1 }}>→</span>
-                      <span style={{ fontSize: 11.5, color: '#475569', lineHeight: 1.4 }}>{f}</span>
-                    </div>
-                  ))}
-                </div>
-                <div style={{ background: '#f8fafc', borderRadius: 8, padding: '8px 10px' }}>
-                  <div style={{ fontSize: 10, fontWeight: 800, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: 1, marginBottom: 4 }}>Receives from group</div>
-                  {item.gets.map((g, j) => (
-                    <div key={j} style={{ fontSize: 11, color: '#64748b', marginBottom: 2 }}>✓ {g}</div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── HOW IT WORKS ─────────────────────────────────────── */}
-      <section style={{ padding: '5rem 0', background: '#fff' }}>
+      <section style={{ padding: '4rem 0', background: '#f8fafc' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 800, margin: '0 0 1rem', color: '#0f172a' }}>How It Works</h2>
-            <p style={{ color: '#64748b', maxWidth: 440, margin: '0 auto' }}>Request a quote in under 2 minutes. AI-powered, subscription-based, 0% commission.</p>
+          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <div className="section-label section-label-light" style={{ marginBottom: 16 }}>How it works</div>
+            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 900, margin: '0 0 0.5rem', color: '#0a0f1a' }}>Get a quote in under 2 minutes</h2>
+            <p style={{ color: '#64748b', maxWidth: 380, margin: '0 auto', fontSize: 14 }}>No account needed. Providers compete — you choose.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem' }}>
             {[
-              { step: '1', icon: '🔍', title: 'Find Your Niche', desc: `Browse ${NICHES.length} niches across ${INDUSTRIES.length} industries. Filter by location, industry or service type.` },
-              { step: '2', icon: '📋', title: 'Fill the Smart Form', desc: 'Answer a few questions. Our AI estimates the cost range before any provider sees your lead.' },
-              { step: '3', icon: '🤝', title: 'Get Matched', desc: 'Verified providers in your area claim your lead using subscription credits — not per-lead commission.' },
-              { step: '4', icon: '✅', title: 'Accept & Proceed', desc: 'Compare quotes, read reviews and accept the best offer. The marketplace earns via subscriptions only.' },
-            ].map(item => (
-              <div key={item.step} style={{ background: '#fff', borderRadius: 16, padding: '2rem', border: '1px solid #e2e8f0', position: 'relative' }}>
-                <div style={{ position: 'absolute', top: -16, left: 24, background: '#f59e0b', color: '#0f172a', fontWeight: 900, width: 32, height: 32, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14 }}>{item.step}</div>
-                <div style={{ fontSize: 36, marginBottom: 12, marginTop: 8 }}>{item.icon}</div>
-                <h3 style={{ fontWeight: 800, fontSize: 16, margin: '0 0 8px', color: '#0f172a' }}>{item.title}</h3>
-                <p style={{ color: '#64748b', fontSize: 14, lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
+              { step: '01', icon: '🔍', title: 'Find Your Service', desc: 'Browse 85+ niches across 22 industries — solar, ECU, legal, logistics and more.' },
+              { step: '02', icon: '📋', title: 'Fill the Form', desc: 'Quick smart form. AI shows you the cost range before you even submit.' },
+              { step: '03', icon: '🤝', title: 'Get Matched', desc: 'Verified local providers see your lead and compete for the job.' },
+              { step: '04', icon: '✅', title: 'Accept & Close', desc: 'Compare quotes, pick your provider, pay them directly. TMN earns R0 commission.' },
+            ].map((item, i) => (
+              <div key={i} className="card-3d glass" style={{ borderRadius: 16, padding: '1.75rem', position: 'relative', background: '#fff', border: '1px solid #f1f5f9' }}>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 11, fontWeight: 900, letterSpacing: 2, color: '#f59e0b', marginBottom: 10 }}>{item.step}</div>
+                <div style={{ fontSize: 30, marginBottom: 10 }}>{item.icon}</div>
+                <h3 style={{ fontWeight: 800, fontSize: 15, margin: '0 0 8px', color: '#0a0f1a' }}>{item.title}</h3>
+                <p style={{ color: '#64748b', fontSize: 13, lineHeight: 1.65, margin: 0 }}>{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── COMMISSION MODEL ─────────────────────────────────── */}
-      <section style={{ padding: '5rem 0', background: '#fff' }}>
+      {/* ── INVESTOR SECTION ──────────────────────────────────── */}
+      <section className="hero-aurora" style={{ padding: '4.5rem 0' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#dcfce7', border: '1px solid #bbf7d0', borderRadius: 20, padding: '5px 14px', marginBottom: 16 }}>
-              <span style={{ color: '#15803d', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 1.5 }}>How the money works</span>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+            <div>
+              <div className="section-label section-label-gold" style={{ marginBottom: 20 }}>For investors</div>
+              <h2 style={{ color: '#fff', fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 900, margin: '0 0 1rem' }}>This is easy<br />to understand.<br /><span className="text-gradient-gold">And easy to back.</span></h2>
+              <p style={{ color: '#64748b', fontSize: 14, lineHeight: 1.8, margin: '0 0 1.5rem' }}>
+                Providers pay a flat monthly subscription. Clients pay nothing. TMN earns on subscriptions alone — not commissions, not per-lead fees. Simple, predictable, recurring.
+              </p>
+              <p style={{ color: '#475569', fontSize: 13, lineHeight: 1.8, margin: '0 0 2rem' }}>
+                22 industries. 85+ niches. Each one a revenue stream. Every new provider listed grows the business — automatically.
+              </p>
+              <Link href="/group" className="btn-gold" style={{ fontSize: 14, padding: '12px 24px', display: 'inline-block' }}>
+                View the full group deck →
+              </Link>
             </div>
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>0% Commission. Always.</h2>
-            <p style={{ color: '#64748b', maxWidth: 520, margin: '0 auto', fontSize: 15, lineHeight: 1.7 }}>
-              Most lead platforms take 10–30% of every job. We don&apos;t. Providers pay a flat monthly subscription — and every rand from the client goes directly to the provider. Full stop.
-            </p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem', marginBottom: '2.5rem' }}>
-            {[
-              {
-                icon: '👤',
-                title: 'What the Client Does',
-                color: '#6366f1',
-                bg: '#eff6ff',
-                border: '#bfdbfe',
-                steps: [
-                  'Submits a job request — free, no account needed',
-                  'Receives quotes from verified providers in their area',
-                  'Compares, chooses and pays the provider directly',
-                  'Pays zero platform fee. Zero commission. R0 to TMN.',
-                ],
-              },
-              {
-                icon: '🏢',
-                title: 'What the Provider Does',
-                color: '#10b981',
-                bg: '#f0fdf4',
-                border: '#bbf7d0',
-                steps: [
-                  'Signs up and selects a monthly subscription plan',
-                  'Receives lead credits to claim jobs in their niche',
-                  'Claims relevant leads, contacts the client, closes the job',
-                  'Keeps 100% of what the client pays — no commission deducted',
-                ],
-              },
-              {
-                icon: '🌐',
-                title: 'What TMN Earns',
-                color: '#f59e0b',
-                bg: '#fefce8',
-                border: '#fde68a',
-                steps: [
-                  'Monthly subscription fees from listed providers',
-                  'No percentage of jobs. No hidden fees. No commissions.',
-                  'Aligned with providers — we earn when they grow, not when they transact',
-                  'Scalable revenue from 22 industries, 100+ niches across SA',
-                ],
-              },
-            ].map((col, i) => (
-              <div key={i} style={{ background: col.bg, border: `1px solid ${col.border}`, borderRadius: 20, padding: '1.75rem', borderTop: `3px solid ${col.color}` }}>
-                <div style={{ fontSize: 32, marginBottom: 10 }}>{col.icon}</div>
-                <h3 style={{ fontWeight: 900, fontSize: 16, color: '#0f172a', margin: '0 0 1rem' }}>{col.title}</h3>
-                <div style={{ display: 'grid', gap: 8 }}>
-                  {col.steps.map((s, j) => (
-                    <div key={j} style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
-                      <span style={{ color: col.color, fontWeight: 900, flexShrink: 0, fontSize: 13, marginTop: 1 }}>→</span>
-                      <span style={{ fontSize: 13, color: '#334155', lineHeight: 1.5 }}>{s}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Commission comparison bar */}
-          <div style={{ background: '#0f172a', borderRadius: 20, padding: '2rem 2.5rem' }}>
-            <div style={{ color: '#94a3b8', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2, marginBottom: '1.5rem', textAlign: 'center' }}>How TMN compares to other lead platforms</div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+            <div style={{ display: 'grid', gap: '0.75rem' }}>
               {[
-                { platform: 'Bark / Bidvine', model: 'Pay-per-lead', commission: 'R85–R420 per lead', verdict: '❌ You pay before you even speak to the client', color: '#ef4444' },
-                { platform: 'Checkatrade / Homefeed', model: 'Subscription + per-job %', commission: '10–25% of job value', verdict: '❌ They take a cut from every rand you earn', color: '#f97316' },
-                { platform: 'Gumtree / Facebook', model: 'Organic / Ads', commission: 'Unpredictable ad spend', verdict: '⚠️ No lead quality, no verification, no structure', color: '#f59e0b' },
-                { platform: 'Middleman Network', model: 'Flat subscription', commission: '0% commission', verdict: '✅ You keep every rand. Grow as fast as you like.', color: '#22c55e' },
+                { label: 'Revenue source', value: 'Monthly subscriptions only', color: '#10b981' },
+                { label: 'Commission on jobs', value: 'R0 — zero, always', color: '#10b981' },
+                { label: 'Cost to buyers', value: 'R0 — free to use', color: '#10b981' },
+                { label: 'Break-even point', value: '~34 Starter subscribers', color: '#f59e0b' },
+                { label: '100 subscribers earn', value: 'R29,900/month', color: '#f59e0b' },
+                { label: '500 subscribers earn', value: 'R300K–R500K/month', color: '#f59e0b' },
+                { label: 'Active industries', value: '22 live today', color: '#818cf8' },
               ].map((row, i) => (
-                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 14, padding: '1.25rem', borderLeft: `3px solid ${row.color}` }}>
-                  <div style={{ color: '#fff', fontWeight: 800, fontSize: 14, marginBottom: 4 }}>{row.platform}</div>
-                  <div style={{ color: '#64748b', fontSize: 11, marginBottom: 4 }}>{row.model}</div>
-                  <div style={{ color: row.color, fontWeight: 700, fontSize: 13, marginBottom: 8 }}>{row.commission}</div>
-                  <div style={{ color: '#94a3b8', fontSize: 11.5, lineHeight: 1.5 }}>{row.verdict}</div>
+                <div key={i} className="glass" style={{ borderRadius: 10, padding: '0.75rem 1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+                  <span style={{ color: '#94a3b8', fontSize: 12, fontWeight: 600 }}>{row.label}</span>
+                  <span style={{ color: row.color, fontWeight: 800, fontSize: 13 }}>{row.value}</span>
                 </div>
               ))}
             </div>
@@ -405,24 +358,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── LIVE ACTIVITY STRIP ──────────────────────────────── */}
-      <section style={{ background: '#0f172a', padding: '1.5rem 0', borderTop: '1px solid #1e293b' }}>
-        <div className="container">
-          <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
-            {[
-              { icon: '🟢', text: 'Platform live · 22 industries active' },
-              { icon: '📋', text: `${NICHES.length}+ service niches published` },
-              { icon: '🔒', text: 'POPIA compliant · SSL secured' },
-              { icon: '📧', text: 'Leads notify you within minutes' },
-              { icon: '💳', text: '0% commission · Always' },
-            ].map(item => (
-              <div key={item.text} style={{ display: 'flex', alignItems: 'center', gap: 7, fontSize: 13, color: '#94a3b8', whiteSpace: 'nowrap' }}>
-                <span>{item.icon}</span><span>{item.text}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── TESTIMONIALS ─────────────────────────────────────── */}
       <section style={{ padding: '5rem 0', background: '#fff' }}>
@@ -471,37 +406,6 @@ export default function HomePage() {
                     <div style={{ fontSize: 12, color: '#64748b' }}>{t.role}</div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── PLANS PREVIEW ────────────────────────────────────── */}
-      <section style={{ padding: '5rem 0', background: '#f8fafc' }}>
-        <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 800, margin: '0 0 1rem', color: '#0f172a' }}>Simple Subscription Pricing</h2>
-            <p style={{ color: '#64748b', maxWidth: 480, margin: '0 auto' }}>No per-lead commission. No hidden fees. Pay a flat monthly subscription and use your lead credits to grow your business.</p>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.25rem', maxWidth: 900, margin: '0 auto' }}>
-            {PLANS.filter(p => p.party_type === 'provider').map(plan => (
-              <div key={plan.slug} className="card-hover"
-                style={{ background: plan.highlight ? '#0f172a' : '#f8fafc', border: `2px solid ${plan.highlight ? '#f59e0b' : '#e2e8f0'}`, borderRadius: 16, padding: '1.75rem', position: 'relative' }}>
-                {plan.highlight && <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', background: '#f59e0b', color: '#0f172a', fontSize: 11, fontWeight: 800, padding: '3px 12px', borderRadius: 10 }}>MOST POPULAR</div>}
-                <h3 style={{ fontWeight: 800, fontSize: 18, margin: '0 0 4px', color: plan.highlight ? '#fff' : '#0f172a' }}>{plan.name}</h3>
-                <div style={{ color: '#f59e0b', fontWeight: 900, fontSize: 28, margin: '8px 0 0' }}>R{plan.price_monthly.toLocaleString()}</div>
-                <div style={{ color: plan.highlight ? '#94a3b8' : '#64748b', fontSize: 12, marginBottom: 16 }}>/month excl. VAT</div>
-                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem' }}>
-                  {plan.features.map(f => (
-                    <li key={f} style={{ fontSize: 13, color: plan.highlight ? '#e2e8f0' : '#475569', marginBottom: 6, display: 'flex', alignItems: 'center', gap: 6 }}>
-                      <span style={{ color: '#10b981', flexShrink: 0 }}>✓</span>{f}
-                    </li>
-                  ))}
-                </ul>
-                <Link href="/get-listed#plans" style={{ display: 'block', background: plan.highlight ? '#f59e0b' : '#0f172a', color: plan.highlight ? '#0f172a' : '#fff', textAlign: 'center', fontWeight: 700, padding: '10px 0', borderRadius: 8, fontSize: 14 }}>
-                  Get Started
-                </Link>
               </div>
             ))}
           </div>
