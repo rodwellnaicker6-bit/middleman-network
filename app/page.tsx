@@ -8,7 +8,10 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="hero-aurora hero-grid" style={{ color: '#fff', padding: '6.5rem 0 7.5rem' }}>
+      <section className="hero-aurora" style={{ color: '#fff', padding: '6.5rem 0 7.5rem' }}>
+        {/* Grid overlay as a child div — keeps ::before/::after free for aurora blobs */}
+        <div className="aurora-grid-overlay" />
+
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
 
           {/* Live badge */}
@@ -35,7 +38,7 @@ export default function HomePage() {
           </div>
 
           {/* Social proof strip */}
-          <div style={{ display: 'flex', gap: 0, flexWrap: 'wrap', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 14, overflow: 'hidden', maxWidth: 680 }}>
+          <div style={{ display: 'flex', gap: 0, flexWrap: 'wrap', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(245,158,11,0.15)', borderRadius: 14, overflow: 'hidden', maxWidth: 680, boxShadow: '0 0 40px rgba(245,158,11,0.05)' }}>
             {[
               { value: `${INDUSTRIES.length}`, label: 'Industries' },
               { value: `${providerNiches.length}+`, label: 'Niches' },
@@ -44,8 +47,8 @@ export default function HomePage() {
               { value: `${VENTURES.length}`, label: 'Ventures' },
             ].map((s, i) => (
               <div key={s.label} style={{ flex: '1 1 80px', padding: '1rem 1.25rem', textAlign: 'center', borderRight: i < 4 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
-                <div className="stat-gold" style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.6rem)', fontWeight: 900, letterSpacing: '-0.02em' }}>{s.value}</div>
-                <div style={{ fontSize: 10.5, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.07em', fontWeight: 600, marginTop: 2 }}>{s.label}</div>
+                <div className="stat-gold" style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.7rem)', fontWeight: 900, letterSpacing: '-0.02em' }}>{s.value}</div>
+                <div style={{ fontSize: 10.5, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.07em', fontWeight: 600, marginTop: 2 }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -190,10 +193,10 @@ export default function HomePage() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '1rem', maxWidth: 960, margin: '0 auto' }}>
             {PLANS.filter(p => p.party_type === 'provider').map(plan => (
-              <div key={plan.slug} className={plan.highlight ? 'border-gradient' : ''} style={{ position: 'relative' }}>
+              <div key={plan.slug} className={plan.highlight ? 'border-gradient glow-pulse' : ''} style={{ position: 'relative' }}>
                 <div style={{
-                  background: plan.highlight ? 'rgba(245,158,11,0.08)' : 'rgba(255,255,255,0.03)',
-                  border: plan.highlight ? '1px solid rgba(245,158,11,0.3)' : '1px solid rgba(255,255,255,0.07)',
+                  background: plan.highlight ? 'rgba(245,158,11,0.09)' : 'rgba(255,255,255,0.03)',
+                  border: plan.highlight ? '1px solid rgba(245,158,11,0.35)' : '1px solid rgba(255,255,255,0.07)',
                   borderRadius: 16, padding: '1.75rem',
                   position: 'relative',
                 }}>
@@ -222,20 +225,20 @@ export default function HomePage() {
             ))}
           </div>
           {/* Revenue clarity */}
-          <div style={{ marginTop: '2.5rem', background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.15)', borderRadius: 14, padding: '1.25rem 1.75rem', maxWidth: 680, margin: '2.5rem auto 0', display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ marginTop: '2.5rem', background: 'rgba(16,185,129,0.06)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: 14, padding: '1.5rem 1.75rem', maxWidth: 680, margin: '2.5rem auto 0', display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 30px rgba(16,185,129,0.08)' }}>
             <div style={{ textAlign: 'center' }}>
-              <div style={{ color: '#10b981', fontWeight: 900, fontSize: 20 }}>R29,900</div>
-              <div style={{ color: '#475569', fontSize: 11, fontWeight: 600, marginTop: 2 }}>100 Starter providers/mo</div>
+              <div className="neon-emerald" style={{ fontWeight: 900, fontSize: 22, fontFamily: 'var(--font-display)' }}>R29,900</div>
+              <div style={{ color: '#475569', fontSize: 11, fontWeight: 600, marginTop: 3 }}>100 Starter providers/mo</div>
             </div>
-            <div style={{ color: '#334155', fontSize: 18 }}>→</div>
+            <div style={{ color: '#10b981', fontSize: 20, opacity: 0.5 }}>→</div>
             <div style={{ textAlign: 'center' }}>
-              <div style={{ color: '#10b981', fontWeight: 900, fontSize: 20 }}>R119,800</div>
-              <div style={{ color: '#475569', fontSize: 11, fontWeight: 600, marginTop: 2 }}>200 Growth providers/mo</div>
+              <div className="neon-emerald" style={{ fontWeight: 900, fontSize: 22, fontFamily: 'var(--font-display)' }}>R119,800</div>
+              <div style={{ color: '#475569', fontSize: 11, fontWeight: 600, marginTop: 3 }}>200 Growth providers/mo</div>
             </div>
-            <div style={{ color: '#334155', fontSize: 18 }}>→</div>
+            <div style={{ color: '#10b981', fontSize: 20, opacity: 0.5 }}>→</div>
             <div style={{ textAlign: 'center' }}>
-              <div style={{ color: '#10b981', fontWeight: 900, fontSize: 20 }}>R499,500</div>
-              <div style={{ color: '#475569', fontSize: 11, fontWeight: 600, marginTop: 2 }}>500 providers/mo (scale)</div>
+              <div className="neon-emerald" style={{ fontWeight: 900, fontSize: 22, fontFamily: 'var(--font-display)' }}>R499,500</div>
+              <div style={{ color: '#475569', fontSize: 11, fontWeight: 600, marginTop: 3 }}>500 providers/mo (scale)</div>
             </div>
           </div>
         </div>
@@ -270,6 +273,7 @@ export default function HomePage() {
 
       {/* ── VENTURES SHOWCASE ────────────────────────────────── */}
       <section id="ventures" className="hero-aurora" style={{ padding: '4.5rem 0' }}>
+        <div className="aurora-grid-overlay" />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
             <div className="section-label section-label-gold">D.R. Autotronics Group Ventures</div>
@@ -310,7 +314,7 @@ export default function HomePage() {
               { step: '03', icon: '🤝', title: 'Get Matched', desc: 'Verified local providers see your lead and compete for the job.' },
               { step: '04', icon: '✅', title: 'Accept & Close', desc: 'Compare quotes, pick your provider, pay them directly. TMN earns R0 commission.' },
             ].map((item, i) => (
-              <div key={i} className="card-3d glass" style={{ borderRadius: 16, padding: '1.75rem', position: 'relative', background: '#fff', border: '1px solid #f1f5f9' }}>
+              <div key={i} className="card-3d card-glow" style={{ borderRadius: 16, padding: '1.75rem', position: 'relative', background: '#fff', border: '1px solid #e2e8f0' }}>
                 <div style={{ fontFamily: 'var(--font-display)', fontSize: 11, fontWeight: 900, letterSpacing: 2, color: '#f59e0b', marginBottom: 10 }}>{item.step}</div>
                 <div style={{ fontSize: 30, marginBottom: 10 }}>{item.icon}</div>
                 <h3 style={{ fontWeight: 800, fontSize: 15, margin: '0 0 8px', color: '#0a0f1a' }}>{item.title}</h3>
@@ -323,7 +327,8 @@ export default function HomePage() {
 
       {/* ── INVESTOR SECTION ──────────────────────────────────── */}
       <section className="hero-aurora" style={{ padding: '4.5rem 0' }}>
-        <div className="container">
+        <div className="aurora-grid-overlay" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem', alignItems: 'center' }}>
             <div>
               <div className="section-label section-label-gold" style={{ marginBottom: 20 }}>For investors</div>
@@ -340,17 +345,17 @@ export default function HomePage() {
             </div>
             <div style={{ display: 'grid', gap: '0.75rem' }}>
               {[
-                { label: 'Revenue source', value: 'Monthly subscriptions only', color: '#10b981' },
-                { label: 'Commission on jobs', value: 'R0 — zero, always', color: '#10b981' },
-                { label: 'Cost to buyers', value: 'R0 — free to use', color: '#10b981' },
-                { label: 'Break-even point', value: '~34 Starter subscribers', color: '#f59e0b' },
-                { label: '100 subscribers earn', value: 'R29,900/month', color: '#f59e0b' },
-                { label: '500 subscribers earn', value: 'R300K–R500K/month', color: '#f59e0b' },
-                { label: 'Active industries', value: '22 live today', color: '#818cf8' },
+                { label: 'Revenue source', value: 'Monthly subscriptions only', neon: 'neon-emerald' },
+                { label: 'Commission on jobs', value: 'R0 — zero, always', neon: 'neon-emerald' },
+                { label: 'Cost to buyers', value: 'R0 — free to use', neon: 'neon-emerald' },
+                { label: 'Break-even point', value: '~34 Starter subscribers', neon: 'neon-gold' },
+                { label: '100 subscribers earn', value: 'R29,900/month', neon: 'neon-gold' },
+                { label: '500 subscribers earn', value: 'R300K–R500K/month', neon: 'neon-gold' },
+                { label: 'Active industries', value: '22 live today', neon: '' },
               ].map((row, i) => (
-                <div key={i} className="glass" style={{ borderRadius: 10, padding: '0.75rem 1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+                <div key={i} className="glass" style={{ borderRadius: 10, padding: '0.875rem 1.1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, borderColor: i < 3 ? 'rgba(16,185,129,0.15)' : i < 6 ? 'rgba(245,158,11,0.15)' : 'rgba(255,255,255,0.1)' }}>
                   <span style={{ color: '#94a3b8', fontSize: 12, fontWeight: 600 }}>{row.label}</span>
-                  <span style={{ color: row.color, fontWeight: 800, fontSize: 13 }}>{row.value}</span>
+                  <span className={row.neon} style={!row.neon ? { color: '#818cf8', fontWeight: 800, fontSize: 13 } : { fontWeight: 800, fontSize: 13 }}>{row.value}</span>
                 </div>
               ))}
             </div>
