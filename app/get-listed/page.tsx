@@ -132,7 +132,7 @@ export default function GetListedPage() {
         </div>
 
         {/* Application form */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: '2rem', alignItems: 'start' }}>
+        <div className="two-col-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 400px', gap: '2rem', alignItems: 'start' }}>
           <form onSubmit={handleSubmit} style={{ background: '#fff', borderRadius: 20, padding: '2.5rem', border: '1px solid #e2e8f0', boxShadow: '0 4px 24px rgba(0,0,0,0.05)' }}>
             <h2 style={{ fontWeight: 900, fontSize: 22, color: '#0f172a', margin: '0 0 1.5rem' }}>Business Application</h2>
 

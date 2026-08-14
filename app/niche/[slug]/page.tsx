@@ -85,7 +85,7 @@ export default async function NichePage({ params }: { params: Promise<{ slug: st
       </section>
 
       <div className="container" style={{ padding: '2rem 1.5rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: '2rem', alignItems: 'start' }}>
+        <div className="niche-layout-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 380px', gap: '2rem', alignItems: 'start' }}>
           {/* Left column */}
           <div>
             {/* Services */}

@@ -624,18 +624,24 @@ td, th { vertical-align: middle; }
   }
   .stat-scroll::-webkit-scrollbar { display: none; }
 
-  /* Stack fixed-width two-column layouts */
-  div[style*="grid-template-columns: 1fr 380px"],
-  div[style*="grid-template-columns: 1fr 340px"],
-  div[style*="grid-template-columns: 1fr 400px"],
-  div[style*="grid-template-columns: 1fr 200px"],
-  div[style*="grid-template-columns: minmax(0,1fr) 340px"] {
+  /* Niche page and get-listed 2-column layouts — class-based (reliable on all React versions) */
+  .niche-layout-grid,
+  .two-col-form-grid {
     grid-template-columns: 1fr !important;
   }
 
-  /* Unstick sidebars */
-  div[style*="position: sticky"] {
+  /* Unstick sidebars on mobile */
+  .niche-layout-grid > div:last-child,
+  .two-col-form-grid > div:last-child {
     position: static !important;
+  }
+
+  /* Stack fixed-width two-column layouts — both with and without space after colon */
+  div[style*="1fr 380px"],
+  div[style*="1fr 340px"],
+  div[style*="1fr 400px"],
+  div[style*="1fr 200px"] {
+    grid-template-columns: 1fr !important;
   }
 
   /* Force 1-col for larger minmax grids */
@@ -648,7 +654,7 @@ td, th { vertical-align: middle; }
   }
 
   /* Stack 2-col form fields */
-  div[style*="grid-template-columns: 1fr 1fr"] {
+  div[style*="1fr 1fr"] {
     grid-template-columns: 1fr !important;
   }
 
