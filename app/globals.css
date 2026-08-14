@@ -202,34 +202,34 @@ button:not(:disabled):active {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  width: 1000px; height: 800px;
-  top: -250px; left: -150px;
+  width: 1100px; height: 900px;
+  top: -300px; left: -200px;
   background: radial-gradient(
     ellipse at center,
-    rgba(245,158,11,0.35) 0%,
-    rgba(251,191,36,0.20) 30%,
-    rgba(245,158,11,0.08) 55%,
-    transparent 75%
+    rgba(245,158,11,0.45) 0%,
+    rgba(251,191,36,0.28) 25%,
+    rgba(245,158,11,0.10) 50%,
+    transparent 70%
   );
   animation: auroraDrift 14s ease-in-out infinite;
-  filter: blur(2px);
+  /* No filter:blur — breaks on iOS Safari */
 }
 .hero-aurora::after {
   content: '';
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  width: 800px; height: 700px;
-  bottom: -200px; right: -150px;
+  width: 900px; height: 800px;
+  bottom: -250px; right: -200px;
   background: radial-gradient(
     ellipse at center,
-    rgba(139,92,246,0.30) 0%,
-    rgba(99,102,241,0.18) 30%,
-    rgba(99,102,241,0.06) 55%,
-    transparent 75%
+    rgba(139,92,246,0.40) 0%,
+    rgba(99,102,241,0.22) 25%,
+    rgba(99,102,241,0.08) 50%,
+    transparent 70%
   );
   animation: auroraDriftB 10s ease-in-out infinite;
-  filter: blur(2px);
+  /* No filter:blur — breaks on iOS Safari */
 }
 
 /* Grid overlay — separate class, uses a child element not ::before */
@@ -253,7 +253,7 @@ button:not(:disabled):active {
   background-clip: text;
   background-size: 300% auto;
   animation: gradientShift 5s ease infinite;
-  filter: drop-shadow(0 0 20px rgba(245,158,11,0.4));
+  /* NO filter here — filter + background-clip:text breaks on Safari/iOS */
 }
 .text-gradient-white {
   background: linear-gradient(120deg, #fff 0%, #e2e8f0 50%, #94a3b8 100%);

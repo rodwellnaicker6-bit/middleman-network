@@ -21,11 +21,15 @@ export default function HomePage() {
           </div>
 
           {/* Headline */}
-          <h1 style={{ fontSize: 'clamp(2.5rem, 6.5vw, 4.5rem)', fontWeight: 900, margin: '0 0 1.5rem', lineHeight: 1.0, letterSpacing: '-0.035em', maxWidth: 740 }}>
-            <span className="text-gradient-gold">Connect. Quote.</span>
-            <br />
-            <span style={{ color: '#fff' }}>Grow your business.</span>
-          </h1>
+          <div style={{ position: 'relative', marginBottom: '1.5rem', display: 'inline-block' }}>
+            {/* Glow behind gold text — works on all browsers */}
+            <div style={{ position: 'absolute', top: '10%', left: '-5%', width: '60%', height: '80%', background: 'radial-gradient(ellipse, rgba(245,158,11,0.25) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
+            <h1 style={{ fontSize: 'clamp(2.5rem, 6.5vw, 4.5rem)', fontWeight: 900, margin: 0, lineHeight: 1.0, letterSpacing: '-0.035em', maxWidth: 740, position: 'relative', zIndex: 1 }}>
+              <span className="text-gradient-gold">Connect. Quote.</span>
+              <br />
+              <span style={{ color: '#fff' }}>Grow your business.</span>
+            </h1>
+          </div>
 
           <p style={{ fontSize: 'clamp(1rem, 1.8vw, 1.2rem)', color: '#94a3b8', maxWidth: 500, lineHeight: 1.8, margin: '0 0 2.75rem', fontWeight: 400 }}>
             Verified service providers. {INDUSTRIES.length} industries. AI-powered quotes in minutes. Zero commission — ever. Built for South Africa.
@@ -124,12 +128,12 @@ export default function HomePage() {
           </div>
 
           {/* Comparison strip — TMN vs alternatives */}
-          <div style={{ background: '#0a0f1a', borderRadius: 20, padding: '2rem', overflow: 'hidden' }}>
+          <div style={{ background: '#0a0f1a', borderRadius: 20, padding: '2rem' }}>
             <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
               <div style={{ color: '#f59e0b', fontSize: 11, fontWeight: 800, textTransform: 'uppercase', letterSpacing: 2, marginBottom: 6 }}>How TMN compares</div>
               <div style={{ color: '#94a3b8', fontSize: 13 }}>Why businesses choose us over the alternatives</div>
             </div>
-            <div style={{ overflowX: 'auto' }}>
+            <div className="table-scroll">
               <table style={{ width: '100%', minWidth: 520, borderCollapse: 'collapse', fontSize: 13 }}>
                 <thead>
                   <tr>
