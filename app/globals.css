@@ -190,46 +190,52 @@ button:not(:disabled):active {
 .float    { animation: floatY 4s ease-in-out infinite; }
 
 /* ── AURORA HERO ───────────────────────────────────────────── */
-/* NOTE: Uses ::before for gold blob and ::after for purple blob.
-   Do NOT use hero-grid on the same element — use aurora-grid class instead */
+/* Child divs for aurora blobs — regular elements support filter:blur on ALL
+   browsers incl. iOS Safari (only ::before/::after have the Safari bug) */
 .hero-aurora {
   background: #040810;
   position: relative;
   overflow: hidden;
 }
-.hero-aurora::before {
-  content: '';
+
+/* Gold aurora blob — top-left warm glow */
+.aurora-blob-gold {
   position: absolute;
-  border-radius: 50%;
   pointer-events: none;
-  width: 1200px; height: 1000px;
-  top: -350px; left: -250px;
+  border-radius: 50%;
+  width: 1100px; height: 950px;
+  top: -280px; left: -200px;
   background: radial-gradient(
     ellipse at center,
-    rgba(245,158,11,0.60) 0%,
-    rgba(251,191,36,0.38) 22%,
-    rgba(245,158,11,0.15) 48%,
-    transparent 68%
+    rgba(245,158,11,0.95) 0%,
+    rgba(251,191,36,0.70) 28%,
+    rgba(245,158,11,0.30) 55%,
+    transparent 75%
   );
+  filter: blur(72px);
   animation: auroraDrift 14s ease-in-out infinite;
-  /* No filter:blur — breaks on iOS Safari */
+  will-change: transform;
+  z-index: 0;
 }
-.hero-aurora::after {
-  content: '';
+
+/* Purple/violet aurora blob — bottom-right cool glow */
+.aurora-blob-purple {
   position: absolute;
-  border-radius: 50%;
   pointer-events: none;
-  width: 1000px; height: 900px;
-  bottom: -300px; right: -250px;
+  border-radius: 50%;
+  width: 950px; height: 850px;
+  bottom: -240px; right: -180px;
   background: radial-gradient(
     ellipse at center,
-    rgba(139,92,246,0.55) 0%,
-    rgba(99,102,241,0.32) 22%,
-    rgba(99,102,241,0.12) 48%,
-    transparent 68%
+    rgba(139,92,246,0.90) 0%,
+    rgba(99,102,241,0.60) 28%,
+    rgba(99,102,241,0.22) 55%,
+    transparent 75%
   );
+  filter: blur(72px);
   animation: auroraDriftB 10s ease-in-out infinite;
-  /* No filter:blur — breaks on iOS Safari */
+  will-change: transform;
+  z-index: 0;
 }
 
 /* Grid overlay — separate class, uses a child element not ::before */

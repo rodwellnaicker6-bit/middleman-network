@@ -9,7 +9,8 @@ export default function HomePage() {
     <>
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="hero-aurora" style={{ color: '#fff', padding: '6.5rem 0 7.5rem' }}>
-        {/* Grid overlay as a child div — keeps ::before/::after free for aurora blobs */}
+        <div className="aurora-blob-gold" />
+        <div className="aurora-blob-purple" />
         <div className="aurora-grid-overlay" />
 
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
@@ -22,11 +23,8 @@ export default function HomePage() {
 
           {/* Headline */}
           <div style={{ position: 'relative', marginBottom: '1.5rem', display: 'inline-block' }}>
-            {/* Glow behind gold text — works on all browsers */}
-            <div style={{ position: 'absolute', top: '10%', left: '-5%', width: '60%', height: '80%', background: 'radial-gradient(ellipse, rgba(245,158,11,0.25) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 }} />
-            <h1 style={{ fontSize: 'clamp(2.5rem, 6.5vw, 4.5rem)', fontWeight: 900, margin: 0, lineHeight: 1.0, letterSpacing: '-0.035em', maxWidth: 740, position: 'relative', zIndex: 1 }}>
-              <span className="text-gradient-gold">Connect. Quote.</span>
-              <br />
+            <h1 style={{ fontSize: 'clamp(2.8rem, 7vw, 5rem)', fontWeight: 900, margin: 0, lineHeight: 1.0, letterSpacing: '-0.04em', maxWidth: 760, position: 'relative', zIndex: 1 }}>
+              <span className="text-gradient-gold" style={{ display: 'block', marginBottom: 4 }}>Connect. Quote.</span>
               <span style={{ color: '#fff' }}>Grow your business.</span>
             </h1>
           </div>
@@ -258,6 +256,8 @@ export default function HomePage() {
 
       {/* ── VENTURES SHOWCASE ────────────────────────────────── */}
       <section id="ventures" className="hero-aurora" style={{ padding: '4.5rem 0' }}>
+        <div className="aurora-blob-gold" />
+        <div className="aurora-blob-purple" />
         <div className="aurora-grid-overlay" />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
@@ -312,6 +312,8 @@ export default function HomePage() {
 
       {/* ── INVESTOR SECTION ──────────────────────────────────── */}
       <section className="hero-aurora" style={{ padding: '4.5rem 0' }}>
+        <div className="aurora-blob-gold" />
+        <div className="aurora-blob-purple" />
         <div className="aurora-grid-overlay" />
         <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem', alignItems: 'center' }}>
