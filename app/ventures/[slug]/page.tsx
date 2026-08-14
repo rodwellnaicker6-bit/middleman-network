@@ -639,6 +639,168 @@ export default async function VenturePage({ params }: { params: Promise<{ slug: 
                   </div>
                 </div>
 
+                {/* MT5 / MQL5 Products */}
+                <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 16, padding: '1.5rem', marginBottom: '1rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1.25rem' }}>
+                    <span style={{ fontSize: 22 }}>⚙️</span>
+                    <div>
+                      <div style={{ fontWeight: 900, fontSize: 15, color: '#0f172a' }}>MT5 · MT4 · MQL5 Products & Licensing</div>
+                      <div style={{ fontSize: 12, color: '#64748b', marginTop: 2 }}>Expert Advisors, scripts and tools — available for licensing, white-labelling or custom build</div>
+                    </div>
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', marginBottom: '1.25rem' }}>
+                    {[
+                      {
+                        name: 'AQI Bridge EA v4.40',
+                        platform: 'MT5 · MQL5',
+                        lines: '9,080 lines',
+                        color: '#6366f1',
+                        tag: 'FLAGSHIP',
+                        tagColor: '#6366f1',
+                        desc: 'Full ICT/SMC engine with multi-timeframe scoring, AI pattern recognition, ADX filter, drawdown protection and prop-firm rule compliance. Trades XAUUSD, XAGUSD, US30.',
+                        features: ['Multi-timeframe (D1–M5) signal engine', 'ICT: BOS, CHoCH, OB, FVG, liquidity', 'AI score 0–10 before every trade', 'Daily loss halt + 3-bar pause gate', 'Prop-firm funded account rules built-in'],
+                      },
+                      {
+                        name: 'AQI Lite EA',
+                        platform: 'MT5 · MT4 · MQL5',
+                        lines: 'Stripped-down build',
+                        color: '#10b981',
+                        tag: 'AVAILABLE',
+                        tagColor: '#10b981',
+                        desc: 'Entry-level version of the AQI engine. ADX + trend filter only, fixed lot sizing, single instrument. Built for MT4 compatibility and simpler funded-account challenges.',
+                        features: ['ADX strength filter (25+ threshold)', 'Session time filters (London / NY)', 'Fixed SL/TP with trail option', 'One-click prop-firm safe mode', 'MT4 + MT5 compatible'],
+                      },
+                      {
+                        name: 'Prop-Firm Rule Guard',
+                        platform: 'MT5 · MQL5',
+                        lines: 'Utility EA',
+                        color: '#f59e0b',
+                        tag: 'AVAILABLE',
+                        tagColor: '#f59e0b',
+                        desc: 'Standalone compliance utility that wraps any existing EA. Enforces daily drawdown limits, max lot cap, news blackout windows and challenge-phase vs funded-phase rule sets.',
+                        features: ['Daily loss % halt (configurable)', 'Max open lot cap enforcer', 'News blackout time windows', 'Challenge vs funded mode toggle', 'Works alongside any EA'],
+                      },
+                      {
+                        name: 'Trade Copier Bridge',
+                        platform: 'MT5 → MT5 / MT5 → MT4',
+                        lines: 'Multi-account',
+                        color: '#ec4899',
+                        tag: 'AVAILABLE',
+                        tagColor: '#ec4899',
+                        desc: 'Copy trades from one master MT5 account to unlimited slave accounts — same broker or cross-broker. Supports lot scaling, symbol mapping and delay injection for prop accounts.',
+                        features: ['Master → unlimited slave accounts', 'Lot size scaling per account', 'Cross-broker symbol mapping', 'Delay injection (prop-firm safe)', 'MT5 → MT4 bridge included'],
+                      },
+                    ].map((prod, i) => (
+                      <div key={i} style={{ border: `1px solid ${prod.color}30`, borderRadius: 14, padding: '1.25rem', background: '#fafafa' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}>
+                          <div>
+                            <div style={{ fontWeight: 900, fontSize: 14, color: '#0f172a' }}>{prod.name}</div>
+                            <div style={{ fontSize: 10, color: '#94a3b8', fontWeight: 700, marginTop: 2, textTransform: 'uppercase', letterSpacing: 1 }}>{prod.platform} · {prod.lines}</div>
+                          </div>
+                          <span style={{ background: prod.tagColor + '18', color: prod.tagColor, fontSize: 9, fontWeight: 900, padding: '3px 9px', borderRadius: 20, letterSpacing: 1, whiteSpace: 'nowrap' }}>{prod.tag}</span>
+                        </div>
+                        <p style={{ fontSize: 12, color: '#475569', lineHeight: 1.6, margin: '0 0 10px' }}>{prod.desc}</p>
+                        <div style={{ display: 'grid', gap: 4 }}>
+                          {prod.features.map((f, j) => (
+                            <div key={j} style={{ display: 'flex', gap: 7, alignItems: 'flex-start' }}>
+                              <span style={{ color: prod.color, fontSize: 10, fontWeight: 900, flexShrink: 0, marginTop: 3 }}>✓</span>
+                              <span style={{ fontSize: 11.5, color: '#64748b' }}>{f}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* MQL5 Scripts & Utilities */}
+                  <div style={{ background: '#0f172a', borderRadius: 12, padding: '1.25rem 1.5rem', marginBottom: '1rem' }}>
+                    <div style={{ color: '#94a3b8', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 1.5, marginBottom: '1rem' }}>MQL5 Scripts & Utility Tools</div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '0.75rem' }}>
+                      {[
+                        { name: 'Session Open Range Marker', detail: 'London, NY, Asia boxes' },
+                        { name: 'Automatic SL/TP Calculator', detail: 'Risk % input → lot size out' },
+                        { name: 'ADX Threshold Alert', detail: 'Push notification on signal' },
+                        { name: 'HTF OB Importer', detail: 'D1 blocks drawn on M15' },
+                        { name: 'Daily Loss Tracker Panel', detail: 'Live DD % on chart HUD' },
+                        { name: 'Trade Journal Exporter', detail: 'CSV + daily summary PDF' },
+                        { name: 'Multi-Symbol Scanner', detail: 'Scan 20 pairs for ICT setup' },
+                        { name: 'News Filter Library', detail: 'Plug-in for any EA' },
+                      ].map((s, i) => (
+                        <div key={i} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', padding: '8px 10px', background: 'rgba(255,255,255,0.04)', borderRadius: 8 }}>
+                          <span style={{ color: '#818cf8', fontSize: 10, fontWeight: 900, flexShrink: 0, marginTop: 3 }}>→</span>
+                          <div>
+                            <div style={{ fontSize: 11.5, color: '#fff', fontWeight: 700 }}>{s.name}</div>
+                            <div style={{ fontSize: 10, color: '#475569', marginTop: 2 }}>{s.detail}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Licensing CTA */}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '0.75rem' }}>
+                    {[
+                      { icon: '📄', title: 'Single License', price: 'From R2,500', desc: 'One account, lifetime use' },
+                      { icon: '🏢', title: 'Multi-Account', price: 'From R6,500', desc: 'Up to 5 funded accounts' },
+                      { icon: '🔧', title: 'Custom Build', price: 'From R8,000', desc: 'Spec it, we build it end-to-end' },
+                      { icon: '🏷️', title: 'White-Label', price: 'Quoted on request', desc: 'Your brand, our engine' },
+                    ].map((tier, i) => (
+                      <div key={i} style={{ background: 'rgba(99,102,241,0.06)', border: '1px solid rgba(99,102,241,0.18)', borderRadius: 12, padding: '1rem', textAlign: 'center' }}>
+                        <div style={{ fontSize: 24, marginBottom: 6 }}>{tier.icon}</div>
+                        <div style={{ fontWeight: 800, fontSize: 13, color: '#0f172a', marginBottom: 3 }}>{tier.title}</div>
+                        <div style={{ color: '#6366f1', fontWeight: 900, fontSize: 15, marginBottom: 4 }}>{tier.price}</div>
+                        <div style={{ fontSize: 11, color: '#64748b' }}>{tier.desc}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* NinjaTrader C# Strategies */}
+                <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 16, padding: '1.5rem', marginBottom: '1rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '1.25rem' }}>
+                    <span style={{ fontSize: 22 }}>🔗</span>
+                    <div>
+                      <div style={{ fontWeight: 900, fontSize: 15, color: '#0f172a' }}>NinjaTrader 8 — C# Strategies & SiennaBridge</div>
+                      <div style={{ fontSize: 12, color: '#64748b', marginTop: 2 }}>3,287 lines of C# — from MT5 signal to NinjaTrader execution in &lt;50ms</div>
+                    </div>
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
+                    <div style={{ background: '#f0f4ff', borderRadius: 12, padding: '1.25rem', border: '1px solid #c7d2fe' }}>
+                      <div style={{ fontWeight: 900, fontSize: 14, color: '#0f172a', marginBottom: 6 }}>SiennaBridge v2.25</div>
+                      <div style={{ fontSize: 11.5, color: '#475569', lineHeight: 1.65, marginBottom: 10 }}>
+                        Cloudflare Worker + C# NinjaTrader AddOn that receives JSON trade signals from MT5 and executes real orders on a NinjaTrader 8 futures account. Sub-50ms average latency.
+                      </div>
+                      {['Cloudflare Worker API endpoint', 'C# NT8 AddOn — 3,287 lines', 'JSON signal parsing + validation', 'Auto lot size conversion (MT5 → futures contracts)', 'Heartbeat + reconnect logic', 'Live on funded account FNFTCH***14915'].map((f, i) => (
+                        <div key={i} style={{ display: 'flex', gap: 7, alignItems: 'flex-start', marginBottom: 4 }}>
+                          <span style={{ color: '#6366f1', fontSize: 10, fontWeight: 900, flexShrink: 0, marginTop: 3 }}>✓</span>
+                          <span style={{ fontSize: 11.5, color: '#64748b' }}>{f}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{ background: '#f0fdf4', borderRadius: 12, padding: '1.25rem', border: '1px solid #bbf7d0' }}>
+                      <div style={{ fontWeight: 900, fontSize: 14, color: '#0f172a', marginBottom: 6 }}>NinjaTrader C# Strategy Add-ons</div>
+                      <div style={{ fontSize: 11.5, color: '#475569', lineHeight: 1.65, marginBottom: 10 }}>
+                        Standalone C# NinjaScript strategies built and backtested for MGCQ6, NQ, ES and major futures contracts. Full ATM strategy integration.
+                      </div>
+                      {['MGCQ6 (Micro Gold) futures strategy', 'ATM strategy template integration', 'Automated session start/end logic', 'Drawdown circuit breaker', 'Real-time P&L HUD overlay', 'Available: full source or compiled DLL'].map((f, i) => (
+                        <div key={i} style={{ display: 'flex', gap: 7, alignItems: 'flex-start', marginBottom: 4 }}>
+                          <span style={{ color: '#10b981', fontSize: 10, fontWeight: 900, flexShrink: 0, marginTop: 3 }}>✓</span>
+                          <span style={{ fontSize: 11.5, color: '#64748b' }}>{f}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div style={{ marginTop: '1rem', background: '#0f172a', borderRadius: 10, padding: '1rem 1.25rem', display: 'flex', gap: 12, alignItems: 'center' }}>
+                    <span style={{ fontSize: 20 }}>📬</span>
+                    <div style={{ fontSize: 12, color: '#94a3b8', lineHeight: 1.6 }}>
+                      <span style={{ color: '#fff', fontWeight: 800 }}>Want a custom NinjaTrader or MT5 EA? </span>
+                      Contact us at{' '}
+                      <a href="mailto:support@scopeindices.co.za" style={{ color: '#818cf8' }}>support@scopeindices.co.za</a>
+                      {' '}— spec, quote, build. Turnaround from 5 business days.
+                    </div>
+                  </div>
+                </div>
+
                 {/* Live Application Links */}
                 <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 16, padding: '1.5rem', marginBottom: '1rem' }}>
                   <div style={{ fontWeight: 800, fontSize: 15, color: '#0f172a', marginBottom: 4 }}>🔗 View Our Live Applications</div>
