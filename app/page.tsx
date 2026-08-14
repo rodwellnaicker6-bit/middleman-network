@@ -268,7 +268,7 @@ export default function HomePage() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.25rem' }}>
             {VENTURES.map(venture => (
               <Link key={venture.slug} href={`/ventures/${venture.slug}`} className="card-3d glass"
-                style={{ borderRadius: 16, padding: '1.75rem', display: 'block', cursor: 'pointer', borderTop: `2px solid ${venture.color}` }}>
+                style={{ backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', background: `linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.07) 100%)`, borderRadius: 16, padding: '1.75rem', display: 'block', cursor: 'pointer', borderLeft: '1px solid rgba(255,255,255,0.16)', borderRight: '1px solid rgba(255,255,255,0.16)', borderBottom: '1px solid rgba(255,255,255,0.16)', borderTop: `3px solid ${venture.color}` }}>
                 <div style={{ fontSize: 36, marginBottom: 12, filter: `drop-shadow(0 4px 12px ${venture.color}55)` }}>{venture.icon}</div>
                 <h3 style={{ color: '#fff', fontWeight: 800, fontSize: 17, margin: '0 0 6px', letterSpacing: '-0.015em' }}>{venture.name}</h3>
                 <p style={{ color: '#64748b', fontSize: 12.5, lineHeight: 1.6, margin: '0 0 1rem' }}>{venture.tagline}</p>
@@ -338,9 +338,15 @@ export default function HomePage() {
                 { label: '500 subscribers earn', value: 'R300K–R500K/month', neon: 'neon-gold' },
                 { label: 'Active industries', value: '22 live today', neon: '' },
               ].map((row, i) => (
-                <div key={i} className="glass" style={{ borderRadius: 10, padding: '0.875rem 1.1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, borderColor: i < 3 ? 'rgba(16,185,129,0.15)' : i < 6 ? 'rgba(245,158,11,0.15)' : 'rgba(255,255,255,0.1)' }}>
+                <div key={i} style={{
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  background: i < 3 ? 'rgba(16,185,129,0.10)' : i < 6 ? 'rgba(245,158,11,0.10)' : 'rgba(139,92,246,0.10)',
+                  border: `1px solid ${i < 3 ? 'rgba(16,185,129,0.28)' : i < 6 ? 'rgba(245,158,11,0.28)' : 'rgba(139,92,246,0.25)'}`,
+                  borderRadius: 10, padding: '0.875rem 1.1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12
+                }}>
                   <span style={{ color: '#94a3b8', fontSize: 12, fontWeight: 600 }}>{row.label}</span>
-                  <span className={row.neon} style={!row.neon ? { color: '#818cf8', fontWeight: 800, fontSize: 13 } : { fontWeight: 800, fontSize: 13 }}>{row.value}</span>
+                  <span className={row.neon} style={!row.neon ? { color: '#a78bfa', fontWeight: 800, fontSize: 13 } : { fontWeight: 800, fontSize: 13 }}>{row.value}</span>
                 </div>
               ))}
             </div>
