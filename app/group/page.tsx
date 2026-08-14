@@ -694,7 +694,7 @@ export default function GroupPage() {
             {[
               { div: 'D.R. Autotronics (existing)', current: 'R60,000/mo avg', target90: 'R80,000', target12m: 'R120,000', color: '#ef4444', icon: '🔧', note: '10-year verified income base — growing with fleet clients' },
               { div: 'D.R. Autotronics (Dyno)', current: 'Installing', target90: 'R135,000', target12m: 'R180,000', color: '#ef4444', icon: '⚙️', note: 'Chassis dynamometer — engine tuning + power verification — 3-month payback' },
-              { div: 'Scope Indices', current: 'Live + variable', target90: 'R15,000', target12m: 'R30,000', color: '#8b5cf6', icon: '📈', note: 'TradingView subscriptions + live funded account trading profits' },
+              { div: 'Scope Indices', current: '+$2,018 confirmed (8 sessions)', target90: 'R55,000', target12m: 'R180,000', color: '#8b5cf6', icon: '📈', note: 'Funded account trading profits + EA licensing (R2,500–R8,000) + TradingView/NinjaTrader subscriptions' },
               { div: 'YieldCore AI', current: 'Platform built', target90: 'R8,000', target12m: 'R35,000', color: '#10b981', icon: '🌾', note: 'Farm SaaS contracts at R3,200/ha/yr + carbon credit commission pipeline' },
               { div: 'TipGuard SA', current: 'Platform built', target90: 'R5,000', target12m: 'R25,000', color: '#06b6d4', icon: '💳', note: 'Merchant subscriptions — hotels, restaurants, salons, car washes' },
               { div: 'Manufacturing Division', current: 'Internal supply', target90: 'R12,000', target12m: 'R30,000', color: '#f97316', icon: '🏭', note: 'Drone services (post SACAA) + 3D printing + NFC hardware contracts' },
