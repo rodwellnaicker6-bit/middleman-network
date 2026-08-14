@@ -39,19 +39,21 @@ export default function HomePage() {
             <Link href="/get-listed" className="btn-ghost">List Your Business Free</Link>
           </div>
 
-          <div style={{ display: 'inline-flex', gap: 0, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(245,158,11,0.18)', borderTop: '1px solid rgba(245,158,11,0.38)', borderRadius: 18, overflow: 'hidden', boxShadow: '0 0 60px rgba(245,158,11,0.07), inset 0 1px 0 rgba(255,255,255,0.05)' }}>
-            {[
-              { value: `${INDUSTRIES.length}`, label: 'Industries' },
-              { value: `${providerNiches.length}+`, label: 'Niches' },
-              { value: '0%', label: 'Commission' },
-              { value: 'R' + Math.round(avgJobValue / 1000) + 'K', label: 'Avg Job' },
-              { value: `${VENTURES.length}`, label: 'Ventures' },
-            ].map((s, i, arr) => (
-              <div key={s.label} style={{ flex: '1 1 90px', padding: '1.25rem 1.6rem', textAlign: 'center', borderRight: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
-                <div className="stat-gold" style={{ fontSize: 'clamp(1.4rem, 3vw, 2.2rem)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1 }}>{s.value}</div>
-                <div style={{ fontSize: 10, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 700, marginTop: 6 }}>{s.label}</div>
-              </div>
-            ))}
+          <div className="stat-scroll">
+            <div style={{ display: 'inline-flex', gap: 0, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(245,158,11,0.18)', borderTop: '1px solid rgba(245,158,11,0.38)', borderRadius: 18, overflow: 'hidden', boxShadow: '0 0 60px rgba(245,158,11,0.07), inset 0 1px 0 rgba(255,255,255,0.05)' }}>
+              {[
+                { value: `${INDUSTRIES.length}`, label: 'Industries' },
+                { value: `${providerNiches.length}+`, label: 'Niches' },
+                { value: '0%', label: 'Commission' },
+                { value: 'R' + Math.round(avgJobValue / 1000) + 'K', label: 'Avg Job' },
+                { value: `${VENTURES.length}`, label: 'Ventures' },
+              ].map((s, i, arr) => (
+                <div key={s.label} style={{ flex: '1 1 90px', padding: '1.25rem 1.6rem', textAlign: 'center', borderRight: i < arr.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
+                  <div className="stat-gold" style={{ fontSize: 'clamp(1.4rem, 3vw, 2.2rem)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1 }}>{s.value}</div>
+                  <div style={{ fontSize: 10, color: '#475569', textTransform: 'uppercase', letterSpacing: '0.12em', fontWeight: 700, marginTop: 6 }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

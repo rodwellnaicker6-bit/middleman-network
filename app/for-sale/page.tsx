@@ -153,7 +153,7 @@ export default function ForSalePage() {
       {enquiry && (
         <div
           onClick={e => { if (e.target === e.currentTarget) setEnquiry(null); }}
-          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
+          style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1rem' }}>
           <div style={{ background: '#fff', borderRadius: 20, padding: '2rem', maxWidth: 440, width: '100%', boxShadow: '0 24px 80px rgba(0,0,0,0.25)' }}>
             {sent ? (
               <div style={{ textAlign: 'center', padding: '1rem 0' }}>

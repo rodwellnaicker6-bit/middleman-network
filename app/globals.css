@@ -614,6 +614,16 @@ td, th { vertical-align: middle; }
 
   body { overflow-x: hidden; }
 
+  /* Hero stat strip — horizontally scrollable so stats don't get clipped */
+  .stat-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+    /* Hide scrollbar visually but keep functionality */
+    scrollbar-width: none;
+  }
+  .stat-scroll::-webkit-scrollbar { display: none; }
+
   /* Stack fixed-width two-column layouts */
   div[style*="grid-template-columns: 1fr 380px"],
   div[style*="grid-template-columns: 1fr 340px"],
@@ -631,6 +641,7 @@ td, th { vertical-align: middle; }
   /* Force 1-col for larger minmax grids */
   div[style*="minmax(340px, 1fr)"],
   div[style*="minmax(320px, 1fr)"],
+  div[style*="minmax(300px, 1fr)"],
   div[style*="minmax(280px, 1fr)"],
   div[style*="minmax(260px, 1fr)"] {
     grid-template-columns: 1fr !important;
@@ -641,23 +652,27 @@ td, th { vertical-align: middle; }
     grid-template-columns: 1fr !important;
   }
 
-  /* Dark panel padding reduction */
-  div[style*="padding: '2rem 2.5rem'"] { padding: 1.25rem !important; }
-  div[style*="padding: '2.5rem'"]      { padding: 1.25rem !important; }
+  /* Reduce horizontal padding on dark/panel sections */
+  div[style*="padding: 2rem 2.5rem"],
+  div[style*="padding: 2.5rem"] {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
 
   /* Heading clamp */
   h1 { font-size: clamp(1.7rem, 7vw, 2.5rem) !important; }
 
-  /* Word break */
-  p, span { word-break: break-word; }
+  /* Word break — prevent long strings from overflowing */
+  p, li, span { word-break: break-word; overflow-wrap: break-word; }
 
   /* Footer bottom bar */
+  footer div[style*="justify-content: space-between"],
   footer div[style*="justifyContent: 'space-between'"] {
     flex-direction: column !important;
     align-items: flex-start !important;
   }
 
-  /* WhatsApp float */
+  /* WhatsApp float — smaller on mobile */
   a[aria-label="Chat on WhatsApp"] {
     width: 50px !important;
     height: 50px !important;
@@ -666,10 +681,16 @@ td, th { vertical-align: middle; }
     font-size: 22px !important;
   }
 
-  /* No hover transform on touch */
+  /* No hover transform on touch — prevents layout shift */
   .card-hover:hover,
   .card-3d:hover {
     transform: none !important;
     box-shadow: var(--shadow-md) !important;
+  }
+
+  /* Prevent very wide min-height hero from creating scroll on small screens */
+  section[style*="minHeight: '92vh'"] {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
   }
 }
