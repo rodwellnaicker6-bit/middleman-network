@@ -45,7 +45,7 @@ export default async function VenturePage({ params }: { params: Promise<{ slug: 
       </section>
 
       <div className="container" style={{ padding: '3rem 1.5rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 340px', gap: '2rem', alignItems: 'start' }}>
+        <div className="venture-layout-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 340px', gap: '2rem', alignItems: 'start' }}>
           {/* Main content */}
           <div>
             {/* D.R. Autotronics key stats */}

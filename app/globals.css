@@ -633,15 +633,17 @@ td, th { vertical-align: middle; }
   }
   .stat-scroll::-webkit-scrollbar { display: none; }
 
-  /* Niche page and get-listed 2-column layouts — class-based (reliable on all React versions) */
+  /* All 2-column layouts — class-based (reliable on all React versions) */
   .niche-layout-grid,
-  .two-col-form-grid {
+  .two-col-form-grid,
+  .venture-layout-grid {
     grid-template-columns: 1fr !important;
   }
 
   /* Unstick sidebars on mobile */
   .niche-layout-grid > div:last-child,
-  .two-col-form-grid > div:last-child {
+  .two-col-form-grid > div:last-child,
+  .venture-layout-grid > div:last-child {
     position: static !important;
   }
 
